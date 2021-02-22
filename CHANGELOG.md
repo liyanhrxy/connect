@@ -81,7 +81,7 @@
 - Initial `GetFeatures` message called on bootloader below 1.4.0.
 - Cardano double passphrase prompt.
 - Validation of `FeeLevel.feePerUnit` loaded from the backend (`blockchainEstimateFee` method).
-- `showOnTrezor` parameter for `ethereumGetPublicKey`. 
+- `showOnTrezor` parameter for `ethereumGetPublicKey`.
 
 ### Added
 - `showOnTrezor` parameter for `getPublicKey` method.
@@ -573,10 +573,10 @@
 - renderWebUSBButton method
 
 #### Removed
-- "babel-polyfill" from npm and export unminified script https://connect.trezor.io/5/trezor-connect.js
+- "babel-polyfill" from npm and export unminified script https://connect.onekey.so/5/trezor-connect.js
 
 #### Changed
-- https://connect.trezor.io/5/trezor-connect.min.js to export with bundled "babel-polyfill"
+- https://connect.onekey.so/5/trezor-connect.min.js to export with bundled "babel-polyfill"
 - Web extensions: open popup tab next to currently used tab
 
 # 5.0.28

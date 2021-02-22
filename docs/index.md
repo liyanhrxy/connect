@@ -4,14 +4,14 @@ Install library as npm module:
 ```javascript
 npm install trezor-connect
 ```
-or 
+or
 ```javascript
 yarn add trezor-connect
 ```
 
 Include library as inline script:
 ```javascript
-<script src="https://connect.trezor.io/7/trezor-connect.js"></script>
+<script src="https://connect.onekey.so/7/trezor-connect.js"></script>
 ```
 
 ## Initialization

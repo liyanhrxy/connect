@@ -6,7 +6,7 @@ Basic implementation is same for both Google Chrome & Firefox. However, few addi
 
 
 1. Configure your manifest file ([Google Chrome](https://github.com/trezor/connect-explorer/blob/webextensions/manifest-chrome.json), [Firefox](https://github.com/trezor/connect-explorer/blob/webextensions/manifest-firefox.json))
-    * Because Trezor Connect is served from the `https://connect.trezor.io/` domain you must grant permissions to `://connect.trezor.io/*` URL in your manifest file.
+    * Because Trezor Connect is served from the `https://connect.onekey.so/` domain you must grant permissions to `://connect.trezor.io/*` URL in your manifest file.
 
         ```JSON
         {
