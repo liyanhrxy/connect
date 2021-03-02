@@ -621,7 +621,7 @@ export default class Device extends EventEmitter {
                 label: 'Unacquired device',
             };
         } else {
-            const defaultLabel: string = 'My Trezor';
+            const defaultLabel: string = 'OneKey';
             const label = this.features.label === '' || !this.features.label ? defaultLabel : this.features.label;
             return {
                 type: 'acquired',
