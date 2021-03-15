@@ -22,7 +22,7 @@ export const showFirmwareUpdateNotification = (device: $PropertyType<UnexpectedD
     }
 
     const button = notification.getElementsByClassName('notification-button')[0];
-    button.setAttribute('href', 'https://suite.trezor.io/web/firmware/');
+    button.setAttribute('href', 'https://desktop.onekey.so/firmware/');
 
     container.appendChild(notification);
 

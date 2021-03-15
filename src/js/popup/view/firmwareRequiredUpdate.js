@@ -9,5 +9,5 @@ export const firmwareRequiredUpdate = (device: $PropertyType<UnexpectedDeviceMod
     if (!device.firmwareRelease) return;
 
     const button = view.getElementsByClassName('confirm')[0];
-    button.setAttribute('href', 'https://suite.trezor.io/web/firmware/');
+    button.setAttribute('href', 'https://desktop.onekey.so/firmware/');
 };

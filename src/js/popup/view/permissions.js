@@ -11,16 +11,16 @@ const getPermissionText = (permissionType: string, deviceName: string): string =
 
     switch (permissionType) {
         case 'read':
-            text = 'Read public keys from Trezor device';
+            text = 'Read public keys from OneKey device';
             break;
         case 'read-meta':
-            text = 'Read metadata from Trezor device';
+            text = 'Read metadata from OneKey device';
             break;
         case 'write':
-            text = 'Prepare Trezor device for transaction and data signing';
+            text = 'Prepare OneKey device for transaction and data signing';
             break;
         case 'write-meta':
-            text = 'Write metadata to Trezor device';
+            text = 'Write metadata to OneKey device';
             break;
         case 'management':
             text = 'Modify device settings';
@@ -46,7 +46,7 @@ const getPermissionTooltipText = (permissionType: string): string => {
             text = 'Permission needed to change device settings, such as PIN, passphrase, label or seed.';
             break;
         case 'custom-message':
-            text = 'Development tool. Use at your own risk. Allows service to send arbitrary data to your Trezor device.';
+            text = 'Development tool. Use at your own risk. Allows service to send arbitrary data to your OneKey device.';
             break;
     }
     return text;
