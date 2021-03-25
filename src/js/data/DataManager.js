@@ -116,6 +116,27 @@ export default class DataManager {
             this.assets[ asset.name ] = json;
         }
 
+        try {
+            const resp = await fetch('https://data.onekey.so/version.json');
+            const { stm32: stmData, nrf } = await resp.json();
+            if (stmData) {
+                if (!stmData.changelog) {
+                    stmData.changelog = stmData.changelog_cn;
+                }
+
+                this.assets[ 'firmware-t1' ] = [stmData];
+                if (window.parent) {
+                    window.parent.postMessage({
+                        type: 'UPDATE_NRF_DATA',
+                        data: nrf
+                    }, '*');
+                }
+            }
+        } catch (e) {
+            console.log('fetch data error', e);
+        }
+
+
         for (const protobuf of this.config.messages) {
             const json: JSON = await httpRequest(`${protobuf.json}${ts}`, 'json');
             this.messages[ protobuf.name ] = json;
