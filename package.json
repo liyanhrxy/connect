@@ -1,21 +1,23 @@
 {
-    "name": "trezor-connect",
+    "name": "@onekeyhq/connect",
     "version": "8.1.22",
-    "author": "Trezor <info@trezor.io>",
-    "homepage": "https://github.com/trezor/connect",
-    "description": "High-level javascript interface for Trezor hardware wallet.",
+    "author": "OneKey <hi@onekey.so>",
+    "homepage": "https://github.com/onekeyhq/connect",
+    "description": "High-level javascript interface for OneKey hardware wallet.",
     "license": "SEE LICENSE IN LICENSE.md",
-    "private": true,
     "repository": {
         "type": "git",
-        "url": "git://github.com/trezor/connect.git"
+        "url": "git://github.com/onekeyhq/connect.git"
+    },
+    "publishConfig": {
+        "registry":"https://npm.pkg.github.com"
     },
     "bugs": {
-        "url": "https://github.com/trezor/connect/issues"
+        "url": "https://github.com/onekeyhq/connect/issues"
     },
     "keywords": [
-        "Trezor",
-        "trezor-connect",
+        "OneKey",
+        "onekey-connect",
         "javascript"
     ],
     "main": "src/js/index.js",
@@ -58,8 +60,9 @@
         "@babel/plugin-transform-runtime": "^7.12.10",
         "@babel/preset-env": "^7.12.10",
         "@babel/preset-flow": "^7.12.1",
-        "@trezor/blockchain-link": "^1.0.16",
-        "@trezor/rollout": "1.0.7",
+        "@onekeyhq/blockchain-link": "^1.0.16",
+        "@onekeyhq/link": "1.7.3",
+        "@onekeyhq/rollout": "1.0.6",
         "@trezor/utxo-lib": "^0.1.2",
         "babel-collect-imports": "https://github.com/szymonlesisz/babel-collect-imports",
         "babel-eslint": "^10.1.0",
@@ -104,7 +107,6 @@
         "style-loader": "1.2.1",
         "terser-webpack-plugin": "4.2.2",
         "tiny-worker": "^2.3.0",
-        "trezor-link": "1.7.3",
         "uglify-es": "3.3.9",
         "version-bump-prompt": "6.1.0",
         "webpack": "4.44.2",
@@ -120,8 +122,9 @@
         "whatwg-fetch": "^3.5.0"
     },
     "extendedDependencies": {
-        "@trezor/blockchain-link": "^1.0.16",
-        "@trezor/rollout": "1.0.7",
+        "@onekeyhq/blockchain-link": "^1.0.17",
+        "@onekeyhq/rollout": "1.0.6",
+        "@onekeyhq/link": "1.7.3",
         "@trezor/utxo-lib": "^0.1.2",
         "bchaddrjs": "0.4.9",
         "bignumber.js": "^9.0.1",
@@ -130,7 +133,6 @@
         "keccak": "^3.0.1",
         "node-fetch": "^2.6.1",
         "parse-uri": "^1.0.3",
-        "tiny-worker": "^2.3.0",
-        "trezor-link": "1.7.3"
+        "tiny-worker": "^2.3.0"
     }
 }

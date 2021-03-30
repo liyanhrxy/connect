@@ -1774,6 +1774,40 @@
   dependencies:
     mkdirp "^1.0.4"
 
+"@onekeyhq/blockchain-link@^1.0.16":
+  version "1.0.17"
+  resolved "https://npm.pkg.github.com/download/@onekeyhq/blockchain-link/1.0.17/abe9453e9f2dde5ea860d923f09b66f170e0eb0e72a8229348e424af8c9108ae#260775ec11251f93989a52d1faf541d3157231a2"
+  integrity sha512-Jo7ai36LkES9FlyC/6TeOa/mwShOWxG+cKbNKn+cAjBCtK1yRFlssOL6c9Q+tDHIsPAq9l60G6nIX/UJiDfUPw==
+  dependencies:
+    bignumber.js "^9.0.1"
+    es6-promise "^4.2.8"
+    events "^3.2.0"
+    ripple-lib "1.8.2"
+    tiny-worker "^2.3.0"
+    ws "^7.4.0"
+
+"@onekeyhq/link@1.7.3":
+  version "1.7.3"
+  resolved "https://npm.pkg.github.com/download/@onekeyhq/link/1.7.3/6284d33e0473704a0d775e625613559ae99b2e02a7c5333225db93e2c4dea0f4#be22d71e4a0325659f91b50c73a50bbcea6ff137"
+  integrity sha512-qP8slAuQ6BhDBMGJSe3X4eQC+6V7san2G6ie6774e3VxrEgmEyAr9ZzETltXBX5WhuXx9xj+nJlLGtugi1GAaw==
+  dependencies:
+    bigi "^1.4.1"
+    ecurve "^1.0.3"
+    json-stable-stringify "^1.0.1"
+    node-fetch "^2.6.1"
+    object.values "^1.1.2"
+    protobufjs-old-fixed-webpack "3.8.5"
+    semver-compare "^1.0.0"
+    whatwg-fetch "^3.5.0"
+
+"@onekeyhq/rollout@1.0.6":
+  version "1.0.6"
+  resolved "https://npm.pkg.github.com/download/@onekeyhq/rollout/1.0.6/dab197211436334fa96d5e9c4796aacf7ffc82e58c26e5b8110d5f5663175bd2#ecf85780b70827d566c5ed4bb48f4a2553b1cdd4"
+  integrity sha512-jMH5C+G9jEU7TeUnUSXvw54+VKq2jXFdN0eJrmFTMi8CybwcaQwlUfKtcbU5jm3KCX3+VBA7XK3ka/7e+lL1jg==
+  dependencies:
+    cross-fetch "^3.0.6"
+    runtypes "^5.0.1"
+
 "@sinonjs/commons@^1.7.0":
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.7.0.tgz#f90ffc52a2e519f018b13b6c4da03cbff36ebed6"
@@ -1787,26 +1821,6 @@
   integrity sha512-MZPUxrmFubI36XS1DI3qmI0YdN1gks62JtFZvxR67ljjSNCeK6U08Zx4msEWOXuofgqUt6zPHSi1H9fbjR/NRA==
   dependencies:
     "@sinonjs/commons" "^1.7.0"
-
-"@trezor/blockchain-link@^1.0.16":
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/@trezor/blockchain-link/-/blockchain-link-1.0.16.tgz#842d2846385deef7a179df74c1d157332708934c"
-  integrity sha512-K5HHgAFWrQEODsarEV55efk+Iamf96n56B8PAxMNaKRwj04i6LpQ8uyHSJf7hVZQ+z4lMXG+Qw7vijS17qooRw==
-  dependencies:
-    bignumber.js "^9.0.1"
-    es6-promise "^4.2.8"
-    events "^3.2.0"
-    ripple-lib "1.8.2"
-    tiny-worker "^2.3.0"
-    ws "^7.4.0"
-
-"@trezor/rollout@1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@trezor/rollout/-/rollout-1.0.7.tgz#e4ee8281866ab6712ccc8873f3a383621b1a18ca"
-  integrity sha512-yFN2J/g3Epv1dM0dCsRnOagK7lrsfs7vDy1uc4T7DF9qtN0ZGO/tdCjSdgRGUZECRdXRcPrzRUsZDXGOkPcLoA==
-  dependencies:
-    cross-fetch "^3.0.6"
-    runtypes "^5.0.1"
 
 "@trezor/utxo-lib@0.1.1":
   version "0.1.1"
@@ -10624,20 +10638,6 @@ tr46@^2.0.2:
   integrity sha512-3n1qG+/5kg+jrbTzwAykB5yRYtQCTqOGKq5U5PE3b0a1/mzo6snDhjGS0zJVJunO0NrT3Dg1MLy5TjWP/UJppg==
   dependencies:
     punycode "^2.1.1"
-
-trezor-link@1.7.3:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/trezor-link/-/trezor-link-1.7.3.tgz#33c4b558913a3da395243018c04ee1804affcdc3"
-  integrity sha512-KaVYcK96BLD+cBuYmJmsxr6G9Z0ZeO6VYPhcYQyFxJ7jvc6/UvTmdACZdHjlUD7U5VuJEGMI4G8L3IGxFTFv4Q==
-  dependencies:
-    bigi "^1.4.1"
-    ecurve "^1.0.3"
-    json-stable-stringify "^1.0.1"
-    node-fetch "^2.6.1"
-    object.values "^1.1.2"
-    protobufjs-old-fixed-webpack "3.8.5"
-    semver-compare "^1.0.0"
-    whatwg-fetch "^3.5.0"
 
 trim-right@^1.0.1:
   version "1.0.1"
