@@ -29,7 +29,7 @@ BIP-0044 account discovery is performed and user is presented with a list of acc
 - `coin` — *obligatory* `string` determines network definition specified in [coins.json](../../src/data/coins.json) file. Coin `shortcut`, `name` or `label` can be used.
 
 ### Other optional params
-params are forwarded to [BlockBook backend](https://github.com/trezor/blockbook/blob/master/docs/api.md#api-v2) using `@trezor/blockchain-link` package
+params are forwarded to [BlockBook backend](https://github.com/trezor/blockbook/blob/master/docs/api.md#api-v2) using `@onekeyhq/blockchain-link` package
 
 
 * `details` — specifies level of details returned by request
@@ -121,7 +121,7 @@ TrezorConnect.getAccountInfo({
             seq: number,
         }
 
-    } // 
+    } //
 }
 ```
 [AccountInfo](../../src/js/types/account.js#L108)
@@ -179,7 +179,7 @@ TrezorConnect.getAccountInfo("m/49'/0'/0'", function(result) {
 should be
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.getAccountInfo({ 
+TrezorConnect.getAccountInfo({
     path: "m/49'/0'/0'",
     coin: "btc"
 }).then(function(result) {

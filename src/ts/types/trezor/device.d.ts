@@ -1,4 +1,4 @@
-import { getInfo } from '@trezor/rollout';
+import { getInfo } from '@onekeyhq/rollout';
 import { DEVICE } from '../constants';
 import { Features } from './protobuf';
 
