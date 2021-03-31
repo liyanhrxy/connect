@@ -10,7 +10,7 @@ describe('data/ConnectSettings', () => {
     });
 
     it('corsValidator', () => {
-        expect(corsValidator('https://connect.onekey.so/8-beta/')).toBeDefined();
+        expect(corsValidator('https://connect.onekey.so/')).toBeDefined();
         expect(corsValidator('https://az-AZ_123.trezor.io/')).toBeDefined();
         expect(corsValidator('https://multiple.sub.domain.trezor.io/')).toBeDefined();
         expect(corsValidator('https://trezor.sldev.io/')).not.toBeDefined();
@@ -49,7 +49,7 @@ describe('data/ConnectSettings', () => {
         window.location = { search: 'trezor-connect-src=https://connect.onekey.so/beta.3/&foo=bar' };
         expect(parse({}).connectSrc).toEqual('https://connect.onekey.so/beta.3/');
 
-        window.location = { search: 'trezor-connect-src=https%3A%2F%2Fconnect.trezor.io%2Fbeta.encoded%2F' }; // encoded
+        window.location = { search: 'trezor-connect-src=https%3A%2F%2Fconnect.onekey.so%2Fbeta.encoded%2F' }; // encoded
         expect(parse({}).connectSrc).toEqual('https://connect.onekey.so/beta.encoded/');
 
         window.location = { search: 'trezor-connect-src=https://connect-beta.trezor.oi/beta.3/' }; // invalid domain "io"
