@@ -35,7 +35,7 @@ export const uploadFirmware = async (
     if (device.features.major_version === 1) {
         postConfirmationMessage(device);
         const isNRFFirmware = !!window.$BLE_MODE;
-        const type = isNRFFirmware ? 'FirmwareEraseEX' : 'FirmwareErase';
+        const type = isNRFFirmware ? 'FirmwareErase_ex' : 'FirmwareErase';
         await typedCall(type, 'Success', {});
         postProgressMessage(device, 0, postMessage);
         const { message } = await typedCall('FirmwareUpload', 'Success', {

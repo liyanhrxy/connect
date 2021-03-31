@@ -3,9 +3,9 @@
 clean:
 	rm -rf build/
 
-# manually: goto ./submodules/trezor-common; git checkout master; git pull
+# manually: goto ./submodules/bixin-firmware/common; git checkout master; git pull
 submodules:
-	cd ./submodules/trezor-common; git checkout master; git pull; git submodule update --recursive
+	cd ./submodules/bixin-firmware/common; git checkout master; git pull; git submodule update --recursive
 
 # docker build for connect.trezor.io
 build:
@@ -49,8 +49,8 @@ sync-%:
 
 # Build messages.json from protobuf
 protobuf:
-	make -C ./submodules/trezor-common/protob combine
-	./node_modules/.bin/proto2js ./submodules/trezor-common/protob/combined.proto > ./src/data/messages/messagesN.json
+	make -C ./submodules/bixin-firmware/common/protob combine
+	./node_modules/.bin/proto2js ./submodules/bixin-firmware/common/protob/combined.proto > ./src/data/messages/messages.json
 	# messages from local trezor-firmware repo
 	# make -C ../trezor-firmware/common/protob combine
 	# ./node_modules/.bin/proto2js ../trezor-firmware/common/protob/combined.proto > ./src/data/messages/messages.json
@@ -60,10 +60,10 @@ protobuf:
 # Build coin definitions
 coins:
 	# make submodules
-	./submodules/trezor-common/tools/cointool.py dump -p -d connect -e icon -e cooldown -e github -e key -e maintainer -e uri_prefix -e version_group_id -e website -e links -e duplicate -e wallet -e bitcore -e confidential_assets -e negative_fee -o ./src/data/coins.json
+	./submodules/bixin-firmware/common/tools/cointool.py dump -p -d connect -e icon -e cooldown -e github -e key -e maintainer -e uri_prefix -e version_group_id -e website -e links -e duplicate -e wallet -e bitcore -e confidential_assets -e negative_fee -o ./src/data/coins.json
 
 eth-tokens:
-	./submodules/trezor-common/tools/cointool.py dump -p -I erc20 -f chain=eth -e chain -e chain_id -e ens_address -e key -e logo -e social -e support -e type -e website -e shortcut -o ./src/data/ethereumTokens.json
+	./submodules/bixin-firmware/common/tools/cointool.py dump -p -I erc20 -f chain=eth -e chain -e chain_id -e ens_address -e key -e logo -e social -e support -e type -e website -e shortcut -o ./src/data/ethereumTokens.json
 
 .DEFAULT_GOAL:= default
 default:

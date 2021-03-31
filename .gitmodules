@@ -1,3 +1,3 @@
-[submodule "submodules/trezor-common"]
-	path = submodules/trezor-common
-	url = https://github.com/trezor/trezor-common.git
+[submodule "submodules/bixin-firmware"]
+	path = submodules/bixin-firmware
+	url = https://github.com/OneKeyHQ/bixin-firmware

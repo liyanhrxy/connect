@@ -407,7 +407,7 @@ export default class DeviceCommands {
             return this._promptPin(res.message.type).then(
                 pin => {
                     if (pin === '@@ONEKEY_INPUT_PIN_IN_DEVICE') {
-                        return this._commonCall('UnlockInDevice');
+                        return this._commonCall('BixinPinInputOnDevice');
                     }
                     return this._commonCall('PinMatrixAck', { pin: pin });
                 },
