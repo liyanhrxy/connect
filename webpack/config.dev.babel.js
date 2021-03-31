@@ -130,7 +130,7 @@ module.exports = {
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.NamedModulesPlugin(),
 
-        // ignore Node.js lib from trezor-link
+        // ignore Node.js lib from @onekeyhq/link
         new webpack.IgnorePlugin(/\/iconv-loader$/),
     ],
 

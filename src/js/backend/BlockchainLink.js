@@ -1,5 +1,5 @@
 /* @flow */
-import BlockchainLink from '@trezor/blockchain-link';
+import BlockchainLink from '@onekeyhq/blockchain-link';
 import { BlockchainMessage } from '../message/builder';
 import { BLOCKCHAIN, ERRORS } from '../constants';
 import type {

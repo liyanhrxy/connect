@@ -9,7 +9,7 @@ import { reverseBuffer } from '../../../utils/bufferUtils';
 import { getHDPath, getScriptType, getOutputScriptType } from '../../../utils/pathUtils';
 
 // npm types
-import type { TypedRawTransaction } from '@trezor/blockchain-link';
+import type { TypedRawTransaction } from '@onekeyhq/blockchain-link';
 import type { Input as BitcoinJsInput, Output as BitcoinJsOutput } from '@trezor/utxo-lib';
 
 // local types

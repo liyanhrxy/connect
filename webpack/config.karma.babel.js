@@ -72,7 +72,7 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[id].css',
         }),
-        // ignore Node.js lib from trezor-link
+        // ignore Node.js lib from @onekeyhq/link
         new webpack.IgnorePlugin(/\/iconv-loader$/),
     ],
 

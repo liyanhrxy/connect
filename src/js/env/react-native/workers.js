@@ -1,10 +1,10 @@
 /* @flow */
 
 // $FlowIssue
-import BlockbookWorkerWrapper from '@trezor/blockchain-link/build/module/blockbook-worker.js';
+import BlockbookWorkerWrapper from '@onekeyhq/blockchain-link/build/module/blockbook-worker.js';
 // $FlowIssue
-import RippleWorkerWrapper from '@trezor/blockchain-link/build/module/ripple-worker.js';
-import TrezorLink from 'trezor-link';
+import RippleWorkerWrapper from '@onekeyhq/blockchain-link/build/module/ripple-worker.js';
+import TrezorLink from '@onekeyhq/link';
 import RNUsbPlugin from './RNUsbPlugin';
 
 export const WebUsbPlugin = undefined;

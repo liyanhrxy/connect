@@ -15,7 +15,7 @@ import Device from './Device';
 import { getSegwitNetwork, getBech32Network } from '../data/CoinInfo';
 
 import type { CoinInfo, BitcoinNetworkInfo, EthereumNetworkInfo, HDNodeResponse } from '../types';
-import type { Transport } from 'trezor-link';
+import type { Transport } from '@onekeyhq/link';
 import * as PROTO from '../types/trezor/protobuf';
 
 export type DefaultMessageResponse = {
@@ -613,16 +613,16 @@ export default class DeviceCommands {
         return;
     }
 
-    // TODO: implement whole "cancel" logic in "trezor-link"
+    // TODO: implement whole "cancel" logic in "@onekeyhq/link"
     async cancel() {
-        // TEMP: this patch should be implemented in 'trezor-link' instead
+        // TEMP: this patch should be implemented in '@onekeyhq/link' instead
         // NOTE:
         // few ButtonRequests can be canceled by design because they are awaiting for user input
         // those are: Pin, Passphrase, Word
         // _cancelableRequest holds reference to the UI promise `reject` method
         // in those cases `this.transport.call` needs to be used
         // calling `this.transport.post` (below) will result with throttling somewhere in low level
-        // trezor-link or trezord (not sure which one) will reject NEXT incoming call with "Cancelled" error
+        // @onekeyhq/link or trezord (not sure which one) will reject NEXT incoming call with "Cancelled" error
         if (this._cancelableRequest) {
             this._cancelableRequest();
             this._cancelableRequest = undefined;

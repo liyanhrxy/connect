@@ -1,6 +1,6 @@
 /* @flow */
 
-import { getInfo } from '@trezor/rollout';
+import { getInfo } from '@onekeyhq/rollout';
 import type { DeviceFirmwareStatus, FirmwareRelease, Features } from '../types';
 
 // [] is weird flow hack https://github.com/facebook/flow/issues/380#issuecomment-224380551

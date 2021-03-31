@@ -8,7 +8,7 @@ import { validateParams } from '../helpers/paramsValidator';
 
 // npm types
 import type { BuildTxInput } from 'hd-wallet';
-import type { TypedRawTransaction } from '@trezor/blockchain-link';
+import type { TypedRawTransaction } from '@onekeyhq/blockchain-link';
 
 // local types
 import type { BitcoinNetworkInfo } from '../../../types';
