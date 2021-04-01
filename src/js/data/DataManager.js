@@ -118,7 +118,8 @@ export default class DataManager {
 
         let nrfData = this.assets[ 'nrf' ];
         try {
-            const resp = await fetch('https://data.onekey.so/version.json');
+            const timestamp = new Date().getTime();
+            const resp = await fetch(`https://data.onekey.so/version.json?noCache=${timestamp}`);
             const { stm32: stmData, nrf } = await resp.json();
             nrfData = nrf;
 
