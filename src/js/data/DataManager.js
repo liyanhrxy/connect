@@ -130,6 +130,7 @@ export default class DataManager {
                 this.assets[ 'firmware-t1' ] = [ stmData ];
             }
         } catch (e) {
+            // eslint-disable-next-line no-console
             console.log('fetch data error', e.message);
         }
 

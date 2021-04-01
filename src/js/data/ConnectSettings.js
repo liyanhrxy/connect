@@ -10,10 +10,10 @@ import type {
  * It could be changed by passing values into TrezorConnect.init(...) method
  */
 
-const VERSION = '8.1.22';
-const versionN = VERSION.split('.').map(s => parseInt(s));
+const VERSION = '8.1.25';
+// const versionN = VERSION.split('.').map(s => parseInt(s));
 // const DIRECTORY = `${ versionN[0] }${ (versionN[1] > 0 ? `.${versionN[1]}` : '') }/`;
-const DIRECTORY = `${versionN[0]}/`;
+// const DIRECTORY = `${versionN[0]}/`;
 const DEFAULT_DOMAIN = 'https://connect.onekey.so/';
 export const DEFAULT_PRIORITY = 2;
 
