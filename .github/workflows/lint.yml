@@ -35,8 +35,6 @@ jobs:
           echo "node version: $(node -v)"
           echo "npm version: $(npm -v)"
           echo "webpack version: $(./node_modules/.bin/webpack -v)"
-      - name: Build Libs
-        run: yarn build:libs
       - name: Lint & Type Check
         run: |
           yarn lint
