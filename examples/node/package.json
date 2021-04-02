@@ -1,0 +1,11 @@
+{
+  "name": "example-node",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "OneKey <hi@onekey.so>",
+  "license": "MIT"
+}
