@@ -135,8 +135,7 @@ export default class DataManager {
             console.log('fetch data error', e.message);
         }
 
-        // 处理完成时通知外层
-        if (window?.parent) {
+        if (typeof window !== 'undefined' && window?.parent) {
             window?.parent?.postMessage?.({
                 type: 'UPDATE_NRF_DATA',
                 data: nrfData ?? this.assets[ 'nrf' ],
