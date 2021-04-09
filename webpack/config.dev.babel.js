@@ -20,6 +20,7 @@ module.exports = {
         'popup': `${JS_SRC}popup/popup.js`,
         'webusb': `${JS_SRC}webusb/index.js`,
         'extensionPermissions': `${JS_SRC}webusb/extensionPermissions.js`,
+        'tools': `${JS_SRC}tools/index.js`,
     },
     output: {
         filename: '[name].js',
@@ -125,7 +126,12 @@ module.exports = {
             template: `${HTML_SRC}extension-permissions.html`,
             inject: true,
         }),
-
+        new HtmlWebpackPlugin({
+            chunks: ['tools'],
+            filename: 'tools.html',
+            template: `${HTML_SRC}tools.html`,
+            inject: true,
+        }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.NamedModulesPlugin(),

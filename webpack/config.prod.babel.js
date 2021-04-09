@@ -21,6 +21,7 @@ module.exports = {
         'popup': `${JS_SRC}popup/popup.js`,
         'webusb': `${JS_SRC}webusb/index.js`,
         'extensionPermissions': `${JS_SRC}webusb/extensionPermissions.js`,
+        'tools': `${JS_SRC}tools/index.js`,
     },
     output: {
         filename: 'js/[name].[hash].js',
@@ -119,6 +120,12 @@ module.exports = {
             chunks: ['extensionPermissions'],
             filename: 'extension-permissions.html',
             template: `${HTML_SRC}extension-permissions.html`,
+            inject: true,
+        }),
+        new HtmlWebpackPlugin({
+            chunks: ['tools'],
+            filename: 'tools.html',
+            template: `${HTML_SRC}tools.html`,
             inject: true,
         }),
 
