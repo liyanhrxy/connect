@@ -1786,10 +1786,10 @@
     tiny-worker "^2.3.0"
     ws "^7.4.0"
 
-"@onekeyhq/link@1.7.3":
-  version "1.7.3"
-  resolved "https://npm.pkg.github.com/download/@onekeyhq/link/1.7.3/6284d33e0473704a0d775e625613559ae99b2e02a7c5333225db93e2c4dea0f4#be22d71e4a0325659f91b50c73a50bbcea6ff137"
-  integrity sha512-qP8slAuQ6BhDBMGJSe3X4eQC+6V7san2G6ie6774e3VxrEgmEyAr9ZzETltXBX5WhuXx9xj+nJlLGtugi1GAaw==
+"@onekeyhq/link@1.7.4":
+  version "1.7.4"
+  resolved "https://npm.pkg.github.com/download/@onekeyhq/link/1.7.4/402d6273fb1b91b8ada6522d462cbfe8fa862ec206f9f3215f0bed77d1b53d48#1c39db71f059e608941ee7219ae6f5f522c80289"
+  integrity sha512-tcfjMu8rD+Mg3imkEbULd4Tf+bLBKCzbo9LPWYjrFdRrNUXHTCiqX8gAmLffelGRJ+NpZPzbmXeHGKLvIWlF6g==
   dependencies:
     bigi "^1.4.1"
     ecurve "^1.0.3"

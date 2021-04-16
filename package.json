@@ -61,7 +61,7 @@
         "@babel/preset-env": "^7.12.10",
         "@babel/preset-flow": "^7.12.1",
         "@onekeyhq/blockchain-link": "^1.0.16",
-        "@onekeyhq/link": "1.7.3",
+        "@onekeyhq/link": "1.7.4",
         "@onekeyhq/rollout": "1.0.6",
         "@trezor/utxo-lib": "^0.1.2",
         "babel-collect-imports": "https://github.com/szymonlesisz/babel-collect-imports",
@@ -124,7 +124,7 @@
     "extendedDependencies": {
         "@onekeyhq/blockchain-link": "^1.0.17",
         "@onekeyhq/rollout": "1.0.6",
-        "@onekeyhq/link": "1.7.3",
+        "@onekeyhq/link": "1.7.4",
         "@trezor/utxo-lib": "^0.1.2",
         "bchaddrjs": "0.4.9",
         "bignumber.js": "^9.0.1",
