@@ -1774,10 +1774,10 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@onekeyhq/blockchain-link@^1.0.16":
-  version "1.0.17"
-  resolved "https://npm.pkg.github.com/download/@onekeyhq/blockchain-link/1.0.17/abe9453e9f2dde5ea860d923f09b66f170e0eb0e72a8229348e424af8c9108ae#260775ec11251f93989a52d1faf541d3157231a2"
-  integrity sha512-Jo7ai36LkES9FlyC/6TeOa/mwShOWxG+cKbNKn+cAjBCtK1yRFlssOL6c9Q+tDHIsPAq9l60G6nIX/UJiDfUPw==
+"@onekeyhq/blockchain-link@1.0.18":
+  version "1.0.18"
+  resolved "https://npm.pkg.github.com/download/@onekeyhq/blockchain-link/1.0.18/3a7d001c51d810dfc369eaabadfd53004279088798f6df37515c45cb39c2e37c#fbbce52bef3bc31496468f89ef353e950426283e"
+  integrity sha512-/hbmQ8nwtFu0vNK6srcH533atAotOWrsXN8JKDY1Q4MhwyyISRO/fFDfFUJBRBvqOim83xs3D4ZZ9brK/new6g==
   dependencies:
     bignumber.js "^9.0.1"
     es6-promise "^4.2.8"
