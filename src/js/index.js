@@ -294,19 +294,17 @@ const TrezorConnect: API = {
         return call({ method: 'getCoinInfo', ...params });
     },
 
-    dispose: () => {
-        dispose();
+    bixinReboot: params => {
+        return call({ method: 'bixinReboot', ...params });
     },
+
+    dispose,
 
     cancel,
 
-    renderWebUSBButton: (className: ?string) => {
-        renderWebUSBButton(className);
-    },
+    renderWebUSBButton,
 
-    disableWebUSB: () => {
-        disableWebUSB();
-    },
+    disableWebUSB,
 };
 
 export default TrezorConnect;
