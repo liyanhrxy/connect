@@ -315,6 +315,11 @@ export default class DeviceCommands {
         // bitcoin.crypto.hash256(Buffer.from(secret, 'binary')).toString('hex');
     }
 
+    async bixinReboot(params: trezor.RecoverDeviceSettings): Promise<trezor.Success> {
+        const response: MessageResponse<trezor.Success> = await this.typedCall('BixinReboot', 'Success', params);
+        return response.message;
+    }
+
     // Sends an async message to the opened device.
     async call(type: PROTO.MessageKey, msg: Object = {}) {
         const logMessage = filterForLog(type, msg);
