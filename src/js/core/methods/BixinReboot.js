@@ -15,6 +15,9 @@ export default class BixinReboot extends AbstractMethod {
         super(message);
         this.requiredPermissions = ['management'];
         this.useEmptyPassphrase = true;
+        this.keepSession = true;
+        this.skipFinalReload = true;
+        this.skipFirmwareCheck = true;
     }
 
     async confirmation(): Promise<boolean> {

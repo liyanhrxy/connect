@@ -281,6 +281,11 @@ export type API = {
      */
     getCoinInfo: Method<CoinInfo.GetCoinInfo, CoinInfo.CoinInfo>;
 
+    /**
+     * reboot to bootloader
+     */
+    bixinReboot: Method<{}, P.DefaultMessage>;
+
     // // Developer mode
     customMessage: Method<Misc.CustomMessage, any>;
     debugLinkDecision: Method<{}, { debugLink: true }>;
