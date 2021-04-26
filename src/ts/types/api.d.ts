@@ -354,6 +354,11 @@ export namespace TrezorConnect {
     function backupDevice(params?: P.CommonParams): P.Response<P.DefaultMessage>;
 
     /**
+     * reboot to bootloader
+     */
+    function bixinReboot(params?: P.CommonParams): P.Response<P.DefaultMessage>;
+
+    /**
      * Ask device to initiate recovery procedure
      */
     function recoveryDevice(params: P.CommonParams & Mgmnt.RecoveryDevice): P.Response<P.DefaultMessage>;
