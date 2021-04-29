@@ -11,22 +11,22 @@ const getPermissionText = (permissionType: string, deviceName: string): string =
 
     switch (permissionType) {
         case 'read':
-            text = 'Read public keys from OneKey device';
+            text = '从 OneKey 硬件设备读取公钥';
             break;
         case 'read-meta':
-            text = 'Read metadata from OneKey device';
+            text = '从 OneKey 硬件设备读取元数据';
             break;
         case 'write':
-            text = 'Prepare OneKey device for transaction and data signing';
+            text = '从 OneKey 硬件设备进行交易和数据签名';
             break;
         case 'write-meta':
-            text = 'Write metadata to OneKey device';
+            text = '将元数据写入 OneKey 硬件设备';
             break;
         case 'management':
-            text = 'Modify device settings';
+            text = '修改 OneKey 硬件设备设置';
             break;
         case 'custom-message':
-            text = 'Run custom operations';
+            text = '运行自定义操作';
             break;
     }
     return text;
@@ -37,13 +37,13 @@ const getPermissionTooltipText = (permissionType: string): string => {
 
     switch (permissionType) {
         case 'read':
-            text = 'Permission needed to load public information from your device.';
+            text = '从您的设备加载公开信息所需的权限';
             break;
         case 'write':
-            text = 'Permission needed to execute operations, such as composing a transaction, after your confirmation.';
+            text = '确认后，获取执行例如签名操作所需的权限';
             break;
         case 'management':
-            text = 'Permission needed to change device settings, such as PIN, passphrase, label or seed.';
+            text = '更改设备设置（例如PIN，密码，标签或备份等）所需的权限。';
             break;
         case 'custom-message':
             text = 'Development tool. Use at your own risk. Allows service to send arbitrary data to your OneKey device.';
@@ -117,6 +117,6 @@ export const initPermissionsView = (payload: $PropertyType<RequestPermission, 'p
     };
 
     rememberCheckbox.onchange = (e) => {
-        confirmButton.innerText = e.target.checked ? 'Always allow for this service' : 'Allow once for this session';
+        confirmButton.innerText = e.target.checked ? '当前设备总是允许读取' : '仅当前操作允许读取';
     };
 };

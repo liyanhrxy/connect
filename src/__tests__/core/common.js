@@ -16,7 +16,7 @@ export const settings = {
     popupSrc: 'popup.html',
     webusbSrc: 'webusb.html',
     transportReconnect: false,
-    webusb: true,
+    webusb: false,
     pendingTransportEvent: true,
     supportedBrowser: true,
     manifest: {

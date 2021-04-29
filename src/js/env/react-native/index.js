@@ -124,10 +124,6 @@ export const init = async (settings: $Shape<$T.ConnectSettings> = {}): Promise<v
     _settings.popup = false;
     _settings.env = 'react-native';
 
-    if (!_settings.manifest) {
-        throw ERRORS.TypedError('Init_ManifestMissing');
-    }
-
     if (_settings.lazyLoad) {
         // reset "lazyLoad" after first use
         _settings.lazyLoad = false;

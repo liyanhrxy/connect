@@ -133,10 +133,6 @@ export const init = async (settings: $Shape<$T.ConnectSettings> = {}): Promise<v
         _settings = parseSettings(settings);
     }
 
-    if (!_settings.manifest) {
-        throw ERRORS.TypedError('Init_ManifestMissing');
-    }
-
     if (_settings.lazyLoad) {
         // reset "lazyLoad" after first use
         _settings.lazyLoad = false;
@@ -159,10 +155,6 @@ export const call = async (params: any): Promise<any> => {
     if (!iframe.instance && !iframe.timeout) {
         // init popup with lazy loading before iframe initialization
         _settings = parseSettings(_settings);
-
-        if (!_settings.manifest) {
-            return errorMessage(ERRORS.TypedError('Init_ManifestMissing'));
-        }
 
         if (!_popupManager) {
             _popupManager = initPopupManager();
@@ -187,7 +179,7 @@ export const call = async (params: any): Promise<any> => {
 
     if (iframe.timeout) {
         // this.init was called, but iframe doesn't return handshake yet
-        return errorMessage(ERRORS.TypedError('Init_ManifestMissing'));
+        return errorMessage(ERRORS.TypedError('Init_IframeTimeout'));
     } else if (iframe.error) {
         // iframe was initialized with error
         return errorMessage(iframe.error);
@@ -200,7 +192,7 @@ export const call = async (params: any): Promise<any> => {
     try {
         const response: ?Object = await iframe.postMessage({ type: IFRAME.CALL, payload: params });
         if (response) {
-            if (!response.success && response.payload.error.code !== 'Device_CallInProgress' && _popupManager) { _popupManager.unlock(); }
+            if (!response.success && (response.payload && response.payload.error && response.payload.error.code !== 'Device_CallInProgress') && _popupManager) { _popupManager.unlock(); }
             return response;
         } else {
             if (_popupManager) {
