@@ -161,7 +161,7 @@ export const getPublicKeyLabel = (path: Array<number>, coinInfo: ?BitcoinNetwork
     const p1: number = fromHardened(path[0]);
     let account: number = path.length >= 3 ? fromHardened(path[2]) : -1;
     let realAccountId: number = account + 1;
-    let prefix: string = 'Export public key';
+    let prefix: string = '导出公钥';
     let accountType: string = '';
 
     // Copay id
@@ -186,7 +186,7 @@ export const getPublicKeyLabel = (path: Array<number>, coinInfo: ?BitcoinNetwork
     }
 
     if (realAccountId > 0) {
-        return `${ prefix } of ${ accountType } <span>account #${realAccountId}</span>`;
+        return `${ prefix } : ${ accountType } <span>账户 #${realAccountId}</span>`;
     } else {
         return prefix;
     }
