@@ -29,7 +29,7 @@ const initialSettings: ConnectSettings = {
     popupSrc: `${ DEFAULT_DOMAIN }popup.html`,
     webusbSrc: `${ DEFAULT_DOMAIN }webusb.html`,
     transportReconnect: false,
-    webusb: true,
+    webusb: false,
     pendingTransportEvent: true,
     supportedBrowser: typeof navigator !== 'undefined' ? !(/Trident|MSIE|Edge/.test(navigator.userAgent)) : true,
     manifest: null,
