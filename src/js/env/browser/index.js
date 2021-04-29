@@ -200,7 +200,7 @@ export const call = async (params: any): Promise<any> => {
     try {
         const response: ?Object = await iframe.postMessage({ type: IFRAME.CALL, payload: params });
         if (response) {
-            if (!response.success && response.payload.error.code !== 'Device_CallInProgress' && _popupManager) { _popupManager.unlock(); }
+            if (!response.success && (response.payload && response.payload.error && response.payload.error.code !== 'Device_CallInProgress') && _popupManager) { _popupManager.unlock(); }
             return response;
         } else {
             if (_popupManager) {
