@@ -48,11 +48,14 @@
                     <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10" />
                 </svg>
             </div>
-            <p>如果长时间加载没有结果，请按照以下方式排查</p>
-            <ul>
-                <li>确认是否存在多个 popup 页面，请关闭多余 popup 弹出页面后重试</li>
-                <li>点击清除缓存<button id="clear-localstorage">清除缓存</button></li>
-            </ul>
+            <div class="warning-container">
+                <h3 class="warning-text">为保证硬件正常通信，请勿直接刷新此页面</h3>
+                <p class="">如果长时间加载没有结果，请按照以下方式排查</p>
+                <ul>
+                    <li>确认是否存在多个 https://connect.onekey.so/popup.html 页面，请关闭其他多余的标签页后，关闭当前页面重新在 OneKey 插件中发起操作！</li>
+                    <li>点击清除缓存，清除后关闭页面返回 OneKey 插件重新操作！<button id="clear-localstorage">清除缓存并关闭页面</button></li>
+                </ul>
+            </div>
         </section>
     </main>
 
@@ -71,11 +74,6 @@
                 <circle class="route" cx="50" cy="50" r="20" fill="none" stroke="" stroke-width="1" stroke-miterlimit="10" />
                 <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10" />
             </svg>
-            <p>如果长时间加载没有结果，请按照以下方式排查</p>
-            <ul>
-                <li>确认是否存在多个 popup 页面，请关闭多余 popup 弹出页面后重试</li>
-                <li>点击清除缓存<button id="clear-localstorage">清除缓存</button></li>
-            </ul>
         </div>
         <!-- Loader: END -->
 
@@ -1560,6 +1558,16 @@
     </div>
 
     <script type="text/javascript" async="false">
+        var $clearBtn = document.getElementById('clear-localstorage');
+        if ($clearBtn) {
+            $clearBtn.onclick = function() {
+                if (localStorage) {
+                    localStorage.clear();
+                }
+                window.closeWindow();
+            }
+        }
+
         if (window.opener) {
             window.opener.postMessage({ type: 'popup-bootstrap' }, '*');
         } else {
