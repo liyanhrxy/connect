@@ -142,12 +142,13 @@ export default class PopupManager extends EventEmitter {
                         currentWindow: true,
                         active: true,
                     }, (tabs) => {
-                        this.extensionTabId = tabs[0].id;
+                        const params: { url: string; index?: number } = { url };
+                        if (Array.isArray(tabs)) {
+                            this.extensionTabId = tabs[0].id;
+                            params.index = tabs[0].index + 1;
+                        }
                         // $FlowIssue chrome not declared outside
-                        chrome.tabs.create({
-                            url,
-                            index: tabs[0].index + 1,
-                        }, tab => {
+                        chrome.tabs.create(params, tab => {
                             this._window = tab;
                         });
                     });
