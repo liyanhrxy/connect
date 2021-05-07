@@ -143,7 +143,7 @@ export default class PopupManager extends EventEmitter {
                         active: true,
                     }, (tabs) => {
                         const params: { url: string; index?: number } = { url };
-                        if (Array.isArray(tabs)) {
+                        if (Array.isArray(tabs) && tabs.length > 0) {
                             this.extensionTabId = tabs[0].id;
                             params.index = tabs[0].index + 1;
                         }
