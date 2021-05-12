@@ -63,6 +63,7 @@ export const TypedError = (id: $Keys<typeof ERROR_CODES>, message?: string) => {
 // this error string is hard-coded
 // in both bridge and extension
 export const WRONG_PREVIOUS_SESSION_ERROR_MESSAGE: string = 'wrong previous session';
+export const DEVICE_DISCONNECTED_DURING_ACTION: string = 'device disconnected during action';
 export const INVALID_PIN_ERROR_MESSAGE: string = 'PIN invalid';
 export const WEBUSB_ERROR_MESSAGE: string = 'NetworkError: Unable to claim interface.';
 

@@ -573,6 +573,11 @@ export const onCall = async (message: CoreMessage) => {
             _deviceList.addAuthPenalty(device);
         }
 
+        // 当设备连接丢失时需要重新获取连接
+        if (device && error.message === ERRORS.DEVICE_DISCONNECTED_DURING_ACTION) {
+            await device.acquire();
+        }
+
         if (method) {
             // corner case:
             // thrown while acquiring device
