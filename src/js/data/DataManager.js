@@ -120,15 +120,19 @@ export default class DataManager {
         try {
             const timestamp = new Date().getTime();
             const resp = await fetch(`https://data.onekey.so/version.json?noCache=${timestamp}`);
-            const { stm32: stmData, nrf } = await resp.json();
-            nrfData = nrf;
+            const { firmware, ble } = await resp.json();
+            nrfData = ble;
 
-            if (stmData) {
-                if (!stmData.changelog) {
-                    stmData.changelog = stmData.changelog_cn;
-                }
+            if (firmware && Array.isArray(firmware)) {
+                const paredFirmwareConfig = firmware.map(firm => {
+                    if (firm.changelog) return firm;
+                    return {
+                        ...firm,
+                        changelog: firm.changelog_cn,
+                    };
+                });
 
-                this.assets[ 'firmware-t1' ] = [ stmData ];
+                this.assets[ 'firmware-t1' ] = paredFirmwareConfig;
             }
         } catch (e) {
             // eslint-disable-next-line no-console
