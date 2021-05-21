@@ -121,7 +121,10 @@ export default class DataManager {
             const timestamp = new Date().getTime();
             const resp = await fetch(`https://data.onekey.so/version.json?noCache=${timestamp}`);
             const { firmware, ble } = await resp.json();
-            nrfData = ble;
+            if (ble && Array.isArray(ble)) {
+                // TODO: use bleFirmware config
+                nrfData = ble[0];
+            }
 
             if (firmware && Array.isArray(firmware)) {
                 const paredFirmwareConfig = firmware.map(firm => {
