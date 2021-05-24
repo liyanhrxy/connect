@@ -18,9 +18,12 @@ import {
 } from './view/notification';
 
 import type { PostMessageEvent, PopupInit, PopupHandshake } from '../types';
+import setupSentry from '../utils/setupSentry';
 
 // eslint-disable-next-line no-unused-vars
 import styles from '../../styles/popup.less';
+
+setupSentry();
 
 // handle messages from window.opener and iframe
 const handleMessage = (event: PostMessageEvent) => {

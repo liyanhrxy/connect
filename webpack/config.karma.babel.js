@@ -2,6 +2,7 @@ import { SRC, JS_SRC } from './constants';
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
+import Dotenv from 'dotenv-webpack';
 
 module.exports = {
     cache: true,
@@ -74,6 +75,11 @@ module.exports = {
         }),
         // ignore Node.js lib from @onekeyhq/link
         new webpack.IgnorePlugin(/\/iconv-loader$/),
+        new Dotenv(),
+        new webpack.EnvironmentPlugin({
+            RELEASE: require('../package.json').version,
+            ENVIRONMENT: 'development',
+        }),
     ],
 
     node: {

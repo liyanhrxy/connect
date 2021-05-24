@@ -6,6 +6,7 @@ import {
 } from './constants';
 
 import webpack from 'webpack';
+import Dotenv from 'dotenv-webpack';
 // import TerserPlugin from 'terser-webpack-plugin';
 
 module.exports = {
@@ -59,6 +60,11 @@ module.exports = {
         // ignore Node.js lib from @onekeyhq/link
         new webpack.IgnorePlugin(/\/iconv-loader$/),
         new webpack.IgnorePlugin(/\/shared-connection-worker$/),
+        new Dotenv(),
+        new webpack.EnvironmentPlugin({
+            RELEASE: require('../package.json').version,
+            ENVIRONMENT: 'production',
+        }),
     ],
 
     // @trezor/utxo-lib NOTE:
