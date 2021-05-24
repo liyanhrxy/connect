@@ -1,12 +1,17 @@
 /* @flow */
 
-import { isNewer, parse } from '@onekeyhq/rollout/lib/utils/version';
-import type { DeviceFirmwareStatus, FirmwareRelease, Features } from '../types';
+import {isNewer} from '@onekeyhq/rollout/lib/utils/version';
+import type {DeviceFirmwareStatus, Features, FirmwareRelease} from '../types';
 
-const release = {};
+const releases: FirmwareRelease[] = [];
 
 export const parseBLEFirmware = (json: JSON): void => {
-    Object.assign(release, json);
+    if (!json) return;
+    const obj: Object = json;
+    Object.keys(obj).forEach(key => {
+        const release = obj[key];
+        releases.push(release);
+    });
 };
 
 export const getBLEFirmwareStatus = (features: Features): DeviceFirmwareStatus => {
@@ -20,21 +25,49 @@ export const getBLEFirmwareStatus = (features: Features): DeviceFirmwareStatus =
         return 'unknown';
     }
 
-    try {
-        const parsedFeatures = parse(features.ble_ver.split('.'));
-        const parsedRelease = parse(release.version.split('.'));
-        const hasNewer = isNewer(parsedRelease, parsedFeatures);
+    const info = getInfo({features, releases});
 
-        if (hasNewer && release.isRequired) return 'required';
+    // should not happen, possibly if releases list contains inconsistent data or so
+    if (!info) return 'unknown';
 
-        if (hasNewer) return 'outdated';
-    } catch {
-        return 'unknown';
-    }
+    if (info.isRequired) return 'required';
+
+    if (info.isNewer) return 'outdated';
 
     return 'valid';
 };
 
-export const getBLERelease = (): ?FirmwareRelease => {
-    return release;
+export const getBLERelease = (features: Features): ?FirmwareRelease => {
+    return getInfo({features, releases});
 };
+
+export const getBLEReleases = (): FirmwareRelease[] => {
+    return releases;
+};
+
+const isRequired = (changelog) => {
+    if (!changelog || !changelog.length) return null;
+    return changelog.some(item => item.required);
+};
+
+function getInfo({features, releases}: { features: Features; releases: FirmwareRelease[] }) {
+    if (typeof features.ble_ver !== 'string') {
+        return null;
+    }
+
+    const splitedVersion = features.ble_ver.split('.');
+    const parsedReleases = releases.map(r => ({...r, version: r.version.split('.')}));
+    const changelog = parsedReleases.filter(r => isNewer(r.version, splitedVersion));
+
+    if (!parsedReleases.length) {
+        // no new firmware
+        return null;
+    }
+
+    return {
+        changelog,
+        release: parsedReleases[0],
+        isRequired: isRequired(changelog),
+        isNewer: isNewer(parsedReleases[0].version, splitedVersion),
+    };
+}
