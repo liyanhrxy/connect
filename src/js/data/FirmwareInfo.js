@@ -1,7 +1,7 @@
 /* @flow */
 
-import { getInfo } from '@onekeyhq/rollout';
-import type { DeviceFirmwareStatus, FirmwareRelease, Features } from '../types';
+import {getInfo} from '@onekeyhq/rollout';
+import type {DeviceFirmwareStatus, Features, FirmwareRelease} from '../types';
 
 // [] is weird flow hack https://github.com/facebook/flow/issues/380#issuecomment-224380551
 const releases = {
@@ -30,6 +30,11 @@ export const parseFirmware = (json: JSON, model: number): void => {
 };
 
 export const getFirmwareStatus = (features: Features): DeviceFirmwareStatus => {
+    // refuse to upgrade defective hardware
+    if (features.se_ver === '1.1.0.2') {
+        return 'valid';
+    }
+
     // indication that firmware is not installed at all. This information is set to false in bl mode. Otherwise it is null.
     if (features.firmware_present === false) {
         return 'none';

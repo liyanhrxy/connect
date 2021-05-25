@@ -15,6 +15,11 @@ export const parseBLEFirmware = (json: JSON): void => {
 };
 
 export const getBLEFirmwareStatus = (features: Features): DeviceFirmwareStatus => {
+    // refuse to upgrade defective hardware
+    if (features.se_ver === '1.1.0.2') {
+        return 'valid';
+    }
+
     // indication that firmware is not installed at all. This information is set to false in bl mode. Otherwise it is null.
     if (features.ble_enable === false) {
         return 'none';
@@ -56,6 +61,11 @@ function getInfo({features, releases}: { features: Features; releases: FirmwareR
     }
 
     const splitedVersion = features.ble_ver.split('.');
+
+    if (splitedVersion.length !== 3) {
+        return null;
+    }
+
     const parsedReleases = releases.map(r => ({...r, version: r.version.split('.')}));
     const changelog = parsedReleases.filter(r => isNewer(r.version, splitedVersion));
 
