@@ -9,6 +9,7 @@ import parseUri from 'parse-uri';
 import { versionCompare } from '../utils/versionUtils';
 
 import type { ConnectSettings } from '../types';
+import {parseBLEFirmware} from './BLEFirmwareInfo';
 
 type WhiteList = {
     priority: number;
@@ -136,6 +137,7 @@ export default class DataManager {
                 });
 
                 this.assets[ 'firmware-t1' ] = paredFirmwareConfig;
+                this.assets[ 'ble' ] = ble;
             }
         } catch (e) {
             // eslint-disable-next-line no-console
@@ -163,6 +165,7 @@ export default class DataManager {
         // parse firmware definitions
         parseFirmware(this.assets['firmware-t1'], 1);
         parseFirmware(this.assets['firmware-t2'], 2);
+        parseBLEFirmware(this.assets['ble']);
     }
 
     static getProtobufMessages(version?: number[]): JSON {

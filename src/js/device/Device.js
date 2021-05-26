@@ -11,6 +11,7 @@ import { create as createDeferred } from '../utils/deferred';
 import DataManager from '../data/DataManager';
 import { getAllNetworks } from '../data/CoinInfo';
 import { getFirmwareStatus, getRelease } from '../data/FirmwareInfo';
+import { getBLEFirmwareStatus, getBLERelease } from '../data/BLEFirmwareInfo';
 import { parseCapabilities, getUnavailableCapabilities } from '../utils/deviceFeaturesUtils';
 import { versionCompare } from '../utils/versionUtils';
 import Log, { init as initLog } from '../utils/debug';
@@ -57,6 +58,8 @@ export default class Device extends EventEmitter {
 
     firmwareStatus: DeviceFirmwareStatus;
     firmwareRelease: ?FirmwareRelease;
+    bleFirmwareStatus: DeviceFirmwareStatus;
+    bleFirmwareRelease: ?FirmwareRelease;
     features: Features;
     featuresNeedsReload: boolean = false;
 
@@ -400,6 +403,8 @@ export default class Device extends EventEmitter {
             this.unavailableCapabilities = getUnavailableCapabilities(feat, getAllNetworks(), DataManager.getConfig().supportedFirmware);
             this.firmwareStatus = getFirmwareStatus(feat);
             this.firmwareRelease = getRelease(feat);
+            this.bleFirmwareStatus = getBLEFirmwareStatus(feat);
+            this.bleFirmwareRelease = getBLERelease(feat);
         }
         // GetFeatures doesn't return 'session_id'
         if (this.features && this.features.session_id && !feat.session_id) {
@@ -633,6 +638,8 @@ export default class Device extends EventEmitter {
                 mode: this.getMode(),
                 firmware: this.firmwareStatus,
                 firmwareRelease: this.firmwareRelease,
+                bleFirmware: this.bleFirmwareStatus,
+                bleFirmwareRelease: this.bleFirmwareRelease,
                 features: this.features,
                 unavailableCapabilities: this.unavailableCapabilities,
             };
