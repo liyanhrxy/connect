@@ -1,5 +1,6 @@
 /* @flow */
-import { Features } from '../../ts/types';
+
+import type {Features} from '../types';
 
 export const findDefectiveBatchDevice = (features: Features) => {
     if (!features) return;
