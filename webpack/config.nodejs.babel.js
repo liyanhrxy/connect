@@ -9,6 +9,7 @@ import {
 
 import webpack from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 // import TerserPlugin from 'terser-webpack-plugin';
 
 module.exports = {
@@ -67,6 +68,11 @@ module.exports = {
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.NamedModulesPlugin(),
+        new Dotenv(),
+        new webpack.EnvironmentPlugin({
+            RELEASE: require('../package.json').version,
+            ENVIRONMENT: 'production',
+        }),
     ],
 
     // @trezor/utxo-lib NOTE:

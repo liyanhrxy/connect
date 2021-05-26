@@ -19,11 +19,14 @@ import { sendMessage } from '../utils/windowsUtils';
 import { getOrigin } from '../env/browser/networkUtils';
 import { suggestBridgeInstaller } from '../env/browser/browserUtils';
 import { load as loadStorage, PERMISSIONS_KEY } from '../storage';
+import setupSentry from '../utils/setupSentry';
 let _core: Core;
 
 // custom log
 const _log: Log = initLog('IFrame');
 let _popupMessagePort: ?(MessagePort | BroadcastChannel);
+
+setupSentry();
 
 // Wrapper which listen events from Core
 

@@ -12,6 +12,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 
 module.exports = {
     mode: 'production',
@@ -139,6 +140,11 @@ module.exports = {
 
         // ignore Node.js lib from @onekeyhq/link
         new webpack.IgnorePlugin(/\/iconv-loader$/),
+        new Dotenv(),
+        new webpack.EnvironmentPlugin({
+            RELEASE: require('../package.json').version,
+            ENVIRONMENT: 'production',
+        }),
     ],
 
     // @trezor/utxo-lib NOTE:

@@ -9,6 +9,7 @@ import {
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import Dotenv from 'dotenv-webpack';
 
 module.exports = {
     watch: true,
@@ -138,6 +139,11 @@ module.exports = {
 
         // ignore Node.js lib from @onekeyhq/link
         new webpack.IgnorePlugin(/\/iconv-loader$/),
+        new Dotenv(),
+        new webpack.EnvironmentPlugin({
+            RELEASE: require('../package.json').version,
+            ENVIRONMENT: 'development',
+        }),
     ],
 
     // ignore "fs" import in fastxpub (hd-wallet)

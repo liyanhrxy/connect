@@ -5,6 +5,7 @@ import {
     LIB_NAME,
 } from './constants';
 import webpack from 'webpack';
+import Dotenv from 'dotenv-webpack';
 
 module.exports = {
     mode: 'production',
@@ -40,6 +41,11 @@ module.exports = {
         new webpack.NormalModuleReplacementPlugin(/env\/node\/networkUtils$/, '../env/browser/networkUtils'),
         new webpack.ProvidePlugin({
             Promise: ['es6-promise', 'Promise'],
+        }),
+        new Dotenv(),
+        new webpack.EnvironmentPlugin({
+            RELEASE: require('../package.json').version,
+            ENVIRONMENT: 'production',
         }),
     ],
 
