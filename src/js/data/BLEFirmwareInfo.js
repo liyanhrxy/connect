@@ -2,6 +2,7 @@
 
 import {isNewer} from '@onekeyhq/rollout/lib/utils/version';
 import type {DeviceFirmwareStatus, Features, FirmwareRelease} from '../types';
+import {findDefectiveBatchDevice} from '../utils/findDefectiveBatchDevice';
 
 const releases: FirmwareRelease[] = [];
 
@@ -16,7 +17,7 @@ export const parseBLEFirmware = (json: JSON): void => {
 
 export const getBLEFirmwareStatus = (features: Features): DeviceFirmwareStatus => {
     // refuse to upgrade defective hardware
-    if (features.se_ver === '1.1.0.2') {
+    if (findDefectiveBatchDevice(features)) {
         return 'valid';
     }
 
