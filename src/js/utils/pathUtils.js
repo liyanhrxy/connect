@@ -161,7 +161,7 @@ export const getPublicKeyLabel = (path: Array<number>, coinInfo: ?BitcoinNetwork
     const p1: number = fromHardened(path[0]);
     let account: number = path.length >= 3 ? fromHardened(path[2]) : -1;
     let realAccountId: number = account + 1;
-    let prefix: string = '导出公钥';
+    let prefix: string = '授权查看';
     let accountType: string = '';
 
     // Copay id
