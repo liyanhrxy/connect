@@ -26,7 +26,7 @@ export default class GetPublicKey extends AbstractMethod {
         super(message);
 
         this.requiredPermissions = ['read'];
-        this.info = '导出公钥';
+        this.info = '授权查看地址';
 
         // create a bundle with only one batch if bundle doesn't exists
         this.hasBundle = Object.prototype.hasOwnProperty.call(message.payload, 'bundle');
