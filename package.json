@@ -61,7 +61,7 @@
         "@babel/preset-env": "^7.12.10",
         "@babel/preset-flow": "^7.12.1",
         "@onekeyhq/blockchain-link": "1.0.18",
-        "@onekeyhq/link": "1.7.4",
+        "@onekeyhq/link": "1.7.5",
         "@onekeyhq/rollout": "1.0.6",
         "@trezor/utxo-lib": "^0.1.2",
         "babel-collect-imports": "https://github.com/szymonlesisz/babel-collect-imports",
