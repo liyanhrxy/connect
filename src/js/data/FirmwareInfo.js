@@ -1,6 +1,7 @@
 /* @flow */
 
 import {getInfo} from '@onekeyhq/rollout';
+import {isNewer} from '@onekeyhq/rollout/lib/utils/version';
 import type {DeviceFirmwareStatus, Features, FirmwareRelease} from '../types';
 import {findDefectiveBatchDevice} from '../utils/findDefectiveBatchDevice';
 
@@ -31,11 +32,6 @@ export const parseFirmware = (json: JSON, model: number): void => {
 };
 
 export const getFirmwareStatus = (features: Features): DeviceFirmwareStatus => {
-    // refuse to upgrade defective hardware
-    if (findDefectiveBatchDevice(features)) {
-        return 'valid';
-    }
-
     // indication that firmware is not installed at all. This information is set to false in bl mode. Otherwise it is null.
     if (features.firmware_present === false) {
         return 'none';
@@ -45,6 +41,17 @@ export const getFirmwareStatus = (features: Features): DeviceFirmwareStatus => {
     if (features.major_version === 1 && features.bootloader_mode) {
         return 'unknown';
     }
+
+    // refuse to upgrade defective hardware
+    if (findDefectiveBatchDevice(features)) {
+        const needUpdate = isNewer([2, 1, 6], [
+            features.fw_major,
+            features.fw_minor,
+            features.fw_patch,
+        ]);
+        return needUpdate ? 'required' : 'valid';
+    }
+
     const info = getInfo({features, releases: releases[features.major_version]});
 
     // should not happen, possibly if releases list contains inconsistent data or so
