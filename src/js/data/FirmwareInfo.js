@@ -1,6 +1,7 @@
 /* @flow */
 
 import {getInfo} from '@onekeyhq/rollout';
+import {isNewer} from '@onekeyhq/rollout/lib/utils/version';
 import type {DeviceFirmwareStatus, Features, FirmwareRelease} from '../types';
 import {findDefectiveBatchDevice} from '../utils/findDefectiveBatchDevice';
 
@@ -30,32 +31,17 @@ export const parseFirmware = (json: JSON, model: number): void => {
     });
 };
 
-export const parse = (versionArr: VersionArray) => {
-    return {
-        major: versionArr[0],
-        minor: versionArr[1],
-        patch: versionArr[2],
-    };
-};
-
-const isNewer = (versionX: VersionArray, versionY: VersionArray) => {
-    const parsedX = parse(versionX);
-    const parsedY = parse(versionY);
-
-    if (parsedX.major - parsedY.major !== 0) {
-        return parsedX.major > parsedY.major;
-    }
-    if (parsedX.minor - parsedY.minor !== 0) {
-        return parsedX.minor > parsedY.minor;
-    }
-    if (parsedX.patch - parsedY.patch !== 0) {
-        return parsedX.patch > parsedY.patch;
-    }
-
-    return false;
-};
-
 export const getFirmwareStatus = (features: Features): DeviceFirmwareStatus => {
+    // indication that firmware is not installed at all. This information is set to false in bl mode. Otherwise it is null.
+    if (features.firmware_present === false) {
+        return 'none';
+    }
+    // for t1 in bootloader, what device reports as firmware version is in fact bootloader version, so we can
+    // not safely tell firmware version
+    if (features.major_version === 1 && features.bootloader_mode) {
+        return 'unknown';
+    }
+
     // refuse to upgrade defective hardware
     if (findDefectiveBatchDevice(features)) {
         const needUpdate = isNewer([2, 1, 6], [
@@ -66,15 +52,6 @@ export const getFirmwareStatus = (features: Features): DeviceFirmwareStatus => {
         return needUpdate ? 'required' : 'valid';
     }
 
-    // indication that firmware is not installed at all. This information is set to false in bl mode. Otherwise it is null.
-    if (features.firmware_present === false) {
-        return 'none';
-    }
-    // for t1 in bootloader, what device reports as firmware version is in fact bootloader version, so we can
-    // not safely tell firmware version
-    if (features.major_version === 1 && features.bootloader_mode) {
-        return 'unknown';
-    }
     const info = getInfo({features, releases: releases[features.major_version]});
 
     // should not happen, possibly if releases list contains inconsistent data or so
