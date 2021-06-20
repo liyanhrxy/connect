@@ -44,10 +44,18 @@ export const getFirmwareStatus = (features: Features): DeviceFirmwareStatus => {
 
     // refuse to upgrade defective hardware
     if (findDefectiveBatchDevice(features)) {
+        const { onekey_version } = features;
+        let { major_version, minor_version, patch_version } = features;
+
+        if (onekey_version) {
+            const onekey_version_list = onekey_version.split('.').map(Number);
+            [major_version, minor_version, patch_version] = onekey_version_list;
+        }
+
         const needUpdate = isNewer([2, 1, 6], [
-            features.fw_major,
-            features.fw_minor,
-            features.fw_patch,
+            major_version,
+            minor_version,
+            patch_version,
         ]);
         return needUpdate ? 'required' : 'valid';
     }
