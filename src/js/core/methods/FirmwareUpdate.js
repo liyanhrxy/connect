@@ -43,7 +43,7 @@ export default class FirmwareUpdate extends AbstractMethod {
             // either receive version and btcOnly
             version: payload.version,
             btcOnly: payload.btcOnly,
-            baseUrl: payload.baseUrl || 'https://devs.243096.com/onekey',
+            baseUrl: payload.baseUrl || 'https://onekey-asset.com/onekey',
             // or binary
             binary: payload.binary,
             intermediary: payload.intermediary,
