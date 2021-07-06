@@ -1263,8 +1263,8 @@
 
 "@onekeyhq/link@1.7.5":
   version "1.7.5"
-  resolved "https://npm.pkg.github.com/download/@onekeyhq/link/1.7.5/1f52b637fed135267052a6606c1cd7bd53a5e3c01d37cf565639a68b14c544ed#5a29f3f9eeb11760bbcd2fcdb5803e2e1f4996f7"
-  integrity sha512-tf4b2NOhoego3WHBJDXVYusRiAeGwSq3EIxYbFN4N7/1/aADAtInPHEbDFCdvDBwk3a2T1bOqsBqhUuG5G7Ogw==
+  resolved "https://npm.pkg.github.com/download/@onekeyhq/link/1.7.5/1bdce865ec2d3341867e4a06a0e428b55865de7e2cca5191ae838b347a394fba#549f2a8fb54699f976e0ac260598c6cbc81c0f50"
+  integrity sha512-biDf4fVamQXroX/OVPG4KvTUvvh+MXNe0xwMJBm0Si7SuxWj3rYHh/+x/ROnjDwJJK/qNbpKrASMFhBOIAkk1A==
   dependencies:
     bigi "^1.4.1"
     ecurve "^1.0.3"
