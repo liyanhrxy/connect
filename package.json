@@ -123,6 +123,7 @@
         "events": "^3.2.0",
         "patch-package": "^6.2.2",
         "postinstall-postinstall": "^2.1.0",
+        "url-join": "^4.0.1",
         "whatwg-fetch": "^3.5.0"
     },
     "extendedDependencies": {

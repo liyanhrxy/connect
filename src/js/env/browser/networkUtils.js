@@ -1,8 +1,12 @@
 /* @flow */
 
 import 'whatwg-fetch';
+import urlJoin from 'url-join';
 
 export const httpRequest = async (url: string, type: string = 'text'): any => {
+    if (process.env.PUBLIC_URL) {
+        url = urlJoin(process.env.PUBLIC_URL, url);
+    }
     const response: Response = await fetch(url, { credentials: 'same-origin' });
     if (response.ok) {
         if (type === 'json') {

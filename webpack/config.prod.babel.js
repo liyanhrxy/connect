@@ -27,7 +27,7 @@ module.exports = {
     output: {
         filename: 'js/[name].[hash].js',
         path: DIST,
-        publicPath: './',
+        publicPath: process.env.PUBLIC_URL || './',
         library: LIB_NAME,
         libraryTarget: 'umd',
         libraryExport: 'default',
