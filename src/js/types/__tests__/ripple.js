@@ -1,9 +1,9 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import OneKeyConnect from '../../index';
 
 export const rippleGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.rippleGetAddress({ path: 'm/44' });
+    const singleAddress = await OneKeyConnect.rippleGetAddress({ path: 'm/44' });
     (singleAddress.success: boolean);
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -13,7 +13,7 @@ export const rippleGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.rippleGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await OneKeyConnect.rippleGetAddress({ bundle: [{ path: 'm/44' }] });
     (bundleAddress.success: boolean);
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -26,7 +26,7 @@ export const rippleGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.rippleGetAddress({
+    OneKeyConnect.rippleGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -42,7 +42,7 @@ export const rippleGetAddress = async () => {
     });
 
     // $FlowExpectedError: payload is Address
-    const e1 = await TrezorConnect.rippleGetAddress({ path: 'm/44' });
+    const e1 = await OneKeyConnect.rippleGetAddress({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.address: string);
@@ -50,22 +50,22 @@ export const rippleGetAddress = async () => {
     }
 
     // $FlowExpectedError: payload is Address[]
-    const e2 = await TrezorConnect.rippleGetAddress({ bundle: [{ path: 'm/44' }] });
+    const e2 = await OneKeyConnect.rippleGetAddress({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.address;
 
     // with invalid params
     // $FlowIssue
-    TrezorConnect.rippleGetAddress();
+    OneKeyConnect.rippleGetAddress();
     // $FlowIssue
-    TrezorConnect.rippleGetAddress({ coin: 'btc' });
+    OneKeyConnect.rippleGetAddress({ coin: 'btc' });
     // $FlowIssue
-    TrezorConnect.rippleGetAddress({ path: 1 });
+    OneKeyConnect.rippleGetAddress({ path: 1 });
     // $FlowIssue
-    TrezorConnect.rippleGetAddress({ bundle: 1 });
+    OneKeyConnect.rippleGetAddress({ bundle: 1 });
 };
 
 export const rippleSignTransaction = async () => {
-    const sign = await TrezorConnect.rippleSignTransaction({
+    const sign = await OneKeyConnect.rippleSignTransaction({
         path: 'm/44',
         transaction: {
             payment: {

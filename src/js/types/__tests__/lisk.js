@@ -1,9 +1,9 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import OneKeyConnect from '../../index';
 
 export const liskGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.liskGetAddress({ path: 'm/44' });
+    const singleAddress = await OneKeyConnect.liskGetAddress({ path: 'm/44' });
     (singleAddress.success: boolean);
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -13,7 +13,7 @@ export const liskGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.liskGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await OneKeyConnect.liskGetAddress({ bundle: [{ path: 'm/44' }] });
     (bundleAddress.success: boolean);
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -26,7 +26,7 @@ export const liskGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.liskGetAddress({
+    OneKeyConnect.liskGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -42,7 +42,7 @@ export const liskGetAddress = async () => {
     });
 
     // $FlowExpectedError: payload is Address
-    const e1 = await TrezorConnect.liskGetAddress({ path: 'm/44' });
+    const e1 = await OneKeyConnect.liskGetAddress({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.address: string);
@@ -50,23 +50,23 @@ export const liskGetAddress = async () => {
     }
 
     // $FlowExpectedError: payload is Address[]
-    const e2 = await TrezorConnect.liskGetAddress({ bundle: [{ path: 'm/44' }] });
+    const e2 = await OneKeyConnect.liskGetAddress({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.address;
 
     // with invalid params
     // $FlowExpectedError
-    TrezorConnect.liskGetAddress();
+    OneKeyConnect.liskGetAddress();
     // $FlowExpectedError
-    TrezorConnect.liskGetAddress({ coin: 'btc' });
+    OneKeyConnect.liskGetAddress({ coin: 'btc' });
     // $FlowExpectedError
-    TrezorConnect.liskGetAddress({ path: 1 });
+    OneKeyConnect.liskGetAddress({ path: 1 });
     // $FlowExpectedError
-    TrezorConnect.liskGetAddress({ bundle: 1 });
+    OneKeyConnect.liskGetAddress({ bundle: 1 });
 };
 
 export const liskGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.liskGetPublicKey({ path: 'm/44' });
+    const singlePK = await OneKeyConnect.liskGetPublicKey({ path: 'm/44' });
     (singlePK.success: boolean);
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -76,7 +76,7 @@ export const liskGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.liskGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await OneKeyConnect.liskGetPublicKey({ bundle: [{ path: 'm/44' }] });
     (bundlePK.success: boolean);
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -90,7 +90,7 @@ export const liskGetPublicKey = async () => {
 
     // errors
     // $FlowExpectedError: payload is PublicKey
-    const e1 = await TrezorConnect.liskGetPublicKey({ path: 'm/44' });
+    const e1 = await OneKeyConnect.liskGetPublicKey({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.path: string);
@@ -98,7 +98,7 @@ export const liskGetPublicKey = async () => {
     }
 
     // $FlowExpectedError: payload is PublicKey[]
-    const e2 = await TrezorConnect.liskGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const e2 = await OneKeyConnect.liskGetPublicKey({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.path;
 };
 
@@ -110,7 +110,7 @@ export const liskSignTransaction = async () => {
         type: 0,
         fee: '10000000',
     };
-    const sign = await TrezorConnect.liskSignTransaction({
+    const sign = await OneKeyConnect.liskSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -132,7 +132,7 @@ export const liskSignTransaction = async () => {
         (payload.signature: string);
     }
 
-    TrezorConnect.liskSignTransaction({
+    OneKeyConnect.liskSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -144,7 +144,7 @@ export const liskSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.liskSignTransaction({
+    OneKeyConnect.liskSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -157,7 +157,7 @@ export const liskSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.liskSignTransaction({
+    OneKeyConnect.liskSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -169,7 +169,7 @@ export const liskSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.liskSignTransaction({
+    OneKeyConnect.liskSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -181,13 +181,13 @@ export const liskSignTransaction = async () => {
 };
 
 export const signMessage = async () => {
-    const sign = await TrezorConnect.liskSignMessage({ path: 'm/44', message: 'foo' });
+    const sign = await OneKeyConnect.liskSignMessage({ path: 'm/44', message: 'foo' });
     if (sign.success) {
         const { payload } = sign;
         (payload.publicKey: string);
         (payload.signature: string);
     }
-    const verify = await TrezorConnect.liskVerifyMessage({ publicKey: 'a', signature: 'a', message: 'foo' });
+    const verify = await OneKeyConnect.liskVerifyMessage({ publicKey: 'a', signature: 'a', message: 'foo' });
     if (verify.success) {
         const { payload } = verify;
         (payload.message: string);

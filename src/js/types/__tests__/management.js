@@ -1,8 +1,8 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import OneKeyConnect from '../../index';
 
 export const management = async () => {
-    TrezorConnect.resetDevice({
+    OneKeyConnect.resetDevice({
         strength: 1,
         label: 'My Trezor',
         u2f_counter: 0,
@@ -13,35 +13,35 @@ export const management = async () => {
         backup_type: 0,
     });
 
-    TrezorConnect.wipeDevice({});
+    OneKeyConnect.wipeDevice({});
 
-    TrezorConnect.applyFlags({
+    OneKeyConnect.applyFlags({
         flags: 1,
     });
 
-    TrezorConnect.applySettings({
+    OneKeyConnect.applySettings({
         homescreen: 'string',
         display_rotation: 180,
         use_passphrase: true,
         label: 'My Trezor',
     });
 
-    TrezorConnect.backupDevice({});
+    OneKeyConnect.backupDevice({});
 
-    TrezorConnect.changePin({
+    OneKeyConnect.changePin({
         remove: true,
     });
 
-    TrezorConnect.firmwareUpdate({
+    OneKeyConnect.firmwareUpdate({
         binary: new Buffer(123),
     });
 
-    TrezorConnect.firmwareUpdate({
+    OneKeyConnect.firmwareUpdate({
         version: [2, 2, 0],
         btcOnly: false,
     });
 
-    TrezorConnect.recoveryDevice({
+    OneKeyConnect.recoveryDevice({
         passphrase_protection: true,
         pin_protection: true,
         label: 'My Trezor',

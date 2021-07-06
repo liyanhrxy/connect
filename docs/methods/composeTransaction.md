@@ -6,12 +6,12 @@ Change output is added automatically, if needed.
 
 ES6
 ```javascript
-const result = await TrezorConnect.composeTransaction(params);
+const result = await OneKeyConnect.composeTransaction(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.composeTransaction(params).then(function(result) {
+OneKeyConnect.composeTransaction(params).then(function(result) {
 
 });
 ```
@@ -36,7 +36,7 @@ TrezorConnect.composeTransaction(params).then(function(result) {
 ### Example
 Send 0.002 BTC to "18WL2iZKmpDYWk1oFavJapdLALxwSjcSk2"
 ```javascript
-TrezorConnect.composeTransaction({
+OneKeyConnect.composeTransaction({
     outputs: [
         { amount: "200000", address: "18WL2iZKmpDYWk1oFavJapdLALxwSjcSk2" }
     ]
@@ -76,8 +76,8 @@ var recipients = [{
     address: "18WL2iZKmpDYWk1oFavJapdLALxwSjcSk2"
 }];
 
-TrezorConnect.setCurrency("btc");
-TrezorConnect.composeAndSignTx(recipients, function(result) {
+OneKeyConnect.setCurrency("btc");
+OneKeyConnect.composeAndSignTx(recipients, function(result) {
     result.signatures    // not changed
     result.serialized_tx // renamed to "serializedTx"
     // added "txid" field if "push" is set to true
@@ -91,7 +91,7 @@ var recipients = [{
     address: "18WL2iZKmpDYWk1oFavJapdLALxwSjcSk2"
 }];
 // params are key-value pairs inside Object
-TrezorConnect.composeTransaction({ 
+OneKeyConnect.composeTransaction({ 
     outputs: recipients,
     coin: "btc"
 }).then(function(result) {

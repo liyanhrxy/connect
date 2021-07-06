@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["TrezorConnect"] = factory();
+		exports["OneKeyConnect"] = factory();
 	else
-		root["TrezorConnect"] = factory();
+		root["OneKeyConnect"] = factory();
 })(window, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -942,7 +942,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 var eventEmitter = new events_default.a();
 
-var _log = Object(debug["a" /* init */])('[trezor-connect.js]');
+var _log = Object(debug["a" /* init */])('OneKeyConnect');
 
 var _settings;
 
@@ -1294,7 +1294,7 @@ var getSettings = /*#__PURE__*/function () {
             return _context3.abrupt("return", {
               success: false,
               payload: {
-                error: 'Iframe not initialized yet, you need to call TrezorConnect.init or any other method first.'
+                error: 'Iframe not initialized yet, you need to call OneKeyConnect.init or any other method first.'
               }
             });
 
@@ -1807,9 +1807,9 @@ var invalidParameter = function invalidParameter(message) {
   return new TrezorError('Connect_InvalidParameter', message);
 }; // level 100 error during initialization
 
-var NO_IFRAME = new TrezorError(100, 'TrezorConnect not yet initialized');
-var IFRAME_BLOCKED = new TrezorError('iframe_blocked', 'TrezorConnect iframe was blocked');
-var IFRAME_INITIALIZED = new TrezorError(101, 'TrezorConnect has been already initialized');
+var NO_IFRAME = new TrezorError(100, 'OneKeyConnect not yet initialized');
+var IFRAME_BLOCKED = new TrezorError('iframe_blocked', 'OneKeyConnect iframe was blocked');
+var IFRAME_INITIALIZED = new TrezorError(101, 'OneKeyConnect has been already initialized');
 var IFRAME_TIMEOUT = new TrezorError(102, 'Iframe timeout');
 var POPUP_TIMEOUT = new TrezorError(103, 'Popup timeout');
 var BROWSER_NOT_SUPPORTED = new TrezorError(104, 'Browser not supported');
@@ -3778,7 +3778,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 /*
  * Initial settings for connect.
- * It could be changed by passing values into TrezorConnect.init(...) method
+ * It could be changed by passing values into OneKeyConnect.init(...) method
  */
 var VERSION = '8.1.4';
 var versionN = VERSION.split('.').map(function (s) {
@@ -4533,7 +4533,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var TrezorConnect = {
+var OneKeyConnect = {
   manifest: _env_node__WEBPACK_IMPORTED_MODULE_2__[/* manifest */ "i"],
   init: function init(settings) {
     return Object(_env_node__WEBPACK_IMPORTED_MODULE_2__[/* init */ "h"])(settings);
@@ -4889,7 +4889,7 @@ var TrezorConnect = {
     Object(_env_node__WEBPACK_IMPORTED_MODULE_2__[/* disableWebUSB */ "d"])();
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (TrezorConnect);
+/* harmony default export */ __webpack_exports__["default"] = (OneKeyConnect);
 
 
 

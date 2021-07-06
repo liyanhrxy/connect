@@ -5,12 +5,12 @@ details on Trezor.
 
 ES6
 ```javascript
-const result = await TrezorConnect.liskSignTransaction(params);
+const result = await OneKeyConnect.liskSignTransaction(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.liskSignTransaction(params).then(function(result) {
+OneKeyConnect.liskSignTransaction(params).then(function(result) {
 
 });
 ```
@@ -23,7 +23,7 @@ TrezorConnect.liskSignTransaction(params).then(function(result) {
 
 ### Example
 ```javascript
-TrezorConnect.liskSignTransaction(
+OneKeyConnect.liskSignTransaction(
     path: "m/44'/134'/0'/0'",
     transaction: {
         amount: "10000000",

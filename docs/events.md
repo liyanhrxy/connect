@@ -1,15 +1,15 @@
 ## Handling events
 
-Once user grants permission for hosting page to communicate with API TrezorConnect will emits events
+Once user grants permission for hosting page to communicate with API OneKeyConnect will emits events
 about device state.
 Events can be distinguished by "type" field of event object (TODO structure)
 Constants of all types can be imported from package
 
 ES6
 ```javascript
-import TrezorConnect, { DEVICE_EVENT, DEVICE } from 'trezor-connect';
+import OneKeyConnect, { DEVICE_EVENT, DEVICE } from '@onekeyhq/connect';
 
-TrezorConnect.on(DEVICE_EVENT, (event) => {
+OneKeyConnect.on(DEVICE_EVENT, (event) => {
     if (event.type === DEVICE.CONNECT) {
 
     } else if (event.type === DEVICE.DISCONNECT) {
@@ -20,11 +20,11 @@ TrezorConnect.on(DEVICE_EVENT, (event) => {
 
 CommonJS
 ```javascript
-var TrezorConnect = require('trezor-connect').default;
-var DEVICE_EVENT = require('trezor-connect').DEVICE_EVENT;
-var DEVICE = require('trezor-connect').DEVICE;
+var OneKeyConnect = require('@onekeyhq/connect').default;
+var DEVICE_EVENT = require('@onekeyhq/connect').DEVICE_EVENT;
+var DEVICE = require('@onekeyhq/connect').DEVICE;
 
-TrezorConnect.on(DEVICE_EVENT, (event) => {
+OneKeyConnect.on(DEVICE_EVENT, (event) => {
     if (event.type === DEVICE.CONNECT) {
 
     } else if (event.type === DEVICE.DISCONNECT) {
@@ -35,7 +35,7 @@ TrezorConnect.on(DEVICE_EVENT, (event) => {
 
 Inline
 ```javascript
-window.TrezorConnect.on('DEVICE_EVENT', (event) => {
+window.OneKeyConnect.on('DEVICE_EVENT', (event) => {
     if (event.type === 'device-connect') {
 
     } else if (event.type === 'device-disconnect') {

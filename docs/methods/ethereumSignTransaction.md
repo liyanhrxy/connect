@@ -5,12 +5,12 @@ details on Trezor.
 
 ES6
 ```javascript
-const result = await TrezorConnect.ethereumSignTransaction(params);
+const result = await OneKeyConnect.ethereumSignTransaction(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.ethereumSignTransaction(params).then(function(result) {
+OneKeyConnect.ethereumSignTransaction(params).then(function(result) {
 
 });
 ```
@@ -23,7 +23,7 @@ TrezorConnect.ethereumSignTransaction(params).then(function(result) {
 
 ### Example
 ```javascript
-TrezorConnect.ethereumSignTransaction({
+OneKeyConnect.ethereumSignTransaction({
     path: "m/44'/60'/0'",
     transaction: {
         to: "0x7314e0f1c0e28474bdb6be3e2c3e0453255188f8",
@@ -62,7 +62,7 @@ Error
 ### Migration from older version
 version 4 and below
 ```javascript
-TrezorConnect.ethereumSignTx(
+OneKeyConnect.ethereumSignTx(
   "m/44'/60'/0'", // path
   "0",            // nonce - hexadecimal string without "0x" prefix
   "bebc200",      // gas_price - hexadecimal string without "0x" prefix
@@ -81,7 +81,7 @@ TrezorConnect.ethereumSignTx(
 version 5
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.signTransaction({ 
+OneKeyConnect.signTransaction({ 
     path: "m/44'/60'/0'",
     transaction: {
         to: "0x7314e0f1c0e28474bdb6be3e2c3e0453255188f8",

@@ -4,12 +4,12 @@ Gets an info of specified account.
 
 ES6
 ```javascript
-const result = await TrezorConnect.getAccountInfo(params);
+const result = await OneKeyConnect.getAccountInfo(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.getAccountInfo(params).then(function(result) {
+OneKeyConnect.getAccountInfo(params).then(function(result) {
 
 });
 ```
@@ -55,7 +55,7 @@ params are forwarded to [BlockBook backend](https://github.com/trezor/blockbook/
 ### Example
 Get info about first bitcoin account
 ```javascript
-TrezorConnect.getAccountInfo({
+OneKeyConnect.getAccountInfo({
     path: "m/49'/0'/0'",
     coin: "btc",
 });
@@ -63,7 +63,7 @@ TrezorConnect.getAccountInfo({
 
 Get info about account using public key (device is not used)
 ```javascript
-TrezorConnect.getAccountInfo({
+OneKeyConnect.getAccountInfo({
     xpub: "xpub6CVKsQYXc9awxgV1tWbG4foDvdcnieK2JkbpPEBKB5WwAPKBZ1mstLbKVB4ov7QzxzjaxNK6EfmNY5Jsk2cG26EVcEkycGW4tchT2dyUhrx",
     coin: "btc",
 });
@@ -71,7 +71,7 @@ TrezorConnect.getAccountInfo({
 
 Get info about account using BIP-0044 account discovery
 ```javascript
-TrezorConnect.getAccountInfo({
+OneKeyConnect.getAccountInfo({
     coin: "btc",
 });
 ```
@@ -144,7 +144,7 @@ Error
 
 v7 and below:
 ```javascript
-TrezorConnect.getAccountInfo({
+OneKeyConnect.getAccountInfo({
     path: "m/49'/0'/0'",
 }).then(function (result) {
     result.id               // removed
@@ -162,7 +162,7 @@ TrezorConnect.getAccountInfo({
 
 v4 and below:
 ```javascript
-TrezorConnect.getAccountInfo("m/49'/0'/0'", function(result) {
+OneKeyConnect.getAccountInfo("m/49'/0'/0'", function(result) {
     result.id               // removed
     result.serializedPath   // renamed to "path"
     result.path             // not changed
@@ -179,7 +179,7 @@ TrezorConnect.getAccountInfo("m/49'/0'/0'", function(result) {
 should be
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.getAccountInfo({
+OneKeyConnect.getAccountInfo({
     path: "m/49'/0'/0'",
     coin: "btc"
 }).then(function(result) {

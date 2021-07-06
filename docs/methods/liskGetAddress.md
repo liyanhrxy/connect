@@ -3,12 +3,12 @@ Display requested address derived by given BIP32 path on device and returns it t
 
 ES6
 ```javascript
-const result = await TrezorConnect.liskGetAddress(params);
+const result = await OneKeyConnect.liskGetAddress(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.liskGetAddress(params).then(function(result) {
+OneKeyConnect.liskGetAddress(params).then(function(result) {
 
 });
 ```
@@ -30,7 +30,7 @@ You can handle this event and display custom UI inside of your application.
 If certain conditions are fulfilled popup will not be used at all:
 - the user gave permissions to communicate with Trezor
 - device is authenticated by pin/passphrase
-- application has `TrezorConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
+- application has `OneKeyConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
 - parameter `address` is set
 - parameter `showOnTrezor` is set to `true` (or not set at all)
 - application is requesting ONLY ONE(!) address
@@ -39,13 +39,13 @@ If certain conditions are fulfilled popup will not be used at all:
 ### Example
 Display address of first Lisk account:
 ```javascript
-TrezorConnect.liskGetAddress({
+OneKeyConnect.liskGetAddress({
     path: "m/44'/134'/0'"
 });
 ```
 Return a bundle of Lisk addresses without displaying them on device:
 ```javascript
-TrezorConnect.liskGetAddress({
+OneKeyConnect.liskGetAddress({
     bundle: [
         { path: "m/44'/134'/0'", showOnTrezor: false }, // account 1
         { path: "m/44'/134'/1'", showOnTrezor: false }, // account 2
@@ -55,14 +55,14 @@ TrezorConnect.liskGetAddress({
 ```
 Validate address using custom UI inside of your application:
 ```javascript
-import TrezorConnect, { UI } from 'trezor-connect';
+import OneKeyConnect, { UI } from '@onekeyhq/connect';
 
-TrezorConnect.on(UI.ADDRESS_VALIDATION, data => {
+OneKeyConnect.on(UI.ADDRESS_VALIDATION, data => {
     console.log("Handle button request", data.address, data.serializedPath);
     // here you can display custom UI inside of your app
 });
 
-const result = await TrezorConnect.liskGetAddress({
+const result = await OneKeyConnect.liskGetAddress({
     path: "m/44'/134'/0'",
     address: "3685460048641680438L",
 });

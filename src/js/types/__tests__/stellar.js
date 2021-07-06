@@ -1,9 +1,9 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import OneKeyConnect from '../../index';
 
 export const stellarGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.stellarGetAddress({ path: 'm/44' });
+    const singleAddress = await OneKeyConnect.stellarGetAddress({ path: 'm/44' });
     (singleAddress.success: boolean);
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -13,7 +13,7 @@ export const stellarGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.stellarGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await OneKeyConnect.stellarGetAddress({ bundle: [{ path: 'm/44' }] });
     (bundleAddress.success: boolean);
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -26,7 +26,7 @@ export const stellarGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.stellarGetAddress({
+    OneKeyConnect.stellarGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -42,7 +42,7 @@ export const stellarGetAddress = async () => {
     });
 
     // $FlowExpectedError: payload is Address
-    const e1 = await TrezorConnect.stellarGetAddress({ path: 'm/44' });
+    const e1 = await OneKeyConnect.stellarGetAddress({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.address: string);
@@ -50,22 +50,22 @@ export const stellarGetAddress = async () => {
     }
 
     // $FlowExpectedError: payload is Address[]
-    const e2 = await TrezorConnect.stellarGetAddress({ bundle: [{ path: 'm/44' }] });
+    const e2 = await OneKeyConnect.stellarGetAddress({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.address;
 
     // with invalid params
     // $FlowExpectedError
-    TrezorConnect.stellarGetAddress();
+    OneKeyConnect.stellarGetAddress();
     // $FlowExpectedError
-    TrezorConnect.stellarGetAddress({ coin: 'btc' });
+    OneKeyConnect.stellarGetAddress({ coin: 'btc' });
     // $FlowExpectedError
-    TrezorConnect.stellarGetAddress({ path: 1 });
+    OneKeyConnect.stellarGetAddress({ path: 1 });
     // $FlowExpectedError
-    TrezorConnect.stellarGetAddress({ bundle: 1 });
+    OneKeyConnect.stellarGetAddress({ bundle: 1 });
 };
 
 export const stellarSignTransaction = async () => {
-    const sign = await TrezorConnect.stellarSignTransaction({
+    const sign = await OneKeyConnect.stellarSignTransaction({
         path: 'm/44',
         networkPassphrase: 'Test SDF Network ; September 2015',
         transaction: {

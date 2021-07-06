@@ -1,11 +1,11 @@
 import fixtures from '../__fixtures__';
-const { setup, skipTest, initTrezorConnect, Controller, TrezorConnect } = global.Trezor;
+const { setup, skipTest, initOneKeyConnect, Controller, OneKeyConnect } = global.Trezor;
 
 let controller;
 let currentMnemonic;
 
 fixtures.forEach((testCase, i) => {
-    describe(`TrezorConnect.${testCase.method}`, () => {
+    describe(`OneKeyConnect.${testCase.method}`, () => {
         beforeAll(async (done) => {
             try {
                 if (!controller) {
@@ -25,7 +25,7 @@ fixtures.forEach((testCase, i) => {
                     currentMnemonic = testCase.setup.mnemonic;
                 }
 
-                await initTrezorConnect(controller);
+                await initOneKeyConnect(controller);
 
                 done();
             } catch (error) {
@@ -35,7 +35,7 @@ fixtures.forEach((testCase, i) => {
         }, 40000);
 
         afterAll(async (done) => {
-            TrezorConnect.dispose();
+            OneKeyConnect.dispose();
             done();
         });
 
@@ -62,7 +62,7 @@ fixtures.forEach((testCase, i) => {
                 }
 
                 controller.options.name = t.description;
-                const result = await TrezorConnect[testCase.method](t.params);
+                const result = await OneKeyConnect[testCase.method](t.params);
                 const expected = t.result ? { success: true, payload: t.result } : { success: false };
                 expect(result).toMatchObject(expected);
                 if (t.customTimeout) {

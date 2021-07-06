@@ -4,12 +4,12 @@ User is presented with a description of the requested key and asked to confirm t
 
 ES6
 ```javascript
-const result = await TrezorConnect.liskGetPublicKey(params);
+const result = await OneKeyConnect.liskGetPublicKey(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.liskGetPublicKey(params).then(function(result) {
+OneKeyConnect.liskGetPublicKey(params).then(function(result) {
 
 });
 ```
@@ -26,13 +26,13 @@ TrezorConnect.liskGetPublicKey(params).then(function(result) {
 ### Example
 Display address of first Lisk account:
 ```javascript
-TrezorConnect.liskGetPublicKey({
+OneKeyConnect.liskGetPublicKey({
     path: "m/44'/134'/0'/0'/0'"
 });
 ```
 Return a bundle of Lisk addresses without displaying them on device:
 ```javascript
-TrezorConnect.liskGetPublicKey({
+OneKeyConnect.liskGetPublicKey({
     bundle: [
         { path: "m/44'/134'/0'/0'/0'", showOnTrezor: false }, // account 1
         { path: "m/44'/134'/0'/0'/1'", showOnTrezor: false }, // account 2

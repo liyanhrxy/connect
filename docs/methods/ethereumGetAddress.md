@@ -3,12 +3,12 @@ Display requested address derived by given BIP32 path on device and returns it t
 
 ES6
 ```javascript
-const result = await TrezorConnect.ethereumGetAddress(params);
+const result = await OneKeyConnect.ethereumGetAddress(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.ethereumGetAddress(params).then(function(result) {
+OneKeyConnect.ethereumGetAddress(params).then(function(result) {
 
 });
 ```
@@ -30,7 +30,7 @@ You can handle this event and display custom UI inside of your application.
 If certain conditions are fulfilled popup will not be used at all:
 - the user gave permissions to communicate with Trezor
 - device is authenticated by pin/passphrase
-- application has `TrezorConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
+- application has `OneKeyConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
 - parameter `address` is set
 - parameter `showOnTrezor` is set to `true` (or not set at all)
 - application is requesting ONLY ONE(!) address
@@ -39,13 +39,13 @@ If certain conditions are fulfilled popup will not be used at all:
 ### Example
 Display address of first ethereum account:
 ```javascript
-TrezorConnect.ethereumGetAddress({
+OneKeyConnect.ethereumGetAddress({
     path: "m/44'/60'/0'/0/0"
 });
 ```
 Return a bundle of ethereum addresses without displaying them on device:
 ```javascript
-TrezorConnect.ethereumGetAddress({
+OneKeyConnect.ethereumGetAddress({
     bundle: [
         { path: "m/44'/60'/0'/0/0", showOnTrezor: false }, // account 1
         { path: "m/44'/60'/1'/0/0", showOnTrezor: false }, // account 2
@@ -55,14 +55,14 @@ TrezorConnect.ethereumGetAddress({
 ```
 Validate address using custom UI inside of your application:
 ```javascript
-import TrezorConnect, { UI } from 'trezor-connect';
+import OneKeyConnect, { UI } from '@onekeyhq/connect';
 
-TrezorConnect.on(UI.ADDRESS_VALIDATION, data => {
+OneKeyConnect.on(UI.ADDRESS_VALIDATION, data => {
     console.log("Handle button request", data.address, data.serializedPath);
     // here you can display custom UI inside of your app
 });
 
-const result = await TrezorConnect.ethereumGetAddress({
+const result = await OneKeyConnect.ethereumGetAddress({
     path: "m/44'/60'/0'/0/0",
     address: "0x73d0385F4d8E00C5e6504C6030F47BF6212736A8",
 });
@@ -106,7 +106,7 @@ Error
 
 version 4 and below:
 ```javascript
-TrezorConnect.ethereumGetAddress("m/44'/60'/0'", function(result) {
+OneKeyConnect.ethereumGetAddress("m/44'/60'/0'", function(result) {
     result.address // address without "0x" prefix and without checksum
     result.path
 });
@@ -114,7 +114,7 @@ TrezorConnect.ethereumGetAddress("m/44'/60'/0'", function(result) {
 version 5
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.ethereumGetAddress({ 
+OneKeyConnect.ethereumGetAddress({ 
     path: "m/44'/60'/0'" 
 }).then(function(result) {
     result.address   // address with "0x" prefix and checksum

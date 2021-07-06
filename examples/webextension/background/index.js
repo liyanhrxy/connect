@@ -1,16 +1,16 @@
 /**
 When the button's clicked:
-- call for TrezorConnect action
+- call for OneKeyConnect action
 - show a notification with response (if succeed)
 */
 
-TrezorConnect.manifest({
+OneKeyConnect.manifest({
     email: 'email@developer.com',
     appUrl: 'webextension-app-boilerplate',
 });
 
 function onClick() {
-    TrezorConnect.getAddress({
+    OneKeyConnect.getAddress({
         path: "m/49'/0'/0'/0/0",
     }).then(response => {
         const message = response.success ? `BTC Address: ${ response.payload.address }` : `Error: ${ response.payload.error }`;

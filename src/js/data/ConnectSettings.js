@@ -7,7 +7,7 @@ import type {
 
 /*
  * Initial settings for connect.
- * It could be changed by passing values into TrezorConnect.init(...) method
+ * It could be changed by passing values into OneKeyConnect.init(...) method
  */
 
 const VERSION = '8.1.29';

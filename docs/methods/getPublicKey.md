@@ -4,12 +4,12 @@ User is presented with a description of the requested key and asked to confirm t
 
 ES6
 ```javascript
-const result = await TrezorConnect.getPublicKey(params);
+const result = await OneKeyConnect.getPublicKey(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.getPublicKey(params).then(function(result) {
+OneKeyConnect.getPublicKey(params).then(function(result) {
 
 });
 ```
@@ -27,14 +27,14 @@ TrezorConnect.getPublicKey(params).then(function(result) {
 ### Example
 Return public key of fifth bitcoin account:
 ```javascript
-TrezorConnect.getPublicKey({
+OneKeyConnect.getPublicKey({
     path: "m/49'/0'/4'",
     coin: "btc"
 });
 ```
 Return a bundle of public keys for multiple bitcoin accounts:
 ```javascript
-TrezorConnect.getPublicKey({
+OneKeyConnect.getPublicKey({
     bundle: [
         { path: "m/49'/0'/0'" }, // account 1
         { path: "m/49'/0'/1'" }, // account 2
@@ -88,7 +88,7 @@ Error
 
 version 4 and below:
 ```javascript
-TrezorConnect.getXPubKey("m/49'/0'/0'", function(result) {
+OneKeyConnect.getXPubKey("m/49'/0'/0'", function(result) {
     result.path           // not changed
     result.serializedPath // not changed
     result.xpubkey        // renamed to "xpub"
@@ -103,7 +103,7 @@ TrezorConnect.getXPubKey("m/49'/0'/0'", function(result) {
 version 5
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.getPublicKey({ 
+OneKeyConnect.getPublicKey({ 
     path: "m/49'/0'/0'" 
 }).then(function(result) {
     ...

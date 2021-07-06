@@ -5,12 +5,12 @@ More information can be found in [SLIP-0011](https://github.com/satoshilabs/slip
 
 ES6
 ```javascript
-const result = await TrezorConnect.cipherKeyValue(params);
+const result = await OneKeyConnect.cipherKeyValue(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.cipherKeyValue(params).then(function(result) {
+OneKeyConnect.cipherKeyValue(params).then(function(result) {
 
 });
 ```
@@ -34,7 +34,7 @@ Common parameter `useEmptyPassphrase` - is always set to `true` and it will be i
 ### Example
 Return encrypted value:
 ```javascript
-TrezorConnect.cipherKeyValue({
+OneKeyConnect.cipherKeyValue({
     path: "m/49'/0'/0'",
     key: "This text is displayed on Trezor during encrypt",
     value: "1c0ffeec0ffeec0ffeec0ffeec0ffee1",
@@ -45,7 +45,7 @@ TrezorConnect.cipherKeyValue({
 ```
 Return a bundle of encrypted values:
 ```javascript
-TrezorConnect.cipherKeyValue({
+OneKeyConnect.cipherKeyValue({
     bundle: [
         { path: "m/49'/0'/0'", key: "1 text on Trezor", value: "1c0ffeec0ffeec0ffeec0ffeec0ffee1", encrypt: true  },
         { path: "m/49'/0'/1'", key: "2 text on Trezor", value: "1c0ffeec0ffeec0ffeec0ffeec0ffee1", encrypt: false },
@@ -88,7 +88,7 @@ Error
 
 version 4 and below:
 ```javascript
-TrezorConnect.cipherKeyValue(
+OneKeyConnect.cipherKeyValue(
     "m/49'/0'/0'",     // path
     "This is displayed on Trezor during encrypt", // key
     "1c0ffeec0ffeec0ffeec0ffeec0ffee1",           // value
@@ -103,7 +103,7 @@ TrezorConnect.cipherKeyValue(
 version 5
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.cipherKeyValue({ 
+OneKeyConnect.cipherKeyValue({ 
     path: "m/49'/0'/0'",
     key: "This is displayed on Trezor during encrypt",
     value: "1c0ffeec0ffeec0ffeec0ffeec0ffee1",

@@ -62,7 +62,7 @@ export default class RequestLogin extends AbstractMethod {
 
             // error handler
             if (typeof payload === 'string') {
-                throw ERRORS.TypedError('Runtime', `TrezorConnect.requestLogin callback error: ${payload}`);
+                throw ERRORS.TypedError('Runtime', `OneKeyConnect.requestLogin callback error: ${payload}`);
             }
 
             // validate incoming parameters

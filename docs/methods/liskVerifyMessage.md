@@ -5,12 +5,12 @@ verify a message using the signer public key and signature.
 
 ES6
 ```javascript
-const result = await TrezorConnect.liskVerifyMessage(params);
+const result = await OneKeyConnect.liskVerifyMessage(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.liskVerifyMessage(params).then(function(result) {
+OneKeyConnect.liskVerifyMessage(params).then(function(result) {
 
 });
 ```
@@ -24,7 +24,7 @@ TrezorConnect.liskVerifyMessage(params).then(function(result) {
 
 ### Example
 ```javascript
-TrezorConnect.ethereumVerifyMessage({
+OneKeyConnect.ethereumVerifyMessage({
     publicKey: "bf70027c9e4cea4584bd6016748c21e350708b2c166bf61ea78a147b5ff320ae",
     signature: "d39843f39983cf42609d1667f1c5a7958d8aef6b06880b93f67833630113a11c6847607a184d17da24bfaf799afc45fdcf2abef34142a23cabeb0d11374ac103",
     message: "example message",

@@ -1,8 +1,8 @@
-import TrezorConnect from '../index';
+import OneKeyConnect from '../index';
 
 export const binanceGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.binanceGetAddress({ path: 'm/44' });
+    const singleAddress = await OneKeyConnect.binanceGetAddress({ path: 'm/44' });
     if (singleAddress.success) {
         const { payload } = singleAddress;
         payload.address;
@@ -15,7 +15,7 @@ export const binanceGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.binanceGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await OneKeyConnect.binanceGetAddress({ bundle: [{ path: 'm/44' }] });
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
             item.address;
@@ -29,7 +29,7 @@ export const binanceGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.binanceGetAddress({
+    OneKeyConnect.binanceGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -46,18 +46,18 @@ export const binanceGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.binanceGetAddress();
+    OneKeyConnect.binanceGetAddress();
     // @ts-ignore
-    TrezorConnect.binanceGetAddress({ useEmptyPassphrase: true });
+    OneKeyConnect.binanceGetAddress({ useEmptyPassphrase: true });
     // @ts-ignore
-    TrezorConnect.binanceGetAddress({ path: 1 });
+    OneKeyConnect.binanceGetAddress({ path: 1 });
     // @ts-ignore
-    TrezorConnect.binanceGetAddress({ bundle: 1 });
+    OneKeyConnect.binanceGetAddress({ bundle: 1 });
 };
 
 export const binanceGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.binanceGetPublicKey({ path: 'm/44' });
+    const singlePK = await OneKeyConnect.binanceGetPublicKey({ path: 'm/44' });
     if (singlePK.success) {
         const { payload } = singlePK;
         payload.path;
@@ -70,7 +70,7 @@ export const binanceGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.binanceGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await OneKeyConnect.binanceGetPublicKey({ bundle: [{ path: 'm/44' }] });
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
             item.path;
@@ -85,7 +85,7 @@ export const binanceGetPublicKey = async () => {
 };
 
 export const binanceSignTransaction = async () => {
-    const sign = await TrezorConnect.binanceSignTransaction({
+    const sign = await OneKeyConnect.binanceSignTransaction({
         path: 'm/44',
         transaction: {
             chain_id: 'Binance-Chain-Nile',

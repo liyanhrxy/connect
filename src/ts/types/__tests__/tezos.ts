@@ -1,8 +1,8 @@
-import TrezorConnect from '../index';
+import OneKeyConnect from '../index';
 
 export const tezosGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.tezosGetAddress({ path: 'm/44' });
+    const singleAddress = await OneKeyConnect.tezosGetAddress({ path: 'm/44' });
     if (singleAddress.success) {
         const { payload } = singleAddress;
         payload.address;
@@ -15,7 +15,7 @@ export const tezosGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.tezosGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await OneKeyConnect.tezosGetAddress({ bundle: [{ path: 'm/44' }] });
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
             item.address;
@@ -29,7 +29,7 @@ export const tezosGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.tezosGetAddress({
+    OneKeyConnect.tezosGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -46,18 +46,18 @@ export const tezosGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.tezosGetAddress();
+    OneKeyConnect.tezosGetAddress();
     // @ts-ignore
-    TrezorConnect.tezosGetAddress({ coin: 'btc' });
+    OneKeyConnect.tezosGetAddress({ coin: 'btc' });
     // @ts-ignore
-    TrezorConnect.tezosGetAddress({ path: 1 });
+    OneKeyConnect.tezosGetAddress({ path: 1 });
     // @ts-ignore
-    TrezorConnect.tezosGetAddress({ bundle: 1 });
+    OneKeyConnect.tezosGetAddress({ bundle: 1 });
 };
 
 export const tezosGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.tezosGetPublicKey({ path: 'm/44' });
+    const singlePK = await OneKeyConnect.tezosGetPublicKey({ path: 'm/44' });
 
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -71,7 +71,7 @@ export const tezosGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.tezosGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await OneKeyConnect.tezosGetPublicKey({ bundle: [{ path: 'm/44' }] });
 
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -87,7 +87,7 @@ export const tezosGetPublicKey = async () => {
 };
 
 export const tezosSignTransaction = async () => {
-    const sign = await TrezorConnect.tezosSignTransaction({
+    const sign = await OneKeyConnect.tezosSignTransaction({
         path: "m/44'/1729'/10'",
         branch: 'BLGUkzwvguFu8ei8eLW3KgCbdtrMmv1UCqMvUpHHTGq1UPxypHS',
         operation: {

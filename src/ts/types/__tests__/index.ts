@@ -1,8 +1,8 @@
-// TrezorConnect API types tests
+// OneKeyConnect API types tests
 
 // Exported constants
 /* eslint-disable no-unused-vars */
-import TrezorConnect, {
+import OneKeyConnect, {
     UI_EVENT,
     DEVICE_EVENT,
     RESPONSE_EVENT,
@@ -28,19 +28,19 @@ import TrezorConnect, {
 
 export const init = async () => {
     const manifest = { appUrl: '', email: '' };
-    TrezorConnect.init({ manifest });
+    OneKeyConnect.init({ manifest });
     // @ts-ignore
-    TrezorConnect.init();
+    OneKeyConnect.init();
     // @ts-ignore
-    TrezorConnect.init({});
+    OneKeyConnect.init({});
     // @ts-ignore
-    TrezorConnect.manifest({});
+    OneKeyConnect.manifest({});
     // @ts-ignore
-    TrezorConnect.manifest({ appUrl: 1 });
+    OneKeyConnect.manifest({ appUrl: 1 });
     // @ts-ignore
-    TrezorConnect.manifest({ email: 1 });
+    OneKeyConnect.manifest({ email: 1 });
 
-    const settings = await TrezorConnect.getSettings();
+    const settings = await OneKeyConnect.getSettings();
     if (settings.success) {
         const { payload } = settings;
         payload.manifest;
@@ -53,15 +53,15 @@ export const init = async () => {
         payload.pendingTransportEvent;
     }
 
-    TrezorConnect.dispose();
-    TrezorConnect.cancel();
-    TrezorConnect.cancel('Interruption error');
-    TrezorConnect.renderWebUSBButton();
-    TrezorConnect.disableWebUSB();
+    OneKeyConnect.dispose();
+    OneKeyConnect.cancel();
+    OneKeyConnect.cancel('Interruption error');
+    OneKeyConnect.renderWebUSBButton();
+    OneKeyConnect.disableWebUSB();
 };
 
 export const events = async () => {
-    TrezorConnect.on(DEVICE_EVENT, event => {
+    OneKeyConnect.on(DEVICE_EVENT, event => {
         const { payload } = event;
         event.type;
         payload.path;
@@ -89,13 +89,13 @@ export const events = async () => {
             payload.features.model;
         }
     });
-    TrezorConnect.off(DEVICE_EVENT, () => {});
-    TrezorConnect.removeAllListeners();
+    OneKeyConnect.off(DEVICE_EVENT, () => {});
+    OneKeyConnect.removeAllListeners();
 
     // @ts-ignore
-    TrezorConnect.on('DEVICE-EVENT', () => {});
+    OneKeyConnect.on('DEVICE-EVENT', () => {});
 
-    TrezorConnect.on(TRANSPORT_EVENT, event => {
+    OneKeyConnect.on(TRANSPORT_EVENT, event => {
         if (event.type === TRANSPORT.START) {
             event.payload.type;
             event.payload.version;
@@ -105,9 +105,9 @@ export const events = async () => {
             event.payload.bridge;
         }
     });
-    TrezorConnect.off(TRANSPORT_EVENT, () => {});
+    OneKeyConnect.off(TRANSPORT_EVENT, () => {});
 
-    TrezorConnect.on(UI_EVENT, event => {
+    OneKeyConnect.on(UI_EVENT, event => {
         if (event.type === UI.BUNDLE_PROGRESS) {
             event.payload.progress;
             event.payload.error;
@@ -119,29 +119,29 @@ export const events = async () => {
             event.payload.device;
         }
     });
-    TrezorConnect.off(UI_EVENT, () => {});
+    OneKeyConnect.off(UI_EVENT, () => {});
 
-    TrezorConnect.on<AccountInfo>(UI.BUNDLE_PROGRESS, event => {
+    OneKeyConnect.on<AccountInfo>(UI.BUNDLE_PROGRESS, event => {
         event.progress;
         event.error;
         event.response.empty;
         event.response.availableBalance;
     });
 
-    TrezorConnect.on<EthereumAddress>(UI.BUNDLE_PROGRESS, event => {
+    OneKeyConnect.on<EthereumAddress>(UI.BUNDLE_PROGRESS, event => {
         event.progress;
         event.error;
         event.response.serializedPath;
         event.response.address;
     });
 
-    TrezorConnect.on(UI.REQUEST_BUTTON, event => {
+    OneKeyConnect.on(UI.REQUEST_BUTTON, event => {
         event.code;
         event.data;
         event.device;
     });
 
-    TrezorConnect.on(BLOCKCHAIN_EVENT, event => {
+    OneKeyConnect.on(BLOCKCHAIN_EVENT, event => {
         if (event.type === BLOCKCHAIN.CONNECT) {
             event.payload.blockHash;
             event.payload.shortcut;
@@ -156,5 +156,5 @@ export const events = async () => {
             event.payload.notification.tx;
         }
     });
-    TrezorConnect.off(BLOCKCHAIN_EVENT, () => {});
+    OneKeyConnect.off(BLOCKCHAIN_EVENT, () => {});
 };

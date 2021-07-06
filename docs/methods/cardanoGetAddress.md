@@ -3,12 +3,12 @@ Display requested address derived by given [BIP32-Ed25519](https://cardanolaunch
 
 ES6
 ```javascript
-const result = await TrezorConnect.cardanoGetAddress(params);
+const result = await OneKeyConnect.cardanoGetAddress(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.cardanoGetAddress(params).then(function(result) {
+OneKeyConnect.cardanoGetAddress(params).then(function(result) {
 
 });
 ```
@@ -41,7 +41,7 @@ You can handle this event and display custom UI inside of your application.
 If certain conditions are fulfilled popup will not be used at all:
 - the user gave permissions to communicate with Trezor
 - device is authenticated by pin/passphrase
-- application has `TrezorConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
+- application has `OneKeyConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
 - parameter `address` is set
 - parameter `showOnTrezor` is set to `true` (or not set at all)
 - application is requesting ONLY ONE(!) address
@@ -50,7 +50,7 @@ If certain conditions are fulfilled popup will not be used at all:
 ### Example
 Display byron address of first cardano account:
 ```javascript
-TrezorConnect.cardanoGetAddress({
+OneKeyConnect.cardanoGetAddress({
     addressParameters: {
         addressType: 8,
         path: "m/44'/1815'/0'/0/0",
@@ -61,7 +61,7 @@ TrezorConnect.cardanoGetAddress({
 ```
 Display base address of first cardano account:
 ```javascript
-TrezorConnect.cardanoGetAddress({
+OneKeyConnect.cardanoGetAddress({
     addressParameters: {
         addressType: 0,
         path: "m/1852'/1815'/0'/0/0",
@@ -73,7 +73,7 @@ TrezorConnect.cardanoGetAddress({
 ```
 Display pointer address of first cardano account:
 ```javascript
-TrezorConnect.cardanoGetAddress({
+OneKeyConnect.cardanoGetAddress({
     addressParameters: {
         addressType: 4,
         path: "m/1852'/1815'/0'/0/0",
@@ -89,7 +89,7 @@ TrezorConnect.cardanoGetAddress({
 ```
 Display enterprise address of first cardano account:
 ```javascript
-TrezorConnect.cardanoGetAddress({
+OneKeyConnect.cardanoGetAddress({
     addressParameters: {
         addressType: 6,
         path: "m/1852'/1815'/0'/0/0",
@@ -100,7 +100,7 @@ TrezorConnect.cardanoGetAddress({
 ```
 Display reward address of first cardano account:
 ```javascript
-TrezorConnect.cardanoGetAddress({
+OneKeyConnect.cardanoGetAddress({
     addressParameters: {
         addressType: 14,
         path: "m/1852'/1815'/0'/0/0",
@@ -111,7 +111,7 @@ TrezorConnect.cardanoGetAddress({
 ```
 Return a bundle of cardano addresses without displaying them on device:
 ```javascript
-TrezorConnect.cardanoGetAddress({
+OneKeyConnect.cardanoGetAddress({
     bundle: [
         // byron address, account 1, address 1
         {
@@ -149,14 +149,14 @@ TrezorConnect.cardanoGetAddress({
 ```
 Validate address using custom UI inside of your application:
 ```javascript
-import TrezorConnect, { UI } from 'trezor-connect';
+import OneKeyConnect, { UI } from '@onekeyhq/connect';
 
-TrezorConnect.on(UI.ADDRESS_VALIDATION, data => {
+OneKeyConnect.on(UI.ADDRESS_VALIDATION, data => {
     console.log("Handle button request", data.address, data.serializedPath);
     // here you can display custom UI inside of your app
 });
 
-const result = await TrezorConnect.cardanoGetAddress({
+const result = await OneKeyConnect.cardanoGetAddress({
     addressParameters: {
         addressType: 8,
         path: "m/44'/1815'/0'/0/0",

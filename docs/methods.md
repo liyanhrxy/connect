@@ -8,62 +8,62 @@ restart the action.
 
 Every method require an [`Object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) with combination of [`common`](methods/commonParams.md) fields and method specific fields.
 
-* [TrezorConnect.getPublicKey](methods/getPublicKey.md)
-* [TrezorConnect.requestLogin](methods/requestLogin.md)
-* [TrezorConnect.cipherKeyValue](methods/cipherKeyValue.md)
-* [TrezorConnect.wipeDevice](methods/wipeDevice.md)
-* [TrezorConnect.resetDevice](methods/resetDevice.md)
-* [TrezorConnect.getCoinInfo](methods/getCoinInfo.md)
+* [OneKeyConnect.getPublicKey](methods/getPublicKey.md)
+* [OneKeyConnect.requestLogin](methods/requestLogin.md)
+* [OneKeyConnect.cipherKeyValue](methods/cipherKeyValue.md)
+* [OneKeyConnect.wipeDevice](methods/wipeDevice.md)
+* [OneKeyConnect.resetDevice](methods/resetDevice.md)
+* [OneKeyConnect.getCoinInfo](methods/getCoinInfo.md)
 
 ### Bitcoin, Bitcoin Cash, Bitcoin Gold, Litecoin, Dash, ZCash, Testnet
 
-* [TrezorConnect.getAddress](methods/getAddress.md)
-* [TrezorConnect.getAccountInfo](methods/getAccountInfo.md)
-* [TrezorConnect.composeTransaction](methods/composeTransaction.md)
-* [TrezorConnect.signTransaction](methods/signTransaction.md)
-* [TrezorConnect.pushTransaction](methods/pushTransaction.md)
-* [TrezorConnect.signMessage](methods/signMessage.md)
-* [TrezorConnect.verifyMessage](methods/verifyMessage.md)
+* [OneKeyConnect.getAddress](methods/getAddress.md)
+* [OneKeyConnect.getAccountInfo](methods/getAccountInfo.md)
+* [OneKeyConnect.composeTransaction](methods/composeTransaction.md)
+* [OneKeyConnect.signTransaction](methods/signTransaction.md)
+* [OneKeyConnect.pushTransaction](methods/pushTransaction.md)
+* [OneKeyConnect.signMessage](methods/signMessage.md)
+* [OneKeyConnect.verifyMessage](methods/verifyMessage.md)
 
 ### Ethereum
-* [TrezorConnect.ethereumGetAddress](methods/ethereumGetAddress.md)
-* [TrezorConnect.ethereumSignTransaction](methods/ethereumSignTransaction.md)
-* [TrezorConnect.ethereumSignMessage](methods/ethereumSignMessage.md)
-* [TrezorConnect.ethereumVerifyMessage](methods/ethereumVerifyMessage.md)
+* [OneKeyConnect.ethereumGetAddress](methods/ethereumGetAddress.md)
+* [OneKeyConnect.ethereumSignTransaction](methods/ethereumSignTransaction.md)
+* [OneKeyConnect.ethereumSignMessage](methods/ethereumSignMessage.md)
+* [OneKeyConnect.ethereumVerifyMessage](methods/ethereumVerifyMessage.md)
 
 ### Eos
-* [TrezorConnect.eosGetPublicKey](methods/eosGetPublicKey.md)
-* [TrezorConnect.eosSignTransaction](methods/eosSignTransaction.md)
+* [OneKeyConnect.eosGetPublicKey](methods/eosGetPublicKey.md)
+* [OneKeyConnect.eosSignTransaction](methods/eosSignTransaction.md)
 
 ### NEM
-* [TrezorConnect.nemGetAddress](methods/nemGetAddress.md)
-* [TrezorConnect.nemSignTransaction](methods/nemSignTransaction.md)
+* [OneKeyConnect.nemGetAddress](methods/nemGetAddress.md)
+* [OneKeyConnect.nemSignTransaction](methods/nemSignTransaction.md)
 
 ### Stellar
-* [TrezorConnect.stellarGetAddress](methods/stellarGetAddress.md)
-* [TrezorConnect.stellarSignTransaction](methods/stellarSignTransaction.md)
+* [OneKeyConnect.stellarGetAddress](methods/stellarGetAddress.md)
+* [OneKeyConnect.stellarSignTransaction](methods/stellarSignTransaction.md)
 
 ### Lisk
-* [TrezorConnect.liskGetAddress](methods/liskGetAddress.md)
-* [TrezorConnect.liskSignMessage](methods/liskSignMessage.md)
-* [TrezorConnect.liskVerifyMessage](methods/liskVerifyMessage.md)
-* [TrezorConnect.liskSignTransaction](methods/liskSignTransaction.md)
+* [OneKeyConnect.liskGetAddress](methods/liskGetAddress.md)
+* [OneKeyConnect.liskSignMessage](methods/liskSignMessage.md)
+* [OneKeyConnect.liskVerifyMessage](methods/liskVerifyMessage.md)
+* [OneKeyConnect.liskSignTransaction](methods/liskSignTransaction.md)
 
 ### Cardano
-* [TrezorConnect.cardanoGetPublicKey](methods/cardanoGetPublicKey.md)
-* [TrezorConnect.cardanoGetAddress](methods/cardanoGetAddress.md)
-* [TrezorConnect.cardanoSignTransaction](methods/cardanoSignTransaction.md)
+* [OneKeyConnect.cardanoGetPublicKey](methods/cardanoGetPublicKey.md)
+* [OneKeyConnect.cardanoGetAddress](methods/cardanoGetAddress.md)
+* [OneKeyConnect.cardanoSignTransaction](methods/cardanoSignTransaction.md)
 
 ### Ripple
-* [TrezorConnect.rippleGetAddress](methods/rippleGetAddress.md)
-* [TrezorConnect.rippleSignTransaction](methods/rippleSignTransaction.md)
+* [OneKeyConnect.rippleGetAddress](methods/rippleGetAddress.md)
+* [OneKeyConnect.rippleSignTransaction](methods/rippleSignTransaction.md)
 
 ### Tezos
-* [TrezorConnect.tezosGetAddress](methods/tezosGetAddress.md)
-* [TrezorConnect.tezosGetPublicKey](methods/tezosGetPublicKey.md)
-* [TrezorConnect.tezosSignTransaction](methods/tezosSignTransaction.md)
+* [OneKeyConnect.tezosGetAddress](methods/tezosGetAddress.md)
+* [OneKeyConnect.tezosGetPublicKey](methods/tezosGetPublicKey.md)
+* [OneKeyConnect.tezosSignTransaction](methods/tezosSignTransaction.md)
 
 ### Binance
-* [TrezorConnect.binanceGetAddress](methods/binanceGetAddress.md)
-* [TrezorConnect.binanceGetPublicKey](methods/binanceGetPublicKey.md)
-* [TrezorConnect.binanceSignTransaction](methods/binanceSignTransaction.md)
+* [OneKeyConnect.binanceGetAddress](methods/binanceGetAddress.md)
+* [OneKeyConnect.binanceGetPublicKey](methods/binanceGetPublicKey.md)
+* [OneKeyConnect.binanceSignTransaction](methods/binanceSignTransaction.md)

@@ -18,12 +18,12 @@ of
 
 ES6
 ```javascript
-const result = await TrezorConnect.requestLogin(params);
+const result = await OneKeyConnect.requestLogin(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.requestLogin(params).then(function(result) {
+OneKeyConnect.requestLogin(params).then(function(result) {
 
 });
 ```
@@ -43,7 +43,7 @@ Common parameter `useEmptyPassphrase` - is always set to `true` and it will be i
 ### Example
 ###### Login using server-side async challenge
 ```javascript
-TrezorConnect.requestLogin({ 
+OneKeyConnect.requestLogin({ 
     callback: function() {
         // here should be a request to server to fetch "challengeHidden" and "challengeVisual"
         return {
@@ -56,7 +56,7 @@ TrezorConnect.requestLogin({
 
 ###### Login without async challenge
 ```javascript
-TrezorConnect.requestLogin({ 
+OneKeyConnect.requestLogin({ 
     challengeHidden: '0123456789abcdef',
     challengeVisual: 'Login to',
 })
@@ -105,7 +105,7 @@ var hosticon = 'https://example.com/icon.png';
 // server-side generated and randomized challenges
 var challenge_hidden = '';
 var challenge_visual = '';
-TrezorConnect.requestLogin(
+OneKeyConnect.requestLogin(
     hosticon,                // hosticon is moved to common parameters
     challenge_hidden,
     challenge_visual
@@ -120,7 +120,7 @@ TrezorConnect.requestLogin(
 version 5
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.requestLogin({ 
+OneKeyConnect.requestLogin({ 
     challengeHidden: '',
     challengeVisual: '',
 }).then(function(result) {

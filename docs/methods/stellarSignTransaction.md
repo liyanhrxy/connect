@@ -5,12 +5,12 @@ details on Trezor.
 
 ES6
 ```javascript
-const result = await TrezorConnect.stellarSignTransaction(params);
+const result = await OneKeyConnect.stellarSignTransaction(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.stellarSignTransaction(params).then(function(result) {
+OneKeyConnect.stellarSignTransaction(params).then(function(result) {
 
 });
 ```
@@ -23,8 +23,8 @@ TrezorConnect.stellarSignTransaction(params).then(function(result) {
 * `transaction` - *obligatory* `Object` type of [StellarTransaction](../../src/js/types/stellar.js#L129)
 
 ### Stellar SDK compatibility
-`stellar-sdk` is not a part of `trezor-connect` repository.
-To transform `StellarSDK.Transaction` object into `TrezorConnect.StellarTransaction` object copy [this plugin](../../src/js/plugins/stellar/plugin.js) into your project.
+`stellar-sdk` is not a part of `@onekeyhq/connect` repository.
+To transform `StellarSDK.Transaction` object into `OneKeyConnect.StellarTransaction` object copy [this plugin](../../src/js/plugins/stellar/plugin.js) into your project.
 ```javascript
 import StellarSDK from 'stellar-sdk';
 import transformTrezorTransaction from '<path-to-plugin>/index.js';
@@ -34,7 +34,7 @@ const tx = new StellarSdk.TransactionBuilder(...);
 tx.build();
 
 const params = transformTrezorTransaction(tx);
-const result = TrezorConnect.stellarSignTransaction(params);
+const result = OneKeyConnect.stellarSignTransaction(params);
 
 if (result.success) {
     tx.addSignature('account-public-key', result.payload.signature);
@@ -43,7 +43,7 @@ if (result.success) {
 
 ### Example
 ```javascript
-TrezorConnect.stellarSignTransaction(
+OneKeyConnect.stellarSignTransaction(
     path: "m/44'/148'/0'",
     networkPassphrase: "Test SDF Network ; September 2015",
     transaction: {

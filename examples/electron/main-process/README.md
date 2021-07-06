@@ -1,6 +1,6 @@
 ## Electron main process
 
-`trezor-connect` running inside electron main process and communicating with renderer process thru `ipcRenderer`
+`@onekeyhq/connect` running inside electron main process and communicating with renderer process thru `ipcRenderer`
 
 ### Install
 

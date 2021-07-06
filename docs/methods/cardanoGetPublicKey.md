@@ -4,12 +4,12 @@ User is presented with a description of the requested key and asked to confirm t
 
 ES6
 ```javascript
-const result = await TrezorConnect.cardanoGetPublicKey(params);
+const result = await OneKeyConnect.cardanoGetPublicKey(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.cardanoGetPublicKey(params).then(function(result) {
+OneKeyConnect.cardanoGetPublicKey(params).then(function(result) {
 
 });
 ```
@@ -26,13 +26,13 @@ TrezorConnect.cardanoGetPublicKey(params).then(function(result) {
 ### Example
 Display public key of first cardano account:
 ```javascript
-TrezorConnect.cardanoGetPublicKey({
+OneKeyConnect.cardanoGetPublicKey({
     path: "m/44'/1815'/0'"
 });
 ```
 Return a bundle of cardano public keys without displaying them on device:
 ```javascript
-TrezorConnect.cardanoGetPublicKey({
+OneKeyConnect.cardanoGetPublicKey({
     bundle: [
         { path: "m/44'/1815'/0'", showOnTrezor: false }, // account 1
         { path: "m/44'/1815'/1'", showOnTrezor: false }, // account 2

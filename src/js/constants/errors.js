@@ -1,8 +1,8 @@
 /* @flow */
 
 export const ERROR_CODES = {
-    'Init_NotInitialized': 'TrezorConnect not yet initialized', // race condition: call on not initialized Core (usually hot-reloading)
-    'Init_AlreadyInitialized': 'TrezorConnect has been already initialized', // thrown by .init called multiple times
+    'Init_NotInitialized': 'OneKeyConnect not yet initialized', // race condition: call on not initialized Core (usually hot-reloading)
+    'Init_AlreadyInitialized': 'OneKeyConnect has been already initialized', // thrown by .init called multiple times
     'Init_IframeBlocked': 'Iframe blocked', // iframe injection blocked (ad-blocker)
     'Init_IframeTimeout': 'Iframe timeout', // iframe didn't load in specified time
     'Init_ManifestMissing': 'Manifest not set. Read more at https://github.com/trezor/connect/blob/develop/docs/index.md', // manifest is not set

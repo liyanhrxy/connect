@@ -11,12 +11,12 @@ btn.onclick = () => {
     });
 };
 
-// receive data from TrezorConnect
+// receive data from OneKeyConnect
 window.ipcRenderer.on('trezor-connect', (event, message) => {
     printLog(message);
 });
 
-// init TrezorConnect in electron main process
+// init OneKeyConnect in electron main process
 window.ipcRenderer.send('trezor-connect', 'init');
 
 // print log helper

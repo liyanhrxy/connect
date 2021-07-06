@@ -5,12 +5,12 @@ details on Trezor.
 
 ES6
 ```javascript
-const result = await TrezorConnect.rippleSignTransaction(params);
+const result = await OneKeyConnect.rippleSignTransaction(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.rippleSignTransaction(params).then(function(result) {
+OneKeyConnect.rippleSignTransaction(params).then(function(result) {
 
 });
 ```
@@ -23,7 +23,7 @@ TrezorConnect.rippleSignTransaction(params).then(function(result) {
 
 ### Example
 ```javascript
-TrezorConnect.rippleSignTransaction(
+OneKeyConnect.rippleSignTransaction(
     path: "m/44'/144'/0'/0/0",
     transaction: {
         fee: '100000',

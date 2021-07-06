@@ -4,12 +4,12 @@ User is presented with a description of the requested public key and asked to co
 
 ES6
 ```javascript
-const result = await TrezorConnect.tezosGetPublicKey(params);
+const result = await OneKeyConnect.tezosGetPublicKey(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.tezosGetPublicKey(params).then(function(result) {
+OneKeyConnect.tezosGetPublicKey(params).then(function(result) {
 
 });
 ```
@@ -26,13 +26,13 @@ TrezorConnect.tezosGetPublicKey(params).then(function(result) {
 ### Example
 Result with only one public key
 ```javascript
-TrezorConnect.tezosGetPublicKey({
+OneKeyConnect.tezosGetPublicKey({
     path: "m/49'/1729'/0'",
 });
 ```
 Result with bundle of public keys
 ```javascript
-TrezorConnect.tezosGetPublicKey({
+OneKeyConnect.tezosGetPublicKey({
     bundle: [
         { path: "m/49'/1729'/0'" }, // account 1
         { path: "m/49'/1729'/1'" }, // account 2

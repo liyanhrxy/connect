@@ -4,12 +4,12 @@ User is presented with a description of the requested public key and asked to co
 
 ES6
 ```javascript
-const result = await TrezorConnect.eosGetPublicKey(params);
+const result = await OneKeyConnect.eosGetPublicKey(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.eosGetPublicKey(params).then(function(result) {
+OneKeyConnect.eosGetPublicKey(params).then(function(result) {
 
 });
 ```
@@ -26,13 +26,13 @@ TrezorConnect.eosGetPublicKey(params).then(function(result) {
 ### Example
 Displays public key derived from BIP44 path:
 ```javascript
-TrezorConnect.eosGetPublicKey({
+OneKeyConnect.eosGetPublicKey({
     path: "m/44'/194'/0'/0/0"
 });
 ```
 Return a bundle of public keys without displaying them on device:
 ```javascript
-TrezorConnect.eosGetPublicKey({
+OneKeyConnect.eosGetPublicKey({
     bundle: [
         { path: "m/44'/194'/0'/0/0", showOnTrezor: false }, // public key 1
         { path: "m/44'/194'/0'/0/1", showOnTrezor: false }, // public key 2

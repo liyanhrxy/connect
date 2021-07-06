@@ -5,12 +5,12 @@ details on Trezor.
 
 ES6
 ```javascript
-const result = await TrezorConnect.nemSignTransaction(params);
+const result = await OneKeyConnect.nemSignTransaction(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.nemSignTransaction(params).then(function(result) {
+OneKeyConnect.nemSignTransaction(params).then(function(result) {
 
 });
 ```
@@ -36,7 +36,7 @@ function hexlify(str) {
     return result;
 }
 
-TrezorConnect.nemSignTransaction(
+OneKeyConnect.nemSignTransaction(
     path: "m/44'/1'/0'/0'/0'",
     transaction: {
         timeStamp: 74649215,
@@ -56,7 +56,7 @@ TrezorConnect.nemSignTransaction(
 
 Sign mosaic transaction
 ```javascript
-TrezorConnect.nemSignTransaction(
+OneKeyConnect.nemSignTransaction(
     path: "m/44'/1'/0'/0'/0'",
     transaction: {
         timeStamp: 76809215,
@@ -117,7 +117,7 @@ var tx = {
         type: 1,
     },
 }
-TrezorConnect.nemSignTx(
+OneKeyConnect.nemSignTx(
   "m/44'/1'/0'/0'/0'",
   tx,
   function(result) {
@@ -128,7 +128,7 @@ TrezorConnect.nemSignTx(
 version 5
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.nemSignTransaction({ 
+OneKeyConnect.nemSignTransaction({ 
     path: "m/44'/1'/0'/0'/0'",
     transaction: tx
 }).then(function(result) {

@@ -2,7 +2,7 @@ const StellarSdk = require('stellar-sdk');
 const BigNumber = require('bignumber.js');
 
 /**
- * Transforms StellarSdk.Signer to TrezorConnect.StellarTransaction.Signer
+ * Transforms StellarSdk.Signer to OneKeyConnect.StellarTransaction.Signer
  * @param {StellarSdk.Signer} signer
  * @returns { type: 1 | 2 | 3, key: string, weight: number }
  */
@@ -30,7 +30,7 @@ const transformSigner = (signer) => {
 };
 
 /**
- * Transforms StellarSdk.Asset to TrezorConnect.StellarTransaction.Asset
+ * Transforms StellarSdk.Asset to OneKeyConnect.StellarTransaction.Asset
  * @param {StellarSdk.Asset} asset
  * @returns { type: 0 | 1 | 2, code: string, issuer?: string }
  */
@@ -58,7 +58,7 @@ const transformAmount = (amount) => {
 };
 
 /**
- * Transforms StellarSdk.Operation.type to TrezorConnect.StellarTransaction.Operation.type
+ * Transforms StellarSdk.Operation.type to OneKeyConnect.StellarTransaction.Operation.type
  * @param {string} type
  * @returns {string}
  */
@@ -80,7 +80,7 @@ const transformType = (type) => {
 };
 
 /**
- * Transforms StellarSdk.Memo to TrezorConnect.StellarTransaction.Memo
+ * Transforms StellarSdk.Memo to OneKeyConnect.StellarTransaction.Memo
  * @param {string} type
  * @returns {string}
  */
@@ -102,7 +102,7 @@ const transformMemo = (memo) => {
 };
 
 /**
- * Transforms StellarSdk.Transaction.timeBounds to TrezorConnect.StellarTransaction.timebounds
+ * Transforms StellarSdk.Transaction.timeBounds to OneKeyConnect.StellarTransaction.timebounds
  * @param {string} path
  * @param {StellarSdk.Transaction.timeBounds} timebounds
  * @returns {minTime: number, maxTime: number}
@@ -117,10 +117,10 @@ const transformTimebounds = (timebounds) => {
 };
 
 /**
- * Transforms StellarSdk.Transaction to TrezorConnect.StellarTransaction
+ * Transforms StellarSdk.Transaction to OneKeyConnect.StellarTransaction
  * @param {string} path
  * @param {StellarSdk.Transaction} transaction
- * @returns {TrezorConnect.StellarTransaction}
+ * @returns {OneKeyConnect.StellarTransaction}
  */
 const transformTransaction = (path, transaction) => {
     const amounts = ['amount', 'sendMax', 'destAmount', 'startingBalance', 'limit'];

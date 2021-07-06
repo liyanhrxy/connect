@@ -6,7 +6,7 @@
 
 /// <reference types="node" />
 
-import { TrezorConnect } from './api';
+import { OneKeyConnect } from './api';
 export * from './events';
 export * from './misc';
 export * from './params';
@@ -31,4 +31,4 @@ export * from './networks/tezos';
 export * from './backend/blockchain';
 export * from './backend/transactions';
 
-export default TrezorConnect;
+export default OneKeyConnect;

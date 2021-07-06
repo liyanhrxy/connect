@@ -1,8 +1,8 @@
-import TrezorConnect from '../index';
+import OneKeyConnect from '../index';
 
 export const stellarGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.stellarGetAddress({ path: 'm/44' });
+    const singleAddress = await OneKeyConnect.stellarGetAddress({ path: 'm/44' });
 
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -16,7 +16,7 @@ export const stellarGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.stellarGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await OneKeyConnect.stellarGetAddress({ bundle: [{ path: 'm/44' }] });
 
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -31,7 +31,7 @@ export const stellarGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.stellarGetAddress({
+    OneKeyConnect.stellarGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -48,17 +48,17 @@ export const stellarGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.stellarGetAddress();
+    OneKeyConnect.stellarGetAddress();
     // @ts-ignore
-    TrezorConnect.stellarGetAddress({ coin: 'btc' });
+    OneKeyConnect.stellarGetAddress({ coin: 'btc' });
     // @ts-ignore
-    TrezorConnect.stellarGetAddress({ path: 1 });
+    OneKeyConnect.stellarGetAddress({ path: 1 });
     // @ts-ignore
-    TrezorConnect.stellarGetAddress({ bundle: 1 });
+    OneKeyConnect.stellarGetAddress({ bundle: 1 });
 };
 
 export const stellarSignTransaction = async () => {
-    const sign = await TrezorConnect.stellarSignTransaction({
+    const sign = await OneKeyConnect.stellarSignTransaction({
         path: 'm/44',
         networkPassphrase: 'Test SDF Network ; September 2015',
         transaction: {

@@ -4,12 +4,12 @@ details on Trezor.
 
 ES6
 ```javascript
-const result = await TrezorConnect.binanceSignTransaction(params);
+const result = await OneKeyConnect.binanceSignTransaction(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.binanceSignTransaction(params).then(function(result) {
+OneKeyConnect.binanceSignTransaction(params).then(function(result) {
 
 });
 ```
@@ -21,7 +21,7 @@ TrezorConnect.binanceSignTransaction(params).then(function(result) {
 
 ### Transfer example
 ```javascript
-TrezorConnect.binanceSignTransaction({
+OneKeyConnect.binanceSignTransaction({
     path: "m/44'/714'/0'/0/0",
     transaction: {
         chain_id: 'Binance-Chain-Nile',
@@ -53,7 +53,7 @@ TrezorConnect.binanceSignTransaction({
 
 ### Place order example
 ```javascript
-TrezorConnect.binanceSignTransaction({
+OneKeyConnect.binanceSignTransaction({
     path: "m/44'/714'/0'/0/0",
     transaction: {
         chain_id: 'Binance-Chain-Nile',
@@ -77,7 +77,7 @@ TrezorConnect.binanceSignTransaction({
 
 ### Cancel order example
 ```javascript
-TrezorConnect.binanceSignTransaction({
+OneKeyConnect.binanceSignTransaction({
     path: "m/44'/714'/0'/0/0",
     transaction: {
         chain_id: 'Binance-Chain-Nile',

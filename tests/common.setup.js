@@ -1,5 +1,5 @@
 import { Controller } from './websocket-client';
-import TrezorConnect, { UI } from '../src/js/index';
+import OneKeyConnect, { UI } from '../src/js/index';
 import { versionCompare } from '../src/js/utils/versionUtils';
 
 const MNEMONICS = {
@@ -45,7 +45,7 @@ const setup = async (controller, options) => {
 
         // after all is done, start bridge again
         await controller.send({ type: 'bridge-start' });
-        // Wait to prevent Transport is missing error from TrezorConnect
+        // Wait to prevent Transport is missing error from OneKeyConnect
         await wait(1000);
     } catch (err) {
         // this means that something in trezor-user-env got wrong.
@@ -54,9 +54,9 @@ const setup = async (controller, options) => {
     }
 };
 
-const initTrezorConnect = async (controller, options) => {
+const initOneKeyConnect = async (controller, options) => {
     const onUiRequestConfirmation = () => {
-        TrezorConnect.uiResponse({
+        OneKeyConnect.uiResponse({
             type: UI.RECEIVE_CONFIRMATION,
             payload: true,
         });
@@ -66,9 +66,9 @@ const initTrezorConnect = async (controller, options) => {
         controller.send({ type: 'emulator-press-yes' });
     };
 
-    TrezorConnect.removeAllListeners();
+    OneKeyConnect.removeAllListeners();
 
-    await TrezorConnect.init({
+    await OneKeyConnect.init({
         manifest: {
             appUrl: 'a',
             email: 'b',
@@ -79,9 +79,9 @@ const initTrezorConnect = async (controller, options) => {
         ...options,
     });
 
-    TrezorConnect.on(UI.REQUEST_CONFIRMATION, onUiRequestConfirmation);
+    OneKeyConnect.on(UI.REQUEST_CONFIRMATION, onUiRequestConfirmation);
 
-    TrezorConnect.on(UI.REQUEST_BUTTON, onUiRequestButton);
+    OneKeyConnect.on(UI.REQUEST_BUTTON, onUiRequestButton);
 };
 
 // skipping tests rules:
@@ -117,7 +117,7 @@ const skipTest = (rules) => {
 global.Trezor = {
     setup,
     skipTest,
-    initTrezorConnect,
-    TrezorConnect,
+    initOneKeyConnect,
+    OneKeyConnect,
     Controller,
 };

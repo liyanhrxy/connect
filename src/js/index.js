@@ -16,7 +16,7 @@ import {
 } from './env/node';
 import type { API } from './types';
 
-const TrezorConnect: API = {
+const OneKeyConnect: API = {
     manifest,
     init: settings => init(settings),
     getSettings,
@@ -307,7 +307,7 @@ const TrezorConnect: API = {
     disableWebUSB,
 };
 
-export default TrezorConnect;
+export default OneKeyConnect;
 
 export * from './constants';
 export * from './types';

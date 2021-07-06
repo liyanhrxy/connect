@@ -27,7 +27,7 @@ import {
 import * as $T from '../../types';
 
 export const eventEmitter = new EventEmitter();
-const _log: Log = initLog('[trezor-connect.js]');
+const _log: Log = initLog('OneKeyConnect');
 
 let _settings: $T.ConnectSettings;
 let _popupManager: ?PopupManager;

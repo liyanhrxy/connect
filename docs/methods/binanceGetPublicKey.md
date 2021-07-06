@@ -4,12 +4,12 @@ User is presented with a description of the requested public key and asked to co
 
 ES6
 ```javascript
-const result = await TrezorConnect.binanceGetPublicKey(params);
+const result = await OneKeyConnect.binanceGetPublicKey(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.binanceGetPublicKey(params).then(function(result) {
+OneKeyConnect.binanceGetPublicKey(params).then(function(result) {
 
 });
 ```
@@ -26,13 +26,13 @@ TrezorConnect.binanceGetPublicKey(params).then(function(result) {
 ### Example
 Displays public key derived from BIP44 path:
 ```javascript
-TrezorConnect.binanceGetPublicKey({
+OneKeyConnect.binanceGetPublicKey({
     path: "m/44'/714'/0'/0/0"
 });
 ```
 Return a bundle of public keys without displaying them on device:
 ```javascript
-TrezorConnect.binanceGetPublicKey({
+OneKeyConnect.binanceGetPublicKey({
     bundle: [
         { path: "m/44'/714'/0'/0/0", showOnTrezor: false }, // public key 1
         { path: "m/44'/714'/1'/0/0", showOnTrezor: false }, // public key 2

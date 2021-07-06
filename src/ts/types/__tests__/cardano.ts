@@ -1,8 +1,8 @@
-import TrezorConnect from '../index';
+import OneKeyConnect from '../index';
 
 export const cardanoGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.cardanoGetAddress({
+    const singleAddress = await OneKeyConnect.cardanoGetAddress({
         addressParameters: {
             addressType: 0,
             path: 'm/44',
@@ -42,7 +42,7 @@ export const cardanoGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.cardanoGetAddress({
+    const bundleAddress = await OneKeyConnect.cardanoGetAddress({
         bundle: [
             {
                 addressParameters: {
@@ -87,7 +87,7 @@ export const cardanoGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.cardanoGetAddress({
+    OneKeyConnect.cardanoGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -116,18 +116,18 @@ export const cardanoGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.cardanoGetAddress();
+    OneKeyConnect.cardanoGetAddress();
     // @ts-ignore
-    TrezorConnect.cardanoGetAddress({ coin: 'btc' });
+    OneKeyConnect.cardanoGetAddress({ coin: 'btc' });
     // @ts-ignore
-    TrezorConnect.cardanoGetAddress({ addressParameters: { path: 1 } });
+    OneKeyConnect.cardanoGetAddress({ addressParameters: { path: 1 } });
     // @ts-ignore
-    TrezorConnect.cardanoGetAddress({ bundle: 1 });
+    OneKeyConnect.cardanoGetAddress({ bundle: 1 });
 };
 
 export const cardanoGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.cardanoGetPublicKey({ path: 'm/44' });
+    const singlePK = await OneKeyConnect.cardanoGetPublicKey({ path: 'm/44' });
     if (singlePK.success) {
         const { payload } = singlePK;
         payload.path;
@@ -141,7 +141,7 @@ export const cardanoGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await OneKeyConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
             item.path;
@@ -157,7 +157,7 @@ export const cardanoGetPublicKey = async () => {
 };
 
 export const cardanoSignTransaction = async () => {
-    const sign = await TrezorConnect.cardanoSignTransaction({
+    const sign = await OneKeyConnect.cardanoSignTransaction({
         inputs: [
             {
                 prev_hash: '1af..',

@@ -4,12 +4,12 @@ Asks device to sign a message using the private key derived by given BIP32 path.
 
 ES6
 ```javascript
-const result = await TrezorConnect.liskSignMessage(params);
+const result = await OneKeyConnect.liskSignMessage(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.liskSignMessage(params).then(function(result) {
+OneKeyConnect.liskSignMessage(params).then(function(result) {
 
 });
 ```
@@ -22,7 +22,7 @@ TrezorConnect.liskSignMessage(params).then(function(result) {
 
 ### Example
 ```javascript
-TrezorConnect.liskSignMessage({
+OneKeyConnect.liskSignMessage({
     path: "m/44'/134'/0'",
     message: "example message"
 });

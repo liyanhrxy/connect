@@ -7,12 +7,12 @@ details on Trezor.
 
 ES6
 ```javascript
-const result = await TrezorConnect.signTransaction(params);
+const result = await OneKeyConnect.signTransaction(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.signTransaction(params).then(function(result) {
+OneKeyConnect.signTransaction(params).then(function(result) {
 
 });
 ```
@@ -36,7 +36,7 @@ TrezorConnect.signTransaction(params).then(function(result) {
 ### Example
 ###### PAYTOADDRESS
 ```javascript
-TrezorConnect.signTransaction({
+OneKeyConnect.signTransaction({
     inputs: [
         {
             address_n: [(44 | 0x80000000) >>> 0, (0 | 0x80000000) >>> 0, (2 | 0x80000000) >>> 0, 1, 0],
@@ -61,7 +61,7 @@ TrezorConnect.signTransaction({
 
 ###### SPENDP2SHWITNESS 
 ```javascript
-TrezorConnect.signTransaction({
+OneKeyConnect.signTransaction({
     inputs: [
         {
             address_n: [(49 | 0x80000000) >>> 0, (0 | 0x80000000) >>> 0, (2 | 0x80000000) >>> 0, 1, 0],
@@ -88,7 +88,7 @@ TrezorConnect.signTransaction({
 
 ###### PAYTOADDRESS with refTxs (transaction data provided from custom backend)
 ```javascript
-TrezorConnect.signTransaction({
+OneKeyConnect.signTransaction({
     inputs: [
         {
             address_n: [(44 | 0x80000000) >>> 0, (0 | 0x80000000) >>> 0, (2 | 0x80000000) >>> 0, 1, 0],
@@ -178,8 +178,8 @@ var outputs = [{
     amount: 200000,
     script_type: 'PAYTOADDRESS'
 }];
-TrezorConnect.setCurrency('BTC');
-TrezorConnect.signTx(
+OneKeyConnect.setCurrency('BTC');
+OneKeyConnect.signTx(
     inputs,  // amount field retyped to a string
     outputs, // amount field retyped to a string
     "example message",
@@ -194,7 +194,7 @@ TrezorConnect.signTx(
 version 5
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.signTransaction({ 
+OneKeyConnect.signTransaction({ 
     inputs: [{
         address_n: [44 | 0x80000000, 0 | 0x80000000, 2 | 0x80000000, 1, 0],
         prev_index: 0,

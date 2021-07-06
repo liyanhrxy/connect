@@ -4,12 +4,12 @@ Asks device to sign a message using the private key derived by given BIP32 path.
 
 ES6
 ```javascript
-const result = await TrezorConnect.signMessage(params);
+const result = await OneKeyConnect.signMessage(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.signMessage(params).then(function(result) {
+OneKeyConnect.signMessage(params).then(function(result) {
 
 });
 ```
@@ -24,7 +24,7 @@ TrezorConnect.signMessage(params).then(function(result) {
 
 ### Example
 ```javascript
-TrezorConnect.signMessage({
+OneKeyConnect.signMessage({
     path: "m/44'/0'/0'",
     message: "example message"
 });
@@ -55,14 +55,14 @@ Error
 
 version 4 and below
 ```javascript
-TrezorConnect.signMessage("m/44'/0'/0'", "example message", function(result) {
+OneKeyConnect.signMessage("m/44'/0'/0'", "example message", function(result) {
     ...
 }, "bitcoin");
 ```
 version 5
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.signMessage({ 
+OneKeyConnect.signMessage({ 
     path: "m/44'/0'/0'",
     message: "example message"
 }).then(function(result) {

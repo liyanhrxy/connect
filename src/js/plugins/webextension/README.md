@@ -63,10 +63,10 @@ Basic implementation is same for both Google Chrome & Firefox. However, few addi
 
 2. Now you're able to use Trezor Connect in your code
 
-    You can access `TrezorConnect` as a global variable if you included Trezor Connect in your project manually
+    You can access `OneKeyConnect` as a global variable if you included Trezor Connect in your project manually
     ```javascript
     function onClick() {
-        TrezorConnect.getAddress({
+        OneKeyConnect.getAddress({
             path: "m/49'/0'/0'/0/0"
         }).then(response => {
             const message = response.success ? `BTC Address: ${ response.payload.address }` : `Error: ${ response.payload.error }`;
@@ -85,17 +85,17 @@ Basic implementation is same for both Google Chrome & Firefox. However, few addi
 
     If you're using a package manager you will probably want to import Trezor Connect into your code using an `import` statement
     ```javascript
-    import TrezorConnect from 'trezor-connect'; // Import Trezor Connect
+    import OneKeyConnect from '@onekeyhq/connect'; // Import Trezor Connect
 
     function onClick() {
-        TrezorConnect.getAddress({
+        OneKeyConnect.getAddress({
             path: "m/49'/0'/0'/0/0"
         }).then(response => {
             const message = response.success ? `BTC Address: ${ response.payload.address }` : `Error: ${ response.payload.error }`;
             chrome.notifications.create(new Date().getTime().toString(), {
                 type: 'basic',
                 iconUrl: 'icons/48.png',
-                title: 'TrezorConnect',
+                title: 'OneKeyConnect',
                 message
             });
         }).catch(error => {

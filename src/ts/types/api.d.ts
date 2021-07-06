@@ -21,20 +21,20 @@ import * as Misc from './misc';
 import * as Events from './events';
 import * as Blockchain from './backend/blockchain';
 
-export namespace TrezorConnect {
+export namespace OneKeyConnect {
     /**
-     * Set TrezorConnect manifest.
+     * Set OneKeyConnect manifest.
      */
     function manifest(params: P.Manifest): void;
 
     /**
-     * Initializes TrezorConnect.
+     * Initializes OneKeyConnect.
      * `manifest` is required
      */
     function init(settings: { manifest: P.Manifest } & Partial<P.ConnectSettings>): Promise<void>;
 
     /**
-     * Retrieves the settings that TrezorConnect was initialized with.
+     * Retrieves the settings that OneKeyConnect was initialized with.
      */
     function getSettings(): P.Response<P.ConnectSettings>;
 

@@ -1,7 +1,7 @@
-import TrezorConnect from '../index';
+import OneKeyConnect from '../index';
 
 export const cipherKeyValue = async () => {
-    const kv = await TrezorConnect.cipherKeyValue({
+    const kv = await OneKeyConnect.cipherKeyValue({
         path: 'm/44',
         key: 'key',
         value: 'hash',
@@ -14,7 +14,7 @@ export const cipherKeyValue = async () => {
     }
 
     // bundle
-    const bundleKV = await TrezorConnect.cipherKeyValue({ bundle: [{ path: 'm/44', key: 'key' }] });
+    const bundleKV = await OneKeyConnect.cipherKeyValue({ bundle: [{ path: 'm/44', key: 'key' }] });
 
     if (bundleKV.success) {
         bundleKV.payload.forEach(item => {
@@ -28,7 +28,7 @@ export const cipherKeyValue = async () => {
 };
 
 export const customMessage = async () => {
-    TrezorConnect.customMessage({
+    OneKeyConnect.customMessage({
         messages: {},
         message: 'MyCustomSignTx',
         params: {
@@ -51,7 +51,7 @@ export const customMessage = async () => {
 // Method with mixed params
 export const requestLogin = async () => {
     // async call
-    const a = await TrezorConnect.requestLogin({
+    const a = await OneKeyConnect.requestLogin({
         callback: () => ({
             challengeHidden: 'a',
             challengeVisual: 'b',
@@ -75,22 +75,22 @@ export const requestLogin = async () => {
         a.payload.address;
     }
     // sync call
-    TrezorConnect.requestLogin({
+    OneKeyConnect.requestLogin({
         challengeHidden: 'a',
         challengeVisual: 'b',
     });
 
     // @ts-ignore
-    TrezorConnect.requestLogin();
+    OneKeyConnect.requestLogin();
     // @ts-ignore
-    TrezorConnect.requestLogin({ callback: 'string' });
+    OneKeyConnect.requestLogin({ callback: 'string' });
     // @ts-ignore
-    TrezorConnect.requestLogin({ challengeHidden: 'a' });
+    OneKeyConnect.requestLogin({ challengeHidden: 'a' });
     // @ts-ignore
-    TrezorConnect.requestLogin({ challengeVisual: 1 });
+    OneKeyConnect.requestLogin({ challengeVisual: 1 });
 };
 
 export const debugLink = async () => {
-    TrezorConnect.debugLinkDecision({ device: { path: '1' } });
-    TrezorConnect.debugLinkGetState({ device: { path: '1' } });
+    OneKeyConnect.debugLinkDecision({ device: { path: '1' } });
+    OneKeyConnect.debugLinkGetState({ device: { path: '1' } });
 };

@@ -3,12 +3,12 @@ Display requested address derived by given [BIP44 path](path.md) on device and r
 
 ES6
 ```javascript
-const result = await TrezorConnect.binanceGetAddress(params);
+const result = await OneKeyConnect.binanceGetAddress(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.binanceGetAddress(params).then(function(result) {
+OneKeyConnect.binanceGetAddress(params).then(function(result) {
 
 });
 ```
@@ -30,7 +30,7 @@ You can handle this event and display custom UI inside of your application.
 If certain conditions are fulfilled popup will not be used at all:
 - the user gave permissions to communicate with Trezor
 - device is authenticated by pin/passphrase
-- application has `TrezorConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
+- application has `OneKeyConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
 - parameter `address` is set
 - parameter `showOnTrezor` is set to `true` (or not set at all)
 - application is requesting ONLY ONE(!) address
@@ -39,13 +39,13 @@ If certain conditions are fulfilled popup will not be used at all:
 ### Example
 Display address of first Binance account:
 ```javascript
-TrezorConnect.binanceGetAddress({
+OneKeyConnect.binanceGetAddress({
     path: "m/44'/714'/0'/0/0"
 });
 ```
 Return a bundle of Binance addresses without displaying them on device:
 ```javascript
-TrezorConnect.binanceGetAddress({
+OneKeyConnect.binanceGetAddress({
     bundle: [
         { path: "m/44'/714'/0'/0/0", showOnTrezor: false }, // account 1, address 1
         { path: "m/44'/714'/1'/0/1", showOnTrezor: false }, // account 2, address 2
@@ -55,14 +55,14 @@ TrezorConnect.binanceGetAddress({
 ```
 Validate address using custom UI inside of your application:
 ```javascript
-import TrezorConnect, { UI } from 'trezor-connect';
+import OneKeyConnect, { UI } from '@onekeyhq/connect';
 
-TrezorConnect.on(UI.ADDRESS_VALIDATION, data => {
+OneKeyConnect.on(UI.ADDRESS_VALIDATION, data => {
     console.log("Handle button request", data.address, data.serializedPath);
     // here you can display custom UI inside of your app
 });
 
-const result = await TrezorConnect.binanceGetAddress({
+const result = await OneKeyConnect.binanceGetAddress({
     path: "m/44'/714'/0'/0/0",
     address: "bnb1afwh46v6nn30nkmugw5swdmsyjmlxslgjfugre",
 });

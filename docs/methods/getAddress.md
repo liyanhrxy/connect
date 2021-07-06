@@ -3,12 +3,12 @@ Display requested address derived by given BIP32 path on device and returns it t
 
 ES6
 ```javascript
-const result = await TrezorConnect.getAddress(params);
+const result = await OneKeyConnect.getAddress(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.getAddress(params).then(function(result) {
+OneKeyConnect.getAddress(params).then(function(result) {
 
 });
 ```
@@ -34,7 +34,7 @@ You can handle this event and display custom UI inside of your application.
 If certain conditions are fulfilled popup will not be used at all:
 - the user gave permissions to communicate with Trezor
 - device is authenticated by pin/passphrase
-- application has `TrezorConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
+- application has `OneKeyConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
 - parameter `address` is set
 - parameter `showOnTrezor` is set to `true` (or not set at all)
 - application is requesting ONLY ONE(!) address
@@ -43,14 +43,14 @@ If certain conditions are fulfilled popup will not be used at all:
 ### Example
 Display third address of first bitcoin account:
 ```javascript
-TrezorConnect.getAddress({
+OneKeyConnect.getAddress({
     path: "m/49'/0'/0'/0/2",
     coin: "btc"
 });
 ```
 Return a bundle of addresses from first bitcoin account without displaying them on device:
 ```javascript
-TrezorConnect.getAddress({
+OneKeyConnect.getAddress({
     bundle: [
         { path: "m/49'/0'/0'/0/0", showOnTrezor: false }, // address 1
         { path: "m/49'/0'/0'/0/1", showOnTrezor: false }, // address 2
@@ -60,14 +60,14 @@ TrezorConnect.getAddress({
 ```
 Validate address using custom UI inside of your application:
 ```javascript
-import TrezorConnect, { UI } from 'trezor-connect';
+import OneKeyConnect, { UI } from '@onekeyhq/connect';
 
-TrezorConnect.on(UI.ADDRESS_VALIDATION, data => {
+OneKeyConnect.on(UI.ADDRESS_VALIDATION, data => {
     console.log("Handle button request", data.address, data.serializedPath);
     // here you can display custom UI inside of your app
 });
 
-const result = await TrezorConnect.getAddress({
+const result = await OneKeyConnect.getAddress({
     path: "m/49'/0'/0'/0/0",
     address: "3L6TyTisPBmrDAj6RoKmDzNnj4eQi54gD2",
 });
@@ -111,14 +111,14 @@ Error
 
 v4 and below:
 ```javascript
-TrezorConnect.getAddress("m/49'/0'/4'/0/0", function(result) {
+OneKeyConnect.getAddress("m/49'/0'/4'/0/0", function(result) {
     // added "serializedPath" field
 });
 ```
 should be
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.getAddress({ 
+OneKeyConnect.getAddress({ 
     path: "m/49'/0'/4'/0/0" 
 }).then(function(result) {
     ...

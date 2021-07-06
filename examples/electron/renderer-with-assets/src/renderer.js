@@ -1,9 +1,9 @@
-import TrezorConnect, { TRANSPORT_EVENT, UI, UI_EVENT, DEVICE_EVENT, TRANSPORT, DEVICE } from 'trezor-connect';
+import OneKeyConnect, { TRANSPORT_EVENT, UI, UI_EVENT, DEVICE_EVENT, TRANSPORT, DEVICE } from '@onekeyhq/connect';
 
 // SETUP trezor-connect
 
 // Listen to TRANSPORT_EVENT
-TrezorConnect.on(TRANSPORT_EVENT, event => {
+OneKeyConnect.on(TRANSPORT_EVENT, event => {
     printLog(event.type);
     if (event.type === TRANSPORT.ERROR) {
         // trezor-bridge not installed
@@ -15,7 +15,7 @@ TrezorConnect.on(TRANSPORT_EVENT, event => {
 });
 
 // Listen to DEVICE_EVENT
-TrezorConnect.on(DEVICE_EVENT, event => {
+OneKeyConnect.on(DEVICE_EVENT, event => {
     printLog(event.type);
 
     // not obvious event
@@ -24,18 +24,18 @@ TrezorConnect.on(DEVICE_EVENT, event => {
         // most common reasons is that either device is currently used somewhere else
         // or app refreshed during call and trezor-bridge didn't managed to release the session
         // render "Acquire device" button and after click try to fetch device features using:
-        // TrezorConnect.getFeatures();
+        // OneKeyConnect.getFeatures();
     }
 });
 
 // Listen to UI_EVENT
 // most common requests
-TrezorConnect.on(UI_EVENT, event => {
+OneKeyConnect.on(UI_EVENT, event => {
     printLog(event);
 
     if (event.type === UI.REQUEST_PIN) {
         // example how to respond to pin request
-        TrezorConnect.uiResponse({ type: UI.RECEIVE_PIN, payload: '1234' });
+        OneKeyConnect.uiResponse({ type: UI.RECEIVE_PIN, payload: '1234' });
     }
 
     if (event.type === UI.REQUEST_PASSPHRASE) {
@@ -43,10 +43,10 @@ TrezorConnect.on(UI_EVENT, event => {
             // device does support entering passphrase on device
             // let user choose where to enter
             // if he choose to do it on device respond with:
-            TrezorConnect.uiResponse({ type: UI.RECEIVE_PASSPHRASE, payload: { passphraseOnDevice: true, value: '' } });
+            OneKeyConnect.uiResponse({ type: UI.RECEIVE_PASSPHRASE, payload: { passphraseOnDevice: true, value: '' } });
         } else {
             // example how to respond to passphrase request from regular UI input (form)
-            TrezorConnect.uiResponse({ type: UI.RECEIVE_PASSPHRASE, payload: { value: 'type your passphrase here', save: true } });
+            OneKeyConnect.uiResponse({ type: UI.RECEIVE_PASSPHRASE, payload: { value: 'type your passphrase here', save: true } });
         }
     }
 
@@ -54,7 +54,7 @@ TrezorConnect.on(UI_EVENT, event => {
         if (event.payload.devices.length > 0) {
             // more then one device connected
             // example how to respond to select device
-            TrezorConnect.uiResponse({ type: UI.RECEIVE_DEVICE, payload: event.payload.devices[0] });
+            OneKeyConnect.uiResponse({ type: UI.RECEIVE_DEVICE, payload: event.payload.devices[0] });
         } else {
             // no devices connected, waiting for connection
         }
@@ -65,33 +65,33 @@ TrezorConnect.on(UI_EVENT, event => {
     // warn user about it
     if (event.type === UI.REQUEST_CONFIRMATION) {
         // payload: true - user decides to continue anyway
-        TrezorConnect.uiResponse({ type: UI.RECEIVE_CONFIRMATION, payload: true });
+        OneKeyConnect.uiResponse({ type: UI.RECEIVE_CONFIRMATION, payload: true });
     }
 });
 
-// Initialize TrezorConnect
-TrezorConnect.init({
+// Initialize OneKeyConnect
+OneKeyConnect.init({
     connectSrc: './assets/trezor-connect/',
     popup: false, // render your own UI
     webusb: false, // webusb is not supported in electron
     debug: false, // see what's going on inside connect
     // lazyLoad: true, // set to "false" (default) if you want to start communication with bridge on application start (and detect connected device right away)
-    // set it to "true", then trezor-connect will not be initialized until you call some TrezorConnect.method()
+    // set it to "true", then @onekeyhq/connect will not be initialized until you call some OneKeyConnect.method()
     // this is useful when you don't know if you are dealing with Trezor user
     manifest: {
         email: 'email@developer.com',
         appUrl: 'electron-app-boilerplate',
     },
 }).then(() => {
-    printLog('TrezorConnect is ready!');
+    printLog('OneKeyConnect is ready!');
 }).catch(error => {
-    printLog('TrezorConnect init error', 'TrezorConnect init error:' + error);
+    printLog('OneKeyConnect init error', 'OneKeyConnect init error:' + error);
 });
 
 // click to get public key
 const btn = document.getElementById('get-xpub');
 btn.onclick = () => {
-    TrezorConnect.getPublicKey({
+    OneKeyConnect.getPublicKey({
         path: "m/49'/0'/0'",
         coin: 'btc',
     }).then(response => {

@@ -3,12 +3,12 @@ Display requested address on device and returns it to caller. User is presented 
 
 ES6
 ```javascript
-const result = await TrezorConnect.rippleGetAddress(params);
+const result = await OneKeyConnect.rippleGetAddress(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.rippleGetAddress(params).then(function(result) {
+OneKeyConnect.rippleGetAddress(params).then(function(result) {
 
 });
 ```
@@ -30,7 +30,7 @@ You can handle this event and display custom UI inside of your application.
 If certain conditions are fulfilled popup will not be used at all:
 - the user gave permissions to communicate with Trezor
 - device is authenticated by pin/passphrase
-- application has `TrezorConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
+- application has `OneKeyConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
 - parameter `address` is set
 - parameter `showOnTrezor` is set to `true` (or not set at all)
 - application is requesting ONLY ONE(!) address
@@ -39,13 +39,13 @@ If certain conditions are fulfilled popup will not be used at all:
 ### Example
 Display first address of second ripple account:
 ```javascript
-TrezorConnect.rippleGetAddress({
+OneKeyConnect.rippleGetAddress({
     path: "m/44'/144'/1'/0/0"
 });
 ```
 Return a bundle of ripple addresses without displaying them on device:
 ```javascript
-TrezorConnect.rippleGetAddress({
+OneKeyConnect.rippleGetAddress({
     bundle: [
         { path: "m/44'/144'/0'/0/0", showOnTrezor: false }, // account 1
         { path: "m/44'/144'/1'/0/1", showOnTrezor: false }, // account 2
@@ -55,14 +55,14 @@ TrezorConnect.rippleGetAddress({
 ```
 Validate address using custom UI inside of your application:
 ```javascript
-import TrezorConnect, { UI } from 'trezor-connect';
+import OneKeyConnect, { UI } from '@onekeyhq/connect';
 
-TrezorConnect.on(UI.ADDRESS_VALIDATION, data => {
+OneKeyConnect.on(UI.ADDRESS_VALIDATION, data => {
     console.log("Handle button request", data.address, data.serializedPath);
     // here you can display custom UI inside of your app
 });
 
-const result = await TrezorConnect.rippleGetAddress({
+const result = await OneKeyConnect.rippleGetAddress({
     path: "m/44'/144'/0'/0/0",
     address: "rNaqKtKrMSwpwZSzRckPf7S96DkimjkF4H",
 });

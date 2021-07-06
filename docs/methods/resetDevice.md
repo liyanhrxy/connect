@@ -3,12 +3,12 @@ Perform device setup and generate new seed.
 
 ES6
 ```javascript
-const result = await TrezorConnect.resetDevice(params);
+const result = await OneKeyConnect.resetDevice(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.resetDevice(params).then(function(result) {
+OneKeyConnect.resetDevice(params).then(function(result) {
 
 });
 ```
@@ -26,7 +26,7 @@ TrezorConnect.resetDevice(params).then(function(result) {
 
 ### Example
 ```javascript
-TrezorConnect.resetDevice({
+OneKeyConnect.resetDevice({
     label: 'My fancy Trezor',
 });
 ```

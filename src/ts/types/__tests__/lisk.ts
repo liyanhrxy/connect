@@ -1,7 +1,7 @@
-import TrezorConnect from '../index';
+import OneKeyConnect from '../index';
 export const liskGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.liskGetAddress({ path: 'm/44' });
+    const singleAddress = await OneKeyConnect.liskGetAddress({ path: 'm/44' });
     if (singleAddress.success) {
         const { payload } = singleAddress;
         payload.address;
@@ -14,7 +14,7 @@ export const liskGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.liskGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await OneKeyConnect.liskGetAddress({ bundle: [{ path: 'm/44' }] });
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
             item.address;
@@ -28,7 +28,7 @@ export const liskGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.liskGetAddress({
+    OneKeyConnect.liskGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -45,18 +45,18 @@ export const liskGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.liskGetAddress();
+    OneKeyConnect.liskGetAddress();
     // @ts-ignore
-    TrezorConnect.liskGetAddress({ coin: 'btc' });
+    OneKeyConnect.liskGetAddress({ coin: 'btc' });
     // @ts-ignore
-    TrezorConnect.liskGetAddress({ path: 1 });
+    OneKeyConnect.liskGetAddress({ path: 1 });
     // @ts-ignore
-    TrezorConnect.liskGetAddress({ bundle: 1 });
+    OneKeyConnect.liskGetAddress({ bundle: 1 });
 };
 
 export const liskGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.liskGetPublicKey({ path: 'm/44' });
+    const singlePK = await OneKeyConnect.liskGetPublicKey({ path: 'm/44' });
 
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -70,7 +70,7 @@ export const liskGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.liskGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await OneKeyConnect.liskGetPublicKey({ bundle: [{ path: 'm/44' }] });
 
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -93,7 +93,7 @@ export const liskSignTransaction = async () => {
         type: 0,
         fee: '10000000',
     };
-    const sign = await TrezorConnect.liskSignTransaction({
+    const sign = await OneKeyConnect.liskSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -115,7 +115,7 @@ export const liskSignTransaction = async () => {
         payload.signature;
     }
 
-    TrezorConnect.liskSignTransaction({
+    OneKeyConnect.liskSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -127,7 +127,7 @@ export const liskSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.liskSignTransaction({
+    OneKeyConnect.liskSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -140,7 +140,7 @@ export const liskSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.liskSignTransaction({
+    OneKeyConnect.liskSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -152,7 +152,7 @@ export const liskSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.liskSignTransaction({
+    OneKeyConnect.liskSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -164,13 +164,13 @@ export const liskSignTransaction = async () => {
 };
 
 export const signMessage = async () => {
-    const sign = await TrezorConnect.liskSignMessage({ path: 'm/44', message: 'foo' });
+    const sign = await OneKeyConnect.liskSignMessage({ path: 'm/44', message: 'foo' });
     if (sign.success) {
         const { payload } = sign;
         payload.publicKey;
         payload.signature;
     }
-    const verify = await TrezorConnect.liskVerifyMessage({ publicKey: 'a', signature: 'a', message: 'foo' });
+    const verify = await OneKeyConnect.liskVerifyMessage({ publicKey: 'a', signature: 'a', message: 'foo' });
     if (verify.success) {
         const { payload } = verify;
         payload.message;

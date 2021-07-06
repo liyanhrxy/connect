@@ -1,9 +1,9 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import OneKeyConnect from '../../index';
 
 export const cardanoGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.cardanoGetAddress({
+    const singleAddress = await OneKeyConnect.cardanoGetAddress({
         addressParameters: {
             addressType: 0,
             path: 'm/44',
@@ -40,7 +40,7 @@ export const cardanoGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.cardanoGetAddress({
+    const bundleAddress = await OneKeyConnect.cardanoGetAddress({
         bundle: [
             {
                 addressParameters: {
@@ -83,7 +83,7 @@ export const cardanoGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.cardanoGetAddress({
+    OneKeyConnect.cardanoGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -111,7 +111,7 @@ export const cardanoGetAddress = async () => {
     });
 
     // $FlowExpectedError: payload is Address
-    const e1 = await TrezorConnect.cardanoGetAddress({
+    const e1 = await OneKeyConnect.cardanoGetAddress({
         addressParameters: {
             addressType: 0,
             path: 'm/44',
@@ -125,7 +125,7 @@ export const cardanoGetAddress = async () => {
     }
 
     // $FlowExpectedError: payload is Address[]
-    const e2 = await TrezorConnect.cardanoGetAddress({
+    const e2 = await OneKeyConnect.cardanoGetAddress({
         bundle: [
             {
                 addressParameters: {
@@ -142,18 +142,18 @@ export const cardanoGetAddress = async () => {
 
     // with invalid params
     // $FlowExpectedError
-    TrezorConnect.cardanoGetAddress();
+    OneKeyConnect.cardanoGetAddress();
     // $FlowExpectedError
-    TrezorConnect.cardanoGetAddress({ coin: 'btc' });
+    OneKeyConnect.cardanoGetAddress({ coin: 'btc' });
     // $FlowExpectedError
-    TrezorConnect.cardanoGetAddress({ addressParameters: { path: 1 } });
+    OneKeyConnect.cardanoGetAddress({ addressParameters: { path: 1 } });
     // $FlowExpectedError
-    TrezorConnect.cardanoGetAddress({ bundle: 1 });
+    OneKeyConnect.cardanoGetAddress({ bundle: 1 });
 };
 
 export const cardanoGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.cardanoGetPublicKey({ path: 'm/44' });
+    const singlePK = await OneKeyConnect.cardanoGetPublicKey({ path: 'm/44' });
     (singlePK.success: boolean);
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -164,7 +164,7 @@ export const cardanoGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await OneKeyConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
     (bundlePK.success: boolean);
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -179,7 +179,7 @@ export const cardanoGetPublicKey = async () => {
 
     // errors
     // $FlowExpectedError: payload is PublicKey
-    const e1 = await TrezorConnect.cardanoGetPublicKey({ path: 'm/44' });
+    const e1 = await OneKeyConnect.cardanoGetPublicKey({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.path: string);
@@ -187,12 +187,12 @@ export const cardanoGetPublicKey = async () => {
     }
 
     // $FlowExpectedError: payload is PublicKey[]
-    const e2 = await TrezorConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const e2 = await OneKeyConnect.cardanoGetPublicKey({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.path;
 };
 
 export const cardanoSignTransaction = async () => {
-    const sign = await TrezorConnect.cardanoSignTransaction({
+    const sign = await OneKeyConnect.cardanoSignTransaction({
         inputs: [
             {
                 prev_hash: '1af..',

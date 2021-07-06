@@ -5,12 +5,12 @@ details on Trezor.
 
 ES6
 ```javascript
-const result = await TrezorConnect.cardanoSignTransaction(params);
+const result = await OneKeyConnect.cardanoSignTransaction(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.cardanoSignTransaction(params).then(function(result) {
+OneKeyConnect.cardanoSignTransaction(params).then(function(result) {
 
 });
 ```
@@ -48,7 +48,7 @@ Trezor supports signing of stake pool registration certificates as a pool owner.
 
 #### Ordinary transaction
 ```javascript
-TrezorConnect.cardanoSignTransaction({
+OneKeyConnect.cardanoSignTransaction({
     inputs: [
         {
             path: "m/44'/1815'/0'/0/1",
@@ -117,7 +117,7 @@ TrezorConnect.cardanoSignTransaction({
 
 #### Stake pool registration
 ```javascript
-TrezorConnect.cardanoSignTransaction({
+OneKeyConnect.cardanoSignTransaction({
     inputs: [
         {
             // notice no path is provided here

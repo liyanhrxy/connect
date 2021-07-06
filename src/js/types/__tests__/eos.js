@@ -1,9 +1,9 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import OneKeyConnect from '../../index';
 
 export const eosGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.eosGetPublicKey({ path: 'm/44' });
+    const singlePK = await OneKeyConnect.eosGetPublicKey({ path: 'm/44' });
     (singlePK.success: boolean);
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -14,7 +14,7 @@ export const eosGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.eosGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await OneKeyConnect.eosGetPublicKey({ bundle: [{ path: 'm/44' }] });
     (bundlePK.success: boolean);
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -28,7 +28,7 @@ export const eosGetPublicKey = async () => {
     }
 
     // $FlowExpectedError: payload is Address
-    const e1 = await TrezorConnect.eosGetPublicKey({ path: 'm/44' });
+    const e1 = await OneKeyConnect.eosGetPublicKey({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.address: string);
@@ -36,7 +36,7 @@ export const eosGetPublicKey = async () => {
     }
 
     // $FlowExpectedError: payload is Address[]
-    const e2 = await TrezorConnect.eosGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const e2 = await OneKeyConnect.eosGetPublicKey({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.address;
 };
 
@@ -49,7 +49,7 @@ export const eosSignTransaction = async () => {
         }],
     };
 
-    const sign = await TrezorConnect.eosSignTransaction({
+    const sign = await OneKeyConnect.eosSignTransaction({
         path: "m/44'/194'/0'/0/0",
         transaction: {
             chainId: 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f',

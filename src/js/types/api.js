@@ -58,18 +58,18 @@ interface Emitter {
 
 export type API = {
     /**
-     * Set TrezorConnect manifest.
+     * Set OneKeyConnect manifest.
      */
     manifest: (params: P.Manifest) => void;
 
     /**
-     * Initializes TrezorConnect.
+     * Initializes OneKeyConnect.
      * `manifest` is required
      */
     init: (settings: { manifest: P.Manifest } & $Shape<P.ConnectSettings>) => Promise<void>;
 
     /**
-     * Retrieves the settings that TrezorConnect was initialized with.
+     * Retrieves the settings that OneKeyConnect was initialized with.
      */
     getSettings: () => P.Response<P.ConnectSettings>;
 

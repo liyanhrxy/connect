@@ -3,12 +3,12 @@ Returns information about a specified coin from the [coins.json](../../src/data/
 
 ES6
 ```javascript
-const result = await TrezorConnect.getCoinInfo(params);
+const result = await OneKeyConnect.getCoinInfo(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.getCoinInfo(params).then(function(result) {
+OneKeyConnect.getCoinInfo(params).then(function(result) {
 
 });
 ```
@@ -21,7 +21,7 @@ TrezorConnect.getCoinInfo(params).then(function(result) {
 ### Example
 Get coin info for Bitcoin.
 ```javascript
-TrezorConnect.getCoinInfo({
+OneKeyConnect.getCoinInfo({
     coin: 'btc',
 });
 ```

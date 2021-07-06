@@ -3,12 +3,12 @@ Display requested address on device and returns it to caller. User is presented 
 
 ES6
 ```javascript
-const result = await TrezorConnect.stellarGetAddress(params);
+const result = await OneKeyConnect.stellarGetAddress(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.stellarGetAddress(params).then(function(result) {
+OneKeyConnect.stellarGetAddress(params).then(function(result) {
 
 });
 ```
@@ -30,7 +30,7 @@ You can handle this event and display custom UI inside of your application.
 If certain conditions are fulfilled popup will not be used at all:
 - the user gave permissions to communicate with Trezor
 - device is authenticated by pin/passphrase
-- application has `TrezorConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
+- application has `OneKeyConnect.on(UI.ADDRESS_VALIDATION, () => {});` listener registered
 - parameter `address` is set
 - parameter `showOnTrezor` is set to `true` (or not set at all)
 - application is requesting ONLY ONE(!) address
@@ -39,13 +39,13 @@ If certain conditions are fulfilled popup will not be used at all:
 ### Example
 Display address of first stellar account:
 ```javascript
-TrezorConnect.stellarGetAddress({
+OneKeyConnect.stellarGetAddress({
     path: "m/44'/148'/0'"
 });
 ```
 Return a bundle of stellar addresses without displaying them on device:
 ```javascript
-TrezorConnect.stellarGetAddress({
+OneKeyConnect.stellarGetAddress({
     bundle: [
         { path: "m/44'/148'/0'", showOnTrezor: false }, // account 1
         { path: "m/44'/148'/1'", showOnTrezor: false }, // account 2
@@ -55,14 +55,14 @@ TrezorConnect.stellarGetAddress({
 ```
 Validate address using custom UI inside of your application:
 ```javascript
-import TrezorConnect, { UI } from 'trezor-connect';
+import OneKeyConnect, { UI } from '@onekeyhq/connect';
 
-TrezorConnect.on(UI.ADDRESS_VALIDATION, data => {
+OneKeyConnect.on(UI.ADDRESS_VALIDATION, data => {
     console.log("Handle button request", data.address, data.serializedPath);
     // here you can display custom UI inside of your app
 });
 
-const result = await TrezorConnect.stellarGetAddress({
+const result = await OneKeyConnect.stellarGetAddress({
     path: "m/44'/148'/0'/0/0",
     address: "GAXSFOOGF4ELO5HT5PTN23T5XE6D5QWL3YBHSVQ2HWOFEJNYYMRJENBV",
 });

@@ -1,16 +1,16 @@
 ## Installation
 
 Install library as npm module:
-```javascript
-npm install trezor-connect
+```shell
+npm install @onekeyhq/connect
 ```
 or
-```javascript
-yarn add trezor-connect
+```shell
+yarn add @onekeyhq/connect
 ```
 
 Include library as inline script:
-```javascript
+```html
 <script src="https://connect.onekey.so/7/trezor-connect.js"></script>
 ```
 
@@ -18,25 +18,25 @@ Include library as inline script:
 
 ES6
 ```javascript
-import TrezorConnect from 'trezor-connect';
+import OneKeyConnect from '@onekeyhq/connect';
 ```
 
 CommonJS
 ```javascript
-var TrezorConnect = require('trezor-connect').default;
+var OneKeyConnect = require('@onekeyhq/connect').default;
 ```
 
 Inline
 ```javascript
-var TrezorConnect = window.TrezorConnect;
+var OneKeyConnect = window.OneKeyConnect;
 ```
 
-## Trezor Connect Manifest
+## OneKey Connect Manifest
 Starting with Trezor Connect 7, we have implemented a new feature — Trezor Connect Manifest — which requires that you as a Trezor Connect integrator, to share your e-mail and application url with us.
 This provides us with the **ability to reach you in case of any required maintenance.**
 This subscription is mandatory. Trezor Connect raises an error that reads "Manifest not set. Read more at https://github.com/trezor/connect/blob/develop/docs/index.md" if manifest is not provided.
 ```javascript
-TrezorConnect.manifest({
+OneKeyConnect.manifest({
     email: 'developer@xyz.com',
     appUrl: 'http://your.application.com'
 })
@@ -51,15 +51,15 @@ TrezorConnect.manifest({
 * [Events](events.md)
 
 ## Running local version (develop/stable)
-- clone repository: `git clone git@github.com:trezor/connect.git`
+- clone repository: `git clone git@github.com:OneKeyHQ/connect.git`
 - install node_modules: `yarn`
 - run localhost server: `yarn dev`
 
 Initialize in project
 ```javascript
-TrezorConnect.init({
+OneKeyConnect.init({
     connectSrc: 'https://localhost:8088/',
-    lazyLoad: true, // this param will prevent iframe injection until TrezorConnect.method will be called
+    lazyLoad: true, // this param will prevent iframe injection until OneKeyConnect.method will be called
     manifest: {
         email: 'developer@xyz.com',
         appUrl: 'http://your.application.com',
@@ -68,15 +68,15 @@ TrezorConnect.init({
 ```
 
 ## Running local version (custom branch)
-In order to run a branch which isn't published to npm registry and this branch requires changes (mostly happened when new a method is added to TrezorConnect interface)
+In order to run a branch which isn't published to npm registry and this branch requires changes (mostly happened when new a method is added to OneKeyConnect interface)
 - git checkout `custom-feature-branch`
 - yarn build:npm
 
 Install builded lib in your project:
 #### Using `yarn link`
 * cd ./npm && yarn link
-* Inside your project: `yarn install trezor-connect`
+* Inside your project: `yarn install @onekeyhq/connect`
 #### Using local files
-* Inside your project: `yarn install trezor-connect@file:/[local-path-to-repository]/npm`
+* Inside your project: `yarn install @onekeyhq/connect@file:/[local-path-to-repository]/npm`
 
 

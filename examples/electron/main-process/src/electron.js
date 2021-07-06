@@ -1,7 +1,7 @@
 const { app, ipcMain, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
-const { initTrezorConnect, callTrezorConnect } = require('./trezor-connect-ipc');
+const { initOneKeyConnect, callOneKeyConnect } = require('./trezor-connect-ipc');
 
 let mainWindow;
 
@@ -56,8 +56,8 @@ app.on('browser-window-focus', (event, win) => {
 // handle messages from renderer
 ipcMain.on('trezor-connect', async (event, message) => {
     if (message === 'init') {
-        initTrezorConnect(event.sender);
+        initOneKeyConnect(event.sender);
     } else {
-        callTrezorConnect(event.sender, message);
+        callOneKeyConnect(event.sender, message);
     }
 });

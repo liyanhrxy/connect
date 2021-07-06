@@ -5,12 +5,12 @@ verify a message using the signer address and signature.
 
 ES6
 ```javascript
-const result = await TrezorConnect.verifyMessage(params);
+const result = await OneKeyConnect.verifyMessage(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.verifyMessage(params).then(function(result) {
+OneKeyConnect.verifyMessage(params).then(function(result) {
 
 });
 ```
@@ -26,7 +26,7 @@ TrezorConnect.verifyMessage(params).then(function(result) {
 
 ### Example
 ```javascript
-TrezorConnect.verifyMessage({
+OneKeyConnect.verifyMessage({
     address: "3BD8TL6iShVzizQzvo789SuynEKGpLTms9",
     message: "example message",
     signature: "JO7vL3tOB1qQyfSeIVLvdEw9G1tCvL+lNj78XDAVM4t6UptADs3kXDTO2+2ZeEOLFL4/+wm+BBdSpo3kb3Cnsas=",
@@ -60,7 +60,7 @@ version 4 and below
 ```javascript
 var address = "3BD8TL6iShVzizQzvo789SuynEKGpLTms9";
 var signature = "JO7vL3tOB1qQyfSeIVLvdEw9G1tCvL+lNj78XDAVM4t6UptADs3kXDTO2+2ZeEOLFL4/+wm+BBdSpo3kb3Cnsas=";
-TrezorConnect.verifyMessage(
+OneKeyConnect.verifyMessage(
     address,
     signature,
     "example message",
@@ -71,7 +71,7 @@ TrezorConnect.verifyMessage(
 version 5
 ```javascript
 // params are key-value pairs inside Object
-TrezorConnect.verifyMessage({ 
+OneKeyConnect.verifyMessage({ 
     address: "3BD8TL6iShVzizQzvo789SuynEKGpLTms9",
     signature: "JO7vL3tOB1qQyfSeIVLvdEw9G1tCvL+lNj78XDAVM4t6UptADs3kXDTO2+2ZeEOLFL4/+wm+BBdSpo3kb3Cnsas=",
     message: "example message",

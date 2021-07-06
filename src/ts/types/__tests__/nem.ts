@@ -1,8 +1,8 @@
-import TrezorConnect from '../index';
+import OneKeyConnect from '../index';
 
 export const nemGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.nemGetAddress({ path: 'm/44', network: 1 });
+    const singleAddress = await OneKeyConnect.nemGetAddress({ path: 'm/44', network: 1 });
 
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -16,7 +16,7 @@ export const nemGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.nemGetAddress({ bundle: [{ path: 'm/44', network: 1 }] });
+    const bundleAddress = await OneKeyConnect.nemGetAddress({ bundle: [{ path: 'm/44', network: 1 }] });
 
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -31,7 +31,7 @@ export const nemGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.nemGetAddress({
+    OneKeyConnect.nemGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -49,13 +49,13 @@ export const nemGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.nemGetAddress();
+    OneKeyConnect.nemGetAddress();
     // @ts-ignore
-    TrezorConnect.nemGetAddress({ coin: 'btc' });
+    OneKeyConnect.nemGetAddress({ coin: 'btc' });
     // @ts-ignore
-    TrezorConnect.nemGetAddress({ path: 1 });
+    OneKeyConnect.nemGetAddress({ path: 1 });
     // @ts-ignore
-    TrezorConnect.nemGetAddress({ bundle: 1 });
+    OneKeyConnect.nemGetAddress({ bundle: 1 });
 };
 
 export const nemSignTransaction = async () => {
@@ -66,7 +66,7 @@ export const nemSignTransaction = async () => {
         deadline: 74735615,
         signer: 'TALICE2GMA34CXHD7XLJQ536NM5UNKQHTORNNT2J',
     };
-    const sign = await TrezorConnect.nemSignTransaction({
+    const sign = await OneKeyConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -86,7 +86,7 @@ export const nemSignTransaction = async () => {
         payload.signature;
     }
 
-    TrezorConnect.nemSignTransaction({
+    OneKeyConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -103,7 +103,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    OneKeyConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -117,7 +117,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    OneKeyConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -131,7 +131,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    OneKeyConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -153,7 +153,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    OneKeyConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -175,7 +175,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    OneKeyConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -187,7 +187,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    OneKeyConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,
@@ -199,7 +199,7 @@ export const nemSignTransaction = async () => {
         },
     });
 
-    TrezorConnect.nemSignTransaction({
+    OneKeyConnect.nemSignTransaction({
         path: 'm/44',
         transaction: {
             ...common,

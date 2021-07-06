@@ -1,8 +1,8 @@
-import TrezorConnect from '../index';
+import OneKeyConnect from '../index';
 
 export const ethereumGetAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.ethereumGetAddress({ path: 'm/44' });
+    const singleAddress = await OneKeyConnect.ethereumGetAddress({ path: 'm/44' });
 
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -16,7 +16,7 @@ export const ethereumGetAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.ethereumGetAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await OneKeyConnect.ethereumGetAddress({ bundle: [{ path: 'm/44' }] });
 
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -31,7 +31,7 @@ export const ethereumGetAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.ethereumGetAddress({
+    OneKeyConnect.ethereumGetAddress({
         device: {
             path: '1',
             instance: 1,
@@ -48,18 +48,18 @@ export const ethereumGetAddress = async () => {
 
     // with invalid params
     // @ts-ignore
-    TrezorConnect.ethereumGetAddress();
+    OneKeyConnect.ethereumGetAddress();
     // @ts-ignore
-    TrezorConnect.ethereumGetAddress({ coin: 'btc' });
+    OneKeyConnect.ethereumGetAddress({ coin: 'btc' });
     // @ts-ignore
-    TrezorConnect.ethereumGetAddress({ path: 1 });
+    OneKeyConnect.ethereumGetAddress({ path: 1 });
     // @ts-ignore
-    TrezorConnect.ethereumGetAddress({ bundle: 1 });
+    OneKeyConnect.ethereumGetAddress({ bundle: 1 });
 };
 
 export const ethereumGetPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.ethereumGetPublicKey({ path: 'm/44' });
+    const singlePK = await OneKeyConnect.ethereumGetPublicKey({ path: 'm/44' });
 
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -79,7 +79,7 @@ export const ethereumGetPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.ethereumGetPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await OneKeyConnect.ethereumGetPublicKey({ bundle: [{ path: 'm/44' }] });
 
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -101,7 +101,7 @@ export const ethereumGetPublicKey = async () => {
 };
 
 export const ethereumSignTransaction = async () => {
-    const sign = await TrezorConnect.ethereumSignTransaction({
+    const sign = await OneKeyConnect.ethereumSignTransaction({
         path: 'm/44',
         transaction: {
             nonce: '0x0',
@@ -123,13 +123,13 @@ export const ethereumSignTransaction = async () => {
 };
 
 export const signMessage = async () => {
-    const sign = await TrezorConnect.ethereumSignMessage({ path: 'm/44', message: 'foo', hex: false });
+    const sign = await OneKeyConnect.ethereumSignMessage({ path: 'm/44', message: 'foo', hex: false });
     if (sign.success) {
         const { payload } = sign;
         payload.address;
         payload.signature;
     }
-    const verify = await TrezorConnect.ethereumVerifyMessage({
+    const verify = await OneKeyConnect.ethereumVerifyMessage({
         address: 'a',
         signature: 'a',
         message: 'foo',

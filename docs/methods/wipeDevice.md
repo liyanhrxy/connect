@@ -3,12 +3,12 @@ Reset device to factory defaults and remove all private data.
 
 ES6
 ```javascript
-const result = await TrezorConnect.wipeDevice(params);
+const result = await OneKeyConnect.wipeDevice(params);
 ```
 
 CommonJS
 ```javascript
-TrezorConnect.wipeDevice(params).then(function(result) {
+OneKeyConnect.wipeDevice(params).then(function(result) {
 
 });
 ```
@@ -21,7 +21,7 @@ Common parameter `allowSeedlessDevice` - is set to `true`
 
 ### Example
 ```javascript
-TrezorConnect.wipeDevice();
+OneKeyConnect.wipeDevice();
 ```
 
 ### Result

@@ -1,9 +1,9 @@
 /* @flow */
-import TrezorConnect from '../../index';
+import OneKeyConnect from '../../index';
 
 export const getAddress = async () => {
     // regular
-    const singleAddress = await TrezorConnect.getAddress({ path: 'm/44' });
+    const singleAddress = await OneKeyConnect.getAddress({ path: 'm/44' });
     (singleAddress.success: boolean);
     if (singleAddress.success) {
         const { payload } = singleAddress;
@@ -13,7 +13,7 @@ export const getAddress = async () => {
     }
 
     // bundle
-    const bundleAddress = await TrezorConnect.getAddress({ bundle: [{ path: 'm/44' }] });
+    const bundleAddress = await OneKeyConnect.getAddress({ bundle: [{ path: 'm/44' }] });
     (bundleAddress.success: boolean);
     if (bundleAddress.success) {
         bundleAddress.payload.forEach(item => {
@@ -26,7 +26,7 @@ export const getAddress = async () => {
     }
 
     // with all possible params
-    TrezorConnect.getAddress({
+    OneKeyConnect.getAddress({
         device: {
             path: '1',
             instance: 1,
@@ -44,7 +44,7 @@ export const getAddress = async () => {
     });
 
     // $FlowExpectedError: payload is Address
-    const e1 = await TrezorConnect.getAddress({ path: 'm/44' });
+    const e1 = await OneKeyConnect.getAddress({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.address: string);
@@ -52,23 +52,23 @@ export const getAddress = async () => {
     }
 
     // $FlowExpectedError: payload is Address[]
-    const e2 = await TrezorConnect.getAddress({ bundle: [{ path: 'm/44' }] });
+    const e2 = await OneKeyConnect.getAddress({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.address;
 
     // with invalid params
     // $FlowExpectedError
-    TrezorConnect.getAddress();
+    OneKeyConnect.getAddress();
     // $FlowExpectedError
-    TrezorConnect.getAddress({ coin: 'btc' });
+    OneKeyConnect.getAddress({ coin: 'btc' });
     // $FlowExpectedError
-    TrezorConnect.getAddress({ path: 1 });
+    OneKeyConnect.getAddress({ path: 1 });
     // $FlowExpectedError
-    TrezorConnect.getAddress({ bundle: 1 });
+    OneKeyConnect.getAddress({ bundle: 1 });
 };
 
 export const getPublicKey = async () => {
     // regular
-    const singlePK = await TrezorConnect.getPublicKey({ path: 'm/44' });
+    const singlePK = await OneKeyConnect.getPublicKey({ path: 'm/44' });
     (singlePK.success: boolean);
     if (singlePK.success) {
         const { payload } = singlePK;
@@ -84,7 +84,7 @@ export const getPublicKey = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.getPublicKey({ bundle: [{ path: 'm/44' }] });
+    const bundlePK = await OneKeyConnect.getPublicKey({ bundle: [{ path: 'm/44' }] });
     (bundlePK.success: boolean);
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -104,7 +104,7 @@ export const getPublicKey = async () => {
 
     // errors
     // $FlowExpectedError: payload is PublicKey
-    const e1 = await TrezorConnect.getPublicKey({ path: 'm/44' });
+    const e1 = await OneKeyConnect.getPublicKey({ path: 'm/44' });
     if (e1.success) {
         e1.payload.forEach(item => {
             (item.path: string);
@@ -112,20 +112,20 @@ export const getPublicKey = async () => {
     }
 
     // $FlowExpectedError: payload is PublicKey[]
-    const e2 = await TrezorConnect.getPublicKey({ bundle: [{ path: 'm/44' }] });
+    const e2 = await OneKeyConnect.getPublicKey({ bundle: [{ path: 'm/44' }] });
     if (e2.success) e2.payload.path;
 };
 
 export const signTransaction = async () => {
     // minimum required params
-    TrezorConnect.signTransaction({
+    OneKeyConnect.signTransaction({
         inputs: [],
         outputs: [],
         coin: 'btc',
     });
 
     // with all possible params
-    const sign = await TrezorConnect.signTransaction({
+    const sign = await OneKeyConnect.signTransaction({
         inputs: [
             {
                 address_n: [0],
@@ -370,10 +370,10 @@ export const signTransaction = async () => {
 
     // with invalid params
     // $FlowExpectedError
-    TrezorConnect.signTransaction();
+    OneKeyConnect.signTransaction();
     // $FlowExpectedError
-    TrezorConnect.signTransaction({ coin: 'btc' });
-    TrezorConnect.signTransaction({
+    OneKeyConnect.signTransaction({ coin: 'btc' });
+    OneKeyConnect.signTransaction({
         inputs: [{
             address_n: [0],
             prev_index: 0,
@@ -409,22 +409,22 @@ export const signTransaction = async () => {
 };
 
 export const pushTransaction = async () => {
-    const push = await TrezorConnect.pushTransaction({ tx: 'serializedTX', coin: 'btc' });
+    const push = await OneKeyConnect.pushTransaction({ tx: 'serializedTX', coin: 'btc' });
     if (push.success) {
         (push.payload.txid: string);
     }
 
     // with invalid params
     // $FlowExpectedError
-    TrezorConnect.pushTransaction();
+    OneKeyConnect.pushTransaction();
     // $FlowExpectedError
-    TrezorConnect.pushTransaction({ coin: 'btc' });
+    OneKeyConnect.pushTransaction({ coin: 'btc' });
 };
 
 export const composeTransaction = async () => {
     // Method with mixed params and mixed responses
 
-    const compose = await TrezorConnect.composeTransaction({
+    const compose = await OneKeyConnect.composeTransaction({
         outputs: [],
         coin: 'btc',
     });
@@ -432,7 +432,7 @@ export const composeTransaction = async () => {
         (compose.payload.serializedTx: string);
     }
 
-    const precompose = await TrezorConnect.composeTransaction({
+    const precompose = await OneKeyConnect.composeTransaction({
         outputs: [],
         account: {
             path: 'm/49',
@@ -467,9 +467,9 @@ export const composeTransaction = async () => {
 
 export const getAccountInfo = async () => {
     // minimum required params
-    TrezorConnect.getAccountInfo({ coin: 'btc' });
+    OneKeyConnect.getAccountInfo({ coin: 'btc' });
 
-    const account = await TrezorConnect.getAccountInfo({
+    const account = await OneKeyConnect.getAccountInfo({
         coin: 'btc',
         path: 'm/44',
         descriptor: 'xpub',
@@ -537,7 +537,7 @@ export const getAccountInfo = async () => {
     }
 
     // bundle
-    const bundlePK = await TrezorConnect.getAccountInfo({ bundle: [{ path: 'm/44', coin: 'btc' }] });
+    const bundlePK = await OneKeyConnect.getAccountInfo({ bundle: [{ path: 'm/44', coin: 'btc' }] });
     (bundlePK.success: boolean);
     if (bundlePK.success) {
         bundlePK.payload.forEach(item => {
@@ -549,13 +549,13 @@ export const getAccountInfo = async () => {
 };
 
 export const signMessage = async () => {
-    const sign = await TrezorConnect.signMessage({ path: 'm/44', coin: 'btc', message: 'foo' });
+    const sign = await OneKeyConnect.signMessage({ path: 'm/44', coin: 'btc', message: 'foo' });
     if (sign.success) {
         const { payload } = sign;
         (payload.address: string);
         (payload.signature: string);
     }
-    const verify = await TrezorConnect.verifyMessage({ address: 'a', signature: 'a', message: 'foo', coin: 'btc' });
+    const verify = await OneKeyConnect.verifyMessage({ address: 'a', signature: 'a', message: 'foo', coin: 'btc' });
     if (verify.success) {
         const { payload } = verify;
         (payload.message: string);

@@ -60,8 +60,8 @@
 # 8.1.15
 
 ### Fixed
-- `TrezorConnect.cancel` method called during Pin/Passphrase/Word requests.
-- `TrezorConnect.cardanoGetAddress` added missing validation for `protocolMagic` param.
+- `OneKeyConnect.cancel` method called during Pin/Passphrase/Word requests.
+- `OneKeyConnect.cardanoGetAddress` added missing validation for `protocolMagic` param.
 - Device `Features.unlocked` translated from legacy field `pin_cached`.
 
 ### Changed
@@ -198,13 +198,13 @@
 - Typescript types
 - `hex` parameter to `signMessage` and `verifyMessage` methods
 - Blockchain methods for fiat rates:
-    - `TrezorConnect.blockchainGetAccountBalanceHistory`
-    - `TrezorConnect.blockchainGetCurrentFiatRates`
-    - `TrezorConnect.blockchainGetFiatRatesForTimestamps`
-    - `TrezorConnect.blockchainSubscribeFiatRates`
-    - `TrezorConnect.blockchainUnsubscribeFiatRates`
-- `TrezorConnect.blockchainSetCustomBackend` method
-- `TrezorConnect.cancel` is now trying to send (post) 'Cancel' message to acquired device (not working with TrezorBridge < 2.0.29)
+    - `OneKeyConnect.blockchainGetAccountBalanceHistory`
+    - `OneKeyConnect.blockchainGetCurrentFiatRates`
+    - `OneKeyConnect.blockchainGetFiatRatesForTimestamps`
+    - `OneKeyConnect.blockchainSubscribeFiatRates`
+    - `OneKeyConnect.blockchainUnsubscribeFiatRates`
+- `OneKeyConnect.blockchainSetCustomBackend` method
+- `OneKeyConnect.cancel` is now trying to send (post) 'Cancel' message to acquired device (not working with TrezorBridge < 2.0.29)
 - Implement @trezor/rollout module https://github.com/trezor/connect/issues/295
 
 #### Fixed
@@ -273,7 +273,7 @@
 # 8.0.7
 
 #### Added
-- `stellarSignTransaction` plugin - a tool for transforming StellarSDK.Transaction object into TrezorConnect.StellarTransaction
+- `stellarSignTransaction` plugin - a tool for transforming StellarSDK.Transaction object into OneKeyConnect.StellarTransaction
 - `stellarSignTransaction` missing tests
 
 #### Fixed
@@ -320,7 +320,7 @@
 - Binance Chain (BNB) support
 
 #### Fixed
-- `TrezorConnect.cancel` race condition between device release and returned response
+- `OneKeyConnect.cancel` race condition between device release and returned response
 
 #### Updated
 - protobuf messages
@@ -341,7 +341,7 @@
 # 8.0.1
 
 #### Added
-- `TrezorConnect.disableWebUSB` method
+- `OneKeyConnect.disableWebUSB` method
 
 #### Changed
 - renamed EOS actions parameters 'buyram': quantity > quant, 'voteproducer': data.account > data.voter
@@ -352,12 +352,12 @@
 - Changed communication process between host, iframe and popup. BroadcastChannel is used as default, postMessage as fallback
 - Completely rewritten backend layer. Old way using hd-wallet and bitcore/blockbook-api-v1 is dropped in favour of `@trezor/blockchain-link`
 - `BigInteger` support for Bitcoin transactions using `@trezor/utxo-lib` and `hd-wallet@bigint`
-- `TrezorConnect.rippleGetAccountInfo` and `TrezorConnect.ethereumGetAccountInfo` merged to `TrezorConnect.getAccountInfo`
-- `TrezorConnect.getAccountInfo` parameters
+- `OneKeyConnect.rippleGetAccountInfo` and `OneKeyConnect.ethereumGetAccountInfo` merged to `OneKeyConnect.getAccountInfo`
+- `OneKeyConnect.getAccountInfo` parameters
 
 #### Added
 - nodejs support
-- `lazyLoad` parameter to `TrezorConnect.init`
+- `lazyLoad` parameter to `OneKeyConnect.init`
 - bech32 accounts support
 - Webextension usb permissions iframe dynamically included into html
 - correct `script_type` to `TransactionInput` and `TransactionOutput` of Bitcoin-like TxRequest protobuf message
@@ -370,13 +370,13 @@
 - Cloudfront cache invalidation
 
 #### Fixed
-- Url encoding in `TrezorConnect.manifest`
+- Url encoding in `OneKeyConnect.manifest`
 
 # 7.0.4
 
 #### Added
-- EOS methods `TrezorConnect.eosGetPublicKey` and `TrezorConnect.eosSignTransaction`
-- `TrezorConnect.firmwareUpdate` (management method)
+- EOS methods `OneKeyConnect.eosGetPublicKey` and `OneKeyConnect.eosSignTransaction`
+- `OneKeyConnect.firmwareUpdate` (management method)
 - New firmware releases
 - New bridge releases
 
@@ -392,9 +392,9 @@
 # 7.0.2
 
 #### Added
-- Missing params to `TrezorConnect.signTransaction` method [`version`, `expiry`, `overwintered`, `versionGroupId`, `branchId`, `refTxs`]
-- Possibility to use `TrezorConnect.signTransaction` without build-in backend (using `refTxs` field)
-- `TrezorConnect.getSettings` method
+- Missing params to `OneKeyConnect.signTransaction` method [`version`, `expiry`, `overwintered`, `versionGroupId`, `branchId`, `refTxs`]
+- Possibility to use `OneKeyConnect.signTransaction` without build-in backend (using `refTxs` field)
+- `OneKeyConnect.getSettings` method
 
 #### Fixed
 - Dash and Zcash special transactions
@@ -404,23 +404,23 @@
 # 7.0.1
 
 #### Added
-- `TrezorConnect.manifest` method
-- DebugLink (emulator) support: `TrezorConnect.debugLinkDecision` and `TrezorConnect.debugLinkGetState` methods
-- `TrezorConnect.ethereumGetPublicKey` method (with fallback for older firmware)
-- `TrezorConnect.loadDevice` method
+- `OneKeyConnect.manifest` method
+- DebugLink (emulator) support: `OneKeyConnect.debugLinkDecision` and `OneKeyConnect.debugLinkGetState` methods
+- `OneKeyConnect.ethereumGetPublicKey` method (with fallback for older firmware)
+- `OneKeyConnect.loadDevice` method
 - `Capricoin` support (with required changes in `hd-wallet` and `bitcoinjs-lib-zcash` libs)
 - `firmwareRange` to every method (validation if device FW is in range: `min_required_firmware` - `max_compatible_firmware` declared in config.json)
 - Conditional protobuf messages (fallback for older FW)
 - "device not backed up" confirmation
 - `blockchain-link` dependency
-- `TrezorConnect.rippleGetAccountInfo` method
-- `TrezorConnect.blockchainGetFee` method
-- `TrezorConnect.blockchainUnsubscribe` method
+- `OneKeyConnect.rippleGetAccountInfo` method
+- `OneKeyConnect.blockchainGetFee` method
+- `OneKeyConnect.blockchainUnsubscribe` method
 - `BlockchainEvent` (connect/error/block/notification)
 
 #### Changed
 - Upgrade npm modules (babel@7)
-- `network` for `protocol_magic` in `TrezorConnect.cardanoSignTransaction` method
+- `network` for `protocol_magic` in `OneKeyConnect.cardanoSignTransaction` method
 
 #### Fixed
 - ComposeTransaction: fees/legacy detection
@@ -451,11 +451,11 @@
 # 6.0.3
 
 #### Added
-- `TrezorConnect.tezosGetAddress` method
-- `TrezorConnect.tezosGetPublicKey` method
-- `TrezorConnect.tezosSignTransaction` method
-- `TrezorConnect.dispose` method
-- `TrezorConnect.cancel` method
+- `OneKeyConnect.tezosGetAddress` method
+- `OneKeyConnect.tezosGetPublicKey` method
+- `OneKeyConnect.tezosSignTransaction` method
+- `OneKeyConnect.dispose` method
+- `OneKeyConnect.cancel` method
 - new firmware releases
 - new bridge releases
 
@@ -471,8 +471,8 @@
 # 6.0.2
 
 #### Added
-- `TrezorConnect.wipeDevice` method
-- `TrezorConnect.resetDevice` method
+- `OneKeyConnect.wipeDevice` method
+- `OneKeyConnect.resetDevice` method
 
 #### Changed
 - Calling method on device with seedless setup is disabled by default
@@ -492,10 +492,10 @@
 # 6.0.0
 
 #### Added
-- `TrezorConnect.pushTransaction` method with ethereum blockbook support
-- `TrezorConnect.ethereumGetAccountInfo` method
-- `TrezorConnect.blockchainSubscribe` method
-- `TrezorConnect.blockchainDisconnect` method
+- `OneKeyConnect.pushTransaction` method with ethereum blockbook support
+- `OneKeyConnect.ethereumGetAccountInfo` method
+- `OneKeyConnect.blockchainSubscribe` method
+- `OneKeyConnect.blockchainDisconnect` method
 - `BLOCKCHAIN` events
 - `./data/bridge/releases.json`
 - Bridge release info in TRANSPORT.START and TRANSPORT.ERROR event
@@ -516,15 +516,15 @@
 # 5.0.33
 
 #### Fixed
-- `TrezorConnect.ethereumSignMessage` and `TrezorConnect.ethereumVerifyMessage` methods with "hex" parameter
-- flowtype for `TrezorConnect.cardanoGetPublicKey` in `TrezorConnect.cardanoSignTransaction` methods
+- `OneKeyConnect.ethereumSignMessage` and `OneKeyConnect.ethereumVerifyMessage` methods with "hex" parameter
+- flowtype for `OneKeyConnect.cardanoGetPublicKey` in `OneKeyConnect.cardanoSignTransaction` methods
 
 # 5.0.32
 
 #### Added
-- `TrezorConnect.cardanoGetPublicKey` method
+- `OneKeyConnect.cardanoGetPublicKey` method
 - Ability to sign hexed ethereum message
-- `network` parameter to `TrezorConnect.cardanoSignTransaction` method
+- `network` parameter to `OneKeyConnect.cardanoSignTransaction` method
 
 #### Fixed
 - TRANSPORT.ERROR event when computer goes to sleep
@@ -532,8 +532,8 @@
 - proper FW version for Lisk and Stellar
 
 #### Removed
-- `TrezorConnect.cardanoSignMessage` method
-- `TrezorConnect.cardanoVerifyMessage` method
+- `OneKeyConnect.cardanoSignMessage` method
+- `OneKeyConnect.cardanoVerifyMessage` method
 
 # 5.0.31
 
@@ -543,7 +543,7 @@
 - Support for Lisk
 - Exception for not supported firmware when value for "trezor1" or "trezor2" inside coins.json is not set
 - Disable customMessage method for devices with official firmware
-- New field in `TrezorConnect.signEthereumTransaction` for `Wanchain`
+- New field in `OneKeyConnect.signEthereumTransaction` for `Wanchain`
 
 #### Changed
 - Separate "getPublicKey" and "getAddress" methods for all coins
@@ -556,20 +556,20 @@
 # 5.0.30
 
 #### Added
-- 'send-max' and 'opreturn' output types to `TrezorConnect.composeTransaction`
+- 'send-max' and 'opreturn' output types to `OneKeyConnect.composeTransaction`
 
 #### Fixed
 - Handle popup close event while waiting for iframe handshake
 - Removed ledgerVersion (`protocol_version`) from StellarSignTransaction method
 - One time permissions stored in session in application variable
-- `TrezorConnect.ethereumSignTransaction` recompute "v" value if Trezor returns value in range [0,1]
+- `OneKeyConnect.ethereumSignTransaction` recompute "v" value if Trezor returns value in range [0,1]
 - Webextensions: Handling if popup is called from "normal" window or extension popup
 - ConnectSetting default domain
 
 # 5.0.29
 
 #### Fixed
-- flowtype for TrezorConnect methods (bundled methods return bundled results)
+- flowtype for OneKeyConnect methods (bundled methods return bundled results)
 - renderWebUSBButton method
 
 #### Removed
@@ -619,7 +619,7 @@
 
 #### Fixed
 - filter UI events for popup and trusted apps
-- `TrezorConnect.signMessage` and `TrezorConnect.verifyMessage` signature to base64 format
+- `OneKeyConnect.signMessage` and `OneKeyConnect.verifyMessage` signature to base64 format
 
 #### Changed
 - constants prefix from `__` to `-`
@@ -641,14 +641,14 @@
 # 5.0.21
 
 #### Added
-- `TrezorConnect.pushTransaction` method
-- bundle parameters in `TrezorConnect.cipherKeyValue` method
-- bundle parameters in `TrezorConnect.getPublicKey` method
-- bundle parameters in `TrezorConnect.getAddress` method
-- bundle parameters in `TrezorConnect.ethereumGetAddress` method
-- bundle parameters in `TrezorConnect.nemGetAddress` method
-- bundle parameters in `TrezorConnect.stellarGetAddress` method
-- type conversion from stellar-sdk to protobuf in `TrezorConnect.stellarSignTransaction` method
+- `OneKeyConnect.pushTransaction` method
+- bundle parameters in `OneKeyConnect.cipherKeyValue` method
+- bundle parameters in `OneKeyConnect.getPublicKey` method
+- bundle parameters in `OneKeyConnect.getAddress` method
+- bundle parameters in `OneKeyConnect.ethereumGetAddress` method
+- bundle parameters in `OneKeyConnect.nemGetAddress` method
+- bundle parameters in `OneKeyConnect.stellarGetAddress` method
+- type conversion from stellar-sdk to protobuf in `OneKeyConnect.stellarSignTransaction` method
 - Popup warning with outdated firmware and outdated bridge
 - Tests with emulator
 - '@babel/runtime' to package dependency
@@ -667,7 +667,7 @@
 - Outdate firmware warning in popup
 
 #### Fixed
-- `TrezorConnect.requestLogin` parameters
+- `OneKeyConnect.requestLogin` parameters
 - Race condition in `UI.REQUEST_CONFIRMATION`
 - `popup.html` buttons click
 
@@ -685,32 +685,32 @@
 # 5.0.17
 
 #### Added
-- `TrezorConnect.getAccountInfo` method
-- `TrezorConnect.signTransaction` method
-- `TrezorConnect.composeTransaction` method
-- `TrezorConnect.signMessage` method
-- `TrezorConnect.verifyMessage` method
-- `TrezorConnect.getAddress` method
-- `TrezorConnect.requestLogin` method
+- `OneKeyConnect.getAccountInfo` method
+- `OneKeyConnect.signTransaction` method
+- `OneKeyConnect.composeTransaction` method
+- `OneKeyConnect.signMessage` method
+- `OneKeyConnect.verifyMessage` method
+- `OneKeyConnect.getAddress` method
+- `OneKeyConnect.requestLogin` method
 - cashaddr support for BCH
 - documentation
 
 #### Fixed
-- `TrezorConnect.customMessage` logic and security
-- `TrezorConnect.stellarSignTransaction` parameters compatible with "js-stellar-base"
+- `OneKeyConnect.customMessage` logic and security
+- `OneKeyConnect.stellarSignTransaction` parameters compatible with "js-stellar-base"
 - flowtype declarations for all methods. Params and responses
 
 #### Removed
 - unnecessary settings from ConnectSettings
-- unused methods from TrezorConnect
+- unused methods from OneKeyConnect
 
 # 5.0.16
 
 #### Added
-- `TrezorConnect.stellarSignTransaction` method
+- `OneKeyConnect.stellarSignTransaction` method
 
 #### Changed
-- `TrezorConnect.ethereumSignTransaction` parameters
+- `OneKeyConnect.ethereumSignTransaction` parameters
 
 #### Removed
 - type and event fields from RESPONSE
@@ -723,10 +723,10 @@
 # 5.0.14
 
 #### Added
-- `TrezorConnect.nemGetAddress` method
-- `TrezorConnect.nemSignTransaction` method
-- `TrezorConnect.stellarGetAddress` method
-- `TrezorConnect.customMessage` method
+- `OneKeyConnect.nemGetAddress` method
+- `OneKeyConnect.nemSignTransaction` method
+- `OneKeyConnect.stellarGetAddress` method
+- `OneKeyConnect.customMessage` method
 
 #### Fixed
 - flowtype
