@@ -1,6 +1,6 @@
 {
     "name": "@onekeyhq/connect",
-    "version": "8.2.2",
+    "version": "8.2.3",
     "author": "OneKey <hi@onekey.so>",
     "homepage": "https://github.com/onekeyhq/connect",
     "description": "High-level javascript interface for OneKey hardware wallet.",
@@ -128,7 +128,7 @@
     "extendedDependencies": {
         "@onekeyhq/blockchain-link": "1.0.18",
         "@onekeyhq/rollout": "1.0.6",
-        "@onekeyhq/link": "1.7.4",
+        "@onekeyhq/link": "1.7.5",
         "@trezor/utxo-lib": "^0.1.2",
         "bchaddrjs": "0.4.9",
         "bignumber.js": "^9.0.1",
