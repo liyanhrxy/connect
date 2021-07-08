@@ -144,6 +144,7 @@ module.exports = {
         new webpack.EnvironmentPlugin({
             RELEASE: require('../package.json').version,
             ENVIRONMENT: 'production',
+            PUBLIC_URL: process.env.PUBLIC_URL,
         }),
     ],
 
