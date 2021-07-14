@@ -1249,10 +1249,10 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@onekeyhq/blockchain-link@1.0.18":
-  version "1.0.18"
-  resolved "https://npm.pkg.github.com/download/@onekeyhq/blockchain-link/1.0.18/3a7d001c51d810dfc369eaabadfd53004279088798f6df37515c45cb39c2e37c#fbbce52bef3bc31496468f89ef353e950426283e"
-  integrity sha512-/hbmQ8nwtFu0vNK6srcH533atAotOWrsXN8JKDY1Q4MhwyyISRO/fFDfFUJBRBvqOim83xs3D4ZZ9brK/new6g==
+"@onekeyhq/blockchain-link@1.0.19":
+  version "1.0.19"
+  resolved "https://npm.pkg.github.com/download/@onekeyhq/blockchain-link/1.0.19/1e4446addf052f2020fe584a3d1d3b9ac69a1f18806cccd3adb1bfda86a47b59#6bd0284cc040257426b1f03630c6d4b41682cc49"
+  integrity sha512-OxWaIwsu10EGoNU9iqxMGboEwtZc4NdOV/i9d0GCCQ9w1j5bwuS2/LxWR1rguLWDNFFu6SaxctAvRFzeLM4xIw==
   dependencies:
     bignumber.js "^9.0.1"
     es6-promise "^4.2.8"

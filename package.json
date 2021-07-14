@@ -1,6 +1,6 @@
 {
     "name": "@onekeyhq/connect",
-    "version": "8.2.3",
+    "version": "8.2.4",
     "author": "OneKey <hi@onekey.so>",
     "homepage": "https://github.com/onekeyhq/connect",
     "description": "High-level javascript interface for OneKey hardware wallet.",
@@ -60,7 +60,7 @@
         "@babel/plugin-transform-runtime": "^7.12.10",
         "@babel/preset-env": "^7.12.10",
         "@babel/preset-flow": "^7.12.1",
-        "@onekeyhq/blockchain-link": "1.0.18",
+        "@onekeyhq/blockchain-link": "1.0.19",
         "@onekeyhq/link": "1.7.5",
         "@onekeyhq/rollout": "1.0.6",
         "@trezor/utxo-lib": "^0.1.2",
@@ -127,7 +127,7 @@
         "whatwg-fetch": "^3.5.0"
     },
     "extendedDependencies": {
-        "@onekeyhq/blockchain-link": "1.0.18",
+        "@onekeyhq/blockchain-link": "1.0.19",
         "@onekeyhq/rollout": "1.0.6",
         "@onekeyhq/link": "1.7.5",
         "@trezor/utxo-lib": "^0.1.2",
