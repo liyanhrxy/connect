@@ -5,7 +5,7 @@ export default {
     },
     tests: [
         {
-            description: 'trezor pubkey - ok',
+            description: 'onekey pubkey - ok',
             params: {
                 coin: 'Bitcoin',
                 address: 'bc1qyjjkmdpu7metqt5r36jf872a34syws33s82q2j',
@@ -17,7 +17,7 @@ export default {
             },
         },
         {
-            description: 'trezor pubkey - wrong sig',
+            description: 'onekey pubkey - wrong sig',
             params: {
                 coin: 'Bitcoin',
                 address: 'bc1qyjjkmdpu7metqt5r36jf872a34syws33s82q2j',
@@ -27,7 +27,7 @@ export default {
             result: false,
         },
         {
-            description: 'trezor pubkey - wrong msg',
+            description: 'onekey pubkey - wrong msg',
             params: {
                 coin: 'Bitcoin',
                 address: 'bc1qyjjkmdpu7metqt5r36jf872a34syws33s82q2j',
