@@ -55,4 +55,3 @@ fs.copySync(path.resolve(src, 'env/node/index-empty.js'), path.resolve(npm, 'lib
 fs.copySync(path.resolve(src, 'env/node/index-empty.js'), path.resolve(npm, 'lib/env/node/index.js.flow'));
 fs.copySync(path.resolve(npm, '../README.md'), path.resolve(npm, 'README.md'));
 fs.copySync(path.resolve(npm, '../LICENSE.md'), path.resolve(npm, 'LICENSE.md'));
-fs.copySync(path.resolve(npm, '../CHANGELOG.md'), path.resolve(npm, 'CHANGELOG.md'));
