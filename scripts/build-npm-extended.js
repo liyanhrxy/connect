@@ -59,4 +59,3 @@ fse.writeFileSync(path.resolve(npm, 'package.json'), JSON.stringify(packageJSON,
 // copy static files
 fse.copySync(path.resolve(__dirname, '../README.md'), path.resolve(npm, 'README.md'));
 fse.copySync(path.resolve(__dirname, '../LICENSE.md'), path.resolve(npm, 'LICENSE.md'));
-fse.copySync(path.resolve(__dirname, '../CHANGELOG.md'), path.resolve(npm, 'CHANGELOG.md'));
