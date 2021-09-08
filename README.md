@@ -1,6 +1,28 @@
 
-# OneKey API version 8.1.22
+# OneKey JavaScript SDK
 
-* popup 链接：[https://connect.onekey.so/popup.html](https://connect.onekey.so/popup.html)
+## usage
 
-* iframe 链接：[https://connect.onekey.so/iframe.html](https://connect.onekey.so/iframe.html)
+```
+yarn
+yarn dev
+```
+
+## publish
+
+modules
+```
+yarn build:npm
+yarn build:npm-extended
+```
+
+sites
+```
+yarn build
+```
+
+## install
+
+```
+yarn add @onekeyhq/connect
+```
