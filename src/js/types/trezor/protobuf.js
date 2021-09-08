@@ -63,6 +63,12 @@ const Enum_SafetyCheckLevel = Object.freeze({
 });
 export type SafetyCheckLevel = $Values<typeof Enum_SafetyCheckLevel>;
 
+const Enum_CommandFlags = Object.freeze({
+    Default: 0,
+    Factory_Only: 1,
+});
+export type CommandFlags = $Values<typeof Enum_CommandFlags>;
+
 // BinanceGetAddress
 export type BinanceGetAddress = {
     address_n: number[];
@@ -1378,6 +1384,13 @@ export type Features = {
     backup_only?: boolean;
     onekey_version?: string;
     onekey_serial?: string;
+    bootloader_version?: string;
+    serial_no?: string;
+    spi_flash?: string;
+    initstates?: number;
+    NFT_voucher?: string;
+    cpu_info?: string;
+    pre_firmware?: string;
 };
 
 // LockDevice
@@ -1648,6 +1661,90 @@ export type BixinBackupDevice = {};
 // BixinBackupDeviceAck
 export type BixinBackupDeviceAck = {
     mnemonics: string;
+};
+
+// DeviceInfoSettings
+export type DeviceInfoSettings = {
+    serial_no?: string;
+    cpu_info?: string;
+    pre_firmware?: string;
+};
+
+// GetDeviceInfo
+export type GetDeviceInfo = {};
+
+// DeviceInfo
+export type DeviceInfo = {
+    serial_no?: string;
+    spiFlash_info?: string;
+    SE_info?: string;
+    NFT_voucher?: string;
+    cpu_info?: string;
+    pre_firmware?: string;
+};
+
+// ReadSEPublicKey
+export type ReadSEPublicKey = {};
+
+// SEPublicKey
+export type SEPublicKey = {
+    public_key: string;
+};
+
+// WriteSEPublicCert
+export type WriteSEPublicCert = {
+    public_cert: string;
+};
+
+// ReadSEPublicCert
+export type ReadSEPublicCert = {};
+
+// SEPublicCert
+export type SEPublicCert = {
+    public_cert: string;
+};
+
+// SpiFlashWrite
+export type SpiFlashWrite = {
+    address: number;
+    data: string;
+};
+
+// SpiFlashRead
+export type SpiFlashRead = {
+    address: number;
+    len: number;
+};
+
+// SpiFlashData
+export type SpiFlashData = {
+    data: string;
+};
+
+// SESignMessage
+export type SESignMessage = {
+    message: string;
+};
+
+// SEMessageSignature
+export type SEMessageSignature = {
+    signature: string;
+};
+
+// NFTWriteInfo
+export type NFTWriteInfo = {
+    index: number;
+    width: number;
+    height: number;
+    name_zh?: string;
+    name_en?: string;
+};
+
+// NFTWriteData
+export type NFTWriteData = {
+    index: number;
+    data: string;
+    offset: number;
 };
 
 // NEMGetAddress
@@ -2299,6 +2396,21 @@ export type MessageType = {
     BixinLoadDevice: $Exact<BixinLoadDevice>;
     BixinBackupDevice: BixinBackupDevice;
     BixinBackupDeviceAck: $Exact<BixinBackupDeviceAck>;
+    DeviceInfoSettings: DeviceInfoSettings;
+    GetDeviceInfo: GetDeviceInfo;
+    DeviceInfo: DeviceInfo;
+    ReadSEPublicKey: ReadSEPublicKey;
+    SEPublicKey: $Exact<SEPublicKey>;
+    WriteSEPublicCert: $Exact<WriteSEPublicCert>;
+    ReadSEPublicCert: ReadSEPublicCert;
+    SEPublicCert: $Exact<SEPublicCert>;
+    SpiFlashWrite: $Exact<SpiFlashWrite>;
+    SpiFlashRead: $Exact<SpiFlashRead>;
+    SpiFlashData: $Exact<SpiFlashData>;
+    SESignMessage: $Exact<SESignMessage>;
+    SEMessageSignature: $Exact<SEMessageSignature>;
+    NFTWriteInfo: $Exact<NFTWriteInfo>;
+    NFTWriteData: $Exact<NFTWriteData>;
     NEMGetAddress: NEMGetAddress;
     NEMAddress: $Exact<NEMAddress>;
     NEMTransactionCommon: NEMTransactionCommon;

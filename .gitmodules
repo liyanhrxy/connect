@@ -1,3 +1,3 @@
-[submodule "submodules/bixin-firmware"]
-	path = submodules/bixin-firmware
-	url = https://github.com/OneKeyHQ/bixin-firmware
+[submodule "submodules/onekey-firmware"]
+	path = submodules/onekey-firmware
+	url = https://github.com/OneKeyHQ/onekey-firmware
