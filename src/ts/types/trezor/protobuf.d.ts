@@ -1194,6 +1194,13 @@ export type EthereumVerifyMessage = {
     address?: string;
 };
 
+// EthereumSignMessageEIP712
+export type EthereumSignMessageEIP712 = {
+    address_n: number[];
+    domain_hash?: string;
+    message_hash?: string;
+};
+
 // LiskGetAddress
 export type LiskGetAddress = {
     address_n: number[];
@@ -1370,6 +1377,7 @@ export type Features = {
     onekey_version?: string;
     onekey_serial?: string;
     bootloader_version?: string;
+    coin_switch?: number;
     serial_no?: string;
     spi_flash?: string;
     initstates?: number;
@@ -1641,6 +1649,7 @@ export type BixinBackupDevice = {};
 export type BixinBackupDeviceAck = {
     mnemonics: string;
 };
+
 
 // DeviceInfoSettings
 export type DeviceInfoSettings = {

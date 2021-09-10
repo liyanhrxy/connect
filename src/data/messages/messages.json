@@ -5128,6 +5128,36 @@
             "oneofs": {}
         },
         {
+            "name": "EthereumSignMessageEIP712",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "address_n",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "domain_hash",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "message_hash",
+                    "id": 3
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
             "name": "LiskGetAddress",
             "fields": [
                 {
@@ -5944,6 +5974,13 @@
                     "type": "string",
                     "name": "pre_firmware",
                     "id": 516
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "coin_switch",
+                    "id": 517
                 }
             ],
             "enums": [
@@ -12404,6 +12441,10 @@
                 {
                     "name": "MessageType_NFTWriteData",
                     "id": 10015
+                },
+                {
+                    "name": "MessageType_EthereumSignMessageEIP712",
+                    "id": 10200
                 }
             ],
             "options": {}

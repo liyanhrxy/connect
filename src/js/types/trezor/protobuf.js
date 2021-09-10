@@ -1208,6 +1208,13 @@ export type EthereumVerifyMessage = {
     address?: string;
 };
 
+// EthereumSignMessageEIP712
+export type EthereumSignMessageEIP712 = {
+    address_n: number[];
+    domain_hash?: string;
+    message_hash?: string;
+};
+
 // LiskGetAddress
 export type LiskGetAddress = {
     address_n: number[];
@@ -1385,6 +1392,7 @@ export type Features = {
     onekey_version?: string;
     onekey_serial?: string;
     bootloader_version?: string;
+    coin_switch?: number;
     serial_no?: string;
     spi_flash?: string;
     initstates?: number;
@@ -2338,6 +2346,7 @@ export type MessageType = {
     EthereumSignMessage: EthereumSignMessage;
     EthereumMessageSignature: EthereumMessageSignature;
     EthereumVerifyMessage: EthereumVerifyMessage;
+    EthereumSignMessageEIP712: EthereumSignMessageEIP712;
     LiskGetAddress: LiskGetAddress;
     LiskAddress: LiskAddress;
     LiskGetPublicKey: LiskGetPublicKey;
@@ -2411,6 +2420,7 @@ export type MessageType = {
     SEMessageSignature: $Exact<SEMessageSignature>;
     NFTWriteInfo: $Exact<NFTWriteInfo>;
     NFTWriteData: $Exact<NFTWriteData>;
+
     NEMGetAddress: NEMGetAddress;
     NEMAddress: $Exact<NEMAddress>;
     NEMTransactionCommon: NEMTransactionCommon;
