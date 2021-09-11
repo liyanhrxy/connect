@@ -1,0 +1,15 @@
+{
+  "name": "popup-example",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=development index.js -o bundle.js",
+    "start": "sudo serve -p 80"
+  },
+  "author": "OneKeyHQ <hi@onekey.so>",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "webpack": "^5.52.1"
+  }
+}
