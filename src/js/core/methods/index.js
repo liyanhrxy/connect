@@ -27,6 +27,7 @@ import DebugLinkGetState from './debuglink/DebugLinkGetState';
 import EthereumGetAddress from './EthereumGetAddress';
 import EthereumGetPublicKey from './EthereumGetPublicKey';
 import EthereumSignMessage from './EthereumSignMessage';
+import EthereumSignMessageEIP712 from './EthereumSignMessageEIP712';
 import EthereumSignTransaction from './EthereumSignTransaction';
 import EthereumVerifyMessage from './EthereumVerifyMessage';
 import GetAccountInfo from './GetAccountInfo';
@@ -94,6 +95,7 @@ const classes: { [k: string]: any } = {
     'ethereumGetAddress': EthereumGetAddress,
     'ethereumGetPublicKey': EthereumGetPublicKey,
     'ethereumSignMessage': EthereumSignMessage,
+    'ethereumSignMessageEIP712': EthereumSignMessageEIP712,
     'ethereumSignTransaction': EthereumSignTransaction,
     'ethereumVerifyMessage': EthereumVerifyMessage,
     'getAccountInfo': GetAccountInfo,

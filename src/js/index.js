@@ -298,6 +298,10 @@ const OneKeyConnect: API = {
         return call({ method: 'bixinReboot', ...params });
     },
 
+    ethereumSignMessageEIP712: params => {
+        return call({ method: 'ethereumSignMessageEIP712', ...params });
+    },
+
     dispose,
 
     cancel,

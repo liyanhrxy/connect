@@ -5128,6 +5128,36 @@
             "oneofs": {}
         },
         {
+            "name": "EthereumSignMessageEIP712",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "address_n",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "domain_hash",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "message_hash",
+                    "id": 3
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
             "name": "LiskGetAddress",
             "fields": [
                 {
@@ -5808,6 +5838,20 @@
                 {
                     "rule": "optional",
                     "options": {},
+                    "type": "SafetyCheckLevel",
+                    "name": "safety_checks",
+                    "id": 37
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "auto_lock_delay_ms",
+                    "id": 38
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
                     "type": "uint32",
                     "name": "display_rotation",
                     "id": 39
@@ -5886,8 +5930,57 @@
                     "rule": "optional",
                     "options": {},
                     "type": "string",
+                    "name": "bootloader_version",
+                    "id": 510
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
                     "name": "serial_no",
                     "id": 511
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "spi_flash",
+                    "id": 512
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "initstates",
+                    "id": 513
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "NFT_voucher",
+                    "id": 514
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "cpu_info",
+                    "id": 515
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "pre_firmware",
+                    "id": 516
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "coin_switch",
+                    "id": 517
                 }
             ],
             "enums": [
@@ -6985,6 +7078,327 @@
                     "type": "string",
                     "name": "mnemonics",
                     "id": 1
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "DeviceInfoSettings",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "serial_no",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "cpu_info",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "pre_firmware",
+                    "id": 3
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "GetDeviceInfo",
+            "fields": [],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "DeviceInfo",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "serial_no",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "spiFlash_info",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "SE_info",
+                    "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "NFT_voucher",
+                    "id": 4
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "cpu_info",
+                    "id": 5
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "pre_firmware",
+                    "id": 6
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "ReadSEPublicKey",
+            "fields": [],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "SEPublicKey",
+            "fields": [
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "public_key",
+                    "id": 1
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "WriteSEPublicCert",
+            "fields": [
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "public_cert",
+                    "id": 1
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "ReadSEPublicCert",
+            "fields": [],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "SEPublicCert",
+            "fields": [
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "public_cert",
+                    "id": 1
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "SpiFlashWrite",
+            "fields": [
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "address",
+                    "id": 1
+                },
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "data",
+                    "id": 2
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "SpiFlashRead",
+            "fields": [
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "address",
+                    "id": 1
+                },
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "len",
+                    "id": 2
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "SpiFlashData",
+            "fields": [
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "data",
+                    "id": 1
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "SESignMessage",
+            "fields": [
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "message",
+                    "id": 1
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "SEMessageSignature",
+            "fields": [
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "signature",
+                    "id": 1
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "NFTWriteInfo",
+            "fields": [
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "index",
+                    "id": 1
+                },
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "width",
+                    "id": 2
+                },
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "height",
+                    "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "name_zh",
+                    "id": 4
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "name_en",
+                    "id": 5
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "NFTWriteData",
+            "fields": [
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "index",
+                    "id": 1
+                },
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "data",
+                    "id": 2
+                },
+                {
+                    "rule": "required",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "offset",
+                    "id": 3
                 }
             ],
             "enums": [],
@@ -10866,6 +11280,13 @@
                     "type": "bool",
                     "name": "wire_no_fsm",
                     "id": 50008
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bool",
+                    "name": "facotry",
+                    "id": 50501
                 }
             ]
         },
@@ -11080,6 +11501,20 @@
                 {
                     "name": "PromptTemporarily",
                     "id": 2
+                }
+            ],
+            "options": {}
+        },
+        {
+            "name": "CommandFlags",
+            "values": [
+                {
+                    "name": "Default",
+                    "id": 0
+                },
+                {
+                    "name": "Factory_Only",
+                    "id": 1
                 }
             ],
             "options": {}
@@ -11946,6 +12381,70 @@
                 {
                     "name": "MessageType_BixinPinInputOnDevice",
                     "id": 10000
+                },
+                {
+                    "name": "MessageType_DeviceInfoSettings",
+                    "id": 10001
+                },
+                {
+                    "name": "MessageType_GetDeviceInfo",
+                    "id": 10002
+                },
+                {
+                    "name": "MessageType_DeviceInfo",
+                    "id": 10003
+                },
+                {
+                    "name": "MessageType_ReadSEPublicKey",
+                    "id": 10004
+                },
+                {
+                    "name": "MessageType_SEPublicKey",
+                    "id": 10005
+                },
+                {
+                    "name": "MessageType_WriteSEPublicCert",
+                    "id": 10006
+                },
+                {
+                    "name": "MessageType_ReadSEPublicCert",
+                    "id": 10007
+                },
+                {
+                    "name": "MessageType_SEPublicCert",
+                    "id": 10008
+                },
+                {
+                    "name": "MessageType_SpiFlashWrite",
+                    "id": 10009
+                },
+                {
+                    "name": "MessageType_SpiFlashRead",
+                    "id": 10010
+                },
+                {
+                    "name": "MessageType_SpiFlashData",
+                    "id": 10011
+                },
+                {
+                    "name": "MessageType_SESignMessage",
+                    "id": 10012
+                },
+                {
+                    "name": "MessageType_SEMessageSignature",
+                    "id": 10013
+                },
+                {
+                    "name": "MessageType_NFTWriteInfo",
+                    "id": 10014
+                },
+                {
+                    "name": "MessageType_NFTWriteData",
+                    "id": 10015
+                },
+                {
+                    "name": "MessageType_EthereumSignMessageEIP712",
+                    "id": 10200
                 }
             ],
             "options": {}

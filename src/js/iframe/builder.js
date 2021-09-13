@@ -35,11 +35,9 @@ export const init = async (settings: ConnectSettings): Promise<void> => {
     }
 
     let src: string;
-    if (settings.env === 'web') {
-        const manifestString = settings.manifest
-            ? JSON.stringify(settings.manifest)
-            : 'undefined'; // note: btoa(undefined) === btoa('undefined') === "dW5kZWZpbmVk"
-        const manifest = `version=${settings.version}&manifest=${encodeURIComponent(btoa(JSON.stringify(manifestString)))}`;
+    if (settings.env === 'web' || settings.env === 'webextension') {
+        const manifestString = new Date().getTime();
+        const manifest = `version=${settings.version}&manifest=${manifestString}`;
         src = `${settings.iframeSrc}?${ manifest }`;
     } else {
         src = settings.iframeSrc;
@@ -53,7 +51,7 @@ export const init = async (settings: ConnectSettings): Promise<void> => {
     origin = getOrigin(instance.src);
     timeout = window.setTimeout(() => {
         initPromise.reject(ERRORS.TypedError('Init_IframeTimeout'));
-    }, 10000);
+    }, 30000);
 
     const onLoad = () => {
         if (!instance) {
