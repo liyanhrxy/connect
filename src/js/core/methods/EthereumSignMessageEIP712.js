@@ -1,21 +1,49 @@
 /* @flow */
 
+import { TypedDataUtils } from 'eth-sig-util';
 import AbstractMethod from './AbstractMethod';
 import { validateParams, getFirmwareRange } from './helpers/paramsValidator';
 import { validatePath } from '../../utils/pathUtils';
 import { getEthereumNetwork } from '../../data/CoinInfo';
 import { toChecksumAddress, getNetworkLabel } from '../../utils/ethereumUtils';
+import { ERRORS } from '../../constants';
 
 import type { CoreMessage, EthereumNetworkInfo } from '../../types';
 import type { MessageType } from '../../types/trezor/protobuf';
+type MessageTypeProperty = {
+    name: string;
+    type: string;
+}
+
+type Record<T, V> = {
+    [T]: V;
+  }
+
+type TypedMessage = {
+    types: {
+        EIP712Domain: MessageTypeProperty[];
+        [additionalProperties: string]: MessageTypeProperty[];
+    };
+    primaryType: string;
+    domain: {
+        name?: string;
+        version?: string;
+        chainId?: number;
+        verifyingContract?: string;
+    };
+    message: Record<string, any>;
+}
+
+type VERSION = 'V3' | 'V4';
 
 type Params = {
     ...$ElementType<MessageType, 'EthereumSignMessage'>,
     network?: EthereumNetworkInfo;
-    domain?: string;
+    version: VERSION;
+    data: TypedMessage;
 };
 
-export default class EthereumSignMessage extends AbstractMethod {
+export default class EthereumSignMessage712 extends AbstractMethod {
     params: Params;
 
     constructor(message: CoreMessage) {
@@ -28,9 +56,8 @@ export default class EthereumSignMessage extends AbstractMethod {
         // validate incoming parameters
         validateParams(payload, [
             { name: 'path', obligatory: true },
-            { name: 'message', type: 'string', obligatory: true },
-            { name: 'domain', type: 'string', obligatory: true },
-            { name: 'hex', type: 'boolean' },
+            { name: 'data', type: 'object' },
+            { name: 'version', type: 'string' },
         ]);
 
         const path = validatePath(payload.path, 3);
@@ -42,19 +69,38 @@ export default class EthereumSignMessage extends AbstractMethod {
         this.params = {
             network,
             address_n: path,
-            message: payload.message,
-            domain: payload.domain,
+            data: payload.data,
         };
     }
 
     async run() {
         const cmd = this.device.getCommands();
-        const { address_n, message, network, domain } = this.params;
+        const { address_n, network, version, data } = this.params;
+
+        const useV4 = version === 'V4';
+        const sanitizedData = TypedDataUtils.sanitizeData(data);
+
+        if (sanitizedData.primaryType === 'EIP712Domain') {
+            throw ERRORS.TypedError('Backend_NotSupported', 'primaryType `EIP712Domain` is not support');
+        }
+
+        const domainHash = TypedDataUtils.hashStruct(
+            'EIP712Domain',
+            sanitizedData.domain,
+            sanitizedData.types,
+            useV4
+        );
+        const messageHash = TypedDataUtils.hashStruct(
+            sanitizedData.primaryType,
+            sanitizedData.message,
+            sanitizedData.types,
+            useV4
+        );
 
         const response = await cmd.typedCall('EthereumSignMessageEIP712', 'EthereumMessageSignature', {
             address_n,
-            message_hash: message,
-            domain_hash: domain,
+            domain_hash: domainHash,
+            message_hash: messageHash,
         });
         response.message.address = toChecksumAddress(response.message.address, network);
         return response.message;
