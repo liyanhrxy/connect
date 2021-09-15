@@ -59,7 +59,7 @@ export const getUnavailableCapabilities = (features: Features, coins: CoinInfo[]
             return !capabilities.includes('Capability_NEM');
         }
         // misc
-        if (info.shortcut === 'BNB') return !capabilities.includes('Capability_Binance');
+        // if (info.shortcut === 'BNB') return !capabilities.includes('Capability_Binance');
         if (info.shortcut === 'XRP' || info.shortcut === 'tXRP') return !capabilities.includes('Capability_Ripple');
         return !capabilities.includes(`Capability_${info.name}`);
     });

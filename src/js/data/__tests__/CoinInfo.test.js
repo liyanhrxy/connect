@@ -56,7 +56,7 @@ describe('data/CoinInfo', () => {
         });
 
         expect(getCoinInfoByCapability(['Capability_Binance'])).toMatchObject([
-            { name: 'Binance Chain', shortcut: 'BNB' },
+            { name: 'Binance Smart Chain', shortcut: 'BNB' },
         ]);
 
         expect(getCoinInfoByCapability(['Capability_Ripple'])).toMatchObject([

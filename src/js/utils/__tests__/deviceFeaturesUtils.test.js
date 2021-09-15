@@ -99,7 +99,6 @@ describe('utils/deviceFeaturesUtils', () => {
         // default Capabilities T1
         expect(getUnavailableCapabilities(feat1, coins, support)).toEqual({
             ada: 'no-capability',
-            bnb: 'no-capability',
             eos: 'no-capability',
             ere: 'update-required',
             ppc: 'update-required',

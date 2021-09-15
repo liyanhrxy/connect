@@ -2237,6 +2237,24 @@
             "url": "https://www.ethereum.org"
         },
         {
+            "blockbook": [
+                "https://bsc1.onekey.so"
+            ],
+            "chain": "bsc",
+            "chain_id": 56,
+            "name": "Binance Smart Chain",
+            "rskip60": false,
+            "shortcut": "BNB",
+            "slip44": 60,
+            "support": {
+                "connect": true,
+                "trezor1": "1.6.2",
+                "trezor2": "2.0.7",
+                "webwallet": true
+            },
+            "url": "https://bscscan.com/"
+        },
+        {
             "blockbook": [],
             "chain": "exp",
             "chain_id": 2,
@@ -2655,20 +2673,6 @@
                 "connect": true,
                 "trezor1": false,
                 "trezor2": "2.0.8",
-                "webwallet": false
-            }
-        },
-        {
-            "blockchain_link": null,
-            "curve": "secp256k1",
-            "decimals": 8,
-            "name": "Binance Chain",
-            "shortcut": "BNB",
-            "slip44": 714,
-            "support": {
-                "connect": true,
-                "trezor1": false,
-                "trezor2": "2.1.5",
                 "webwallet": false
             }
         },

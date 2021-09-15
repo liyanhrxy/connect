@@ -82,6 +82,9 @@ export default class Blockchain {
             // There is no `rippled` setting that defines which network it uses neither mainnet or testnet
             // see: https://xrpl.org/parallel-networks.html
             const shortcut = this.coinInfo.shortcut === 'tXRP' ? 'XRP' : this.coinInfo.shortcut;
+            if (this.coinInfo.shortcut === 'BNB') {
+                info.shortcut = 'BNB';
+            }
             if (info.shortcut.toLowerCase() !== shortcut.toLowerCase()) {
                 this.onError(ERRORS.TypedError('Backend_Invalid'));
                 return;
