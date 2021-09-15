@@ -70,6 +70,7 @@ export default class EthereumSignMessage712 extends AbstractMethod {
             network,
             address_n: path,
             data: payload.data,
+            version: payload.version,
         };
     }
 
