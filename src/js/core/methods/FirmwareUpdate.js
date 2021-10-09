@@ -82,7 +82,7 @@ export default class FirmwareUpdate extends AbstractMethod {
                 const firmware = await getBinary({
                     // features and releases are used for sanity checking inside @onekeyhq/rollout
                     features: device.features,
-                    releases: getReleases(device.features.major_version),
+                    releases: getReleases(device.features.major_version, device.features),
                     // version argument is used to find and fetch concrete release from releases list
                     version: this.params.version,
                     btcOnly: this.params.btcOnly,

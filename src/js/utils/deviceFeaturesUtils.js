@@ -98,3 +98,16 @@ export const getUnavailableCapabilities = (features: Features, coins: CoinInfo[]
     });
     return list;
 };
+
+type DeviceType = 'mini' | 'classic';
+
+export const getDeviceType = (features?: Features): DeviceType => {
+    if (!features || typeof features !== 'object' || !features.serial_no) {
+        return 'classic';
+    }
+
+    const serialNo = features.serial_no;
+    const miniFlag = serialNo.slice(0, 2);
+    if (miniFlag.toLowerCase() === 'mi') return 'mini';
+    return 'classic';
+};

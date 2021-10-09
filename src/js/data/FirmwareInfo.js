@@ -4,11 +4,13 @@ import {getInfo} from '@onekeyhq/rollout';
 import {isNewer} from '@onekeyhq/rollout/lib/utils/version';
 import type {DeviceFirmwareStatus, Features, FirmwareRelease} from '../types';
 import {findDefectiveBatchDevice} from '../utils/findDefectiveBatchDevice';
+import {getDeviceType} from '../utils/deviceFeaturesUtils';
 
 // [] is weird flow hack https://github.com/facebook/flow/issues/380#issuecomment-224380551
 const releases = {
     [1]: [],
     [2]: [],
+    ['mini']: [],
 };
 
 // strip "data" directory from download url (default: data.trezor.io)
@@ -19,7 +21,7 @@ const cleanUrl = (url: ?string) => {
     return url;
 };
 
-export const parseFirmware = (json: JSON, model: number): void => {
+export const parseFirmware = (json: JSON, model: number | string): void => {
     const obj: Object = json;
     Object.keys(obj).forEach(key => {
         const release = obj[key];
@@ -60,7 +62,10 @@ export const getFirmwareStatus = (features: Features): DeviceFirmwareStatus => {
         return needUpdate ? 'required' : 'valid';
     }
 
-    const info = getInfo({features, releases: releases[features.major_version]});
+    const deviceType = getDeviceType(features);
+    const deviceSymbol = deviceType === 'mini' ? 'mini' : features.major_version;
+
+    const info = getInfo({features, releases: releases[deviceSymbol]});
 
     // should not happen, possibly if releases list contains inconsistent data or so
     if (!info) return 'unknown';
@@ -73,9 +78,13 @@ export const getFirmwareStatus = (features: Features): DeviceFirmwareStatus => {
 };
 
 export const getRelease = (features: Features): ?FirmwareRelease => {
-    return getInfo({features, releases: releases[features.major_version]});
+    const deviceType = getDeviceType(features);
+    const deviceSymbol = deviceType === 'mini' ? 'mini' : features.major_version;
+    return getInfo({features, releases: releases[deviceSymbol]});
 };
 
-export const getReleases = (model: number): FirmwareRelease[] => {
-    return releases[model];
+export const getReleases = (model: number, features: Features): FirmwareRelease[] => {
+    const deviceType = getDeviceType(features);
+    const deviceSymbol = deviceType === 'mini' ? 'mini' : model;
+    return releases[deviceSymbol];
 };

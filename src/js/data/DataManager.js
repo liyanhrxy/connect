@@ -121,7 +121,7 @@ export default class DataManager {
         try {
             const timestamp = new Date().getTime();
             const resp = await fetch(`https://data.onekey.so/version.json?noCache=${timestamp}`);
-            const { firmware, ble } = await resp.json();
+            const { firmware, ble, mini_firmware } = await resp.json();
             if (ble && Array.isArray(ble)) {
                 // TODO: use bleFirmware config
                 nrfData = ble[0];
@@ -138,6 +138,17 @@ export default class DataManager {
 
                 this.assets[ 'firmware-t1' ] = paredFirmwareConfig;
                 this.assets[ 'ble' ] = ble;
+            }
+            if (mini_firmware && Array.isArray(mini_firmware)) {
+                const paredFirmwareConfig = mini_firmware.map(firm => {
+                    if (firm.changelog) return firm;
+                    return {
+                        ...firm,
+                        changelog: firm.changelog_cn,
+                    };
+                });
+
+                this.assets[ 'firmware-mini' ] = paredFirmwareConfig;
             }
         } catch (e) {
             // eslint-disable-next-line no-console
@@ -165,6 +176,7 @@ export default class DataManager {
         // parse firmware definitions
         parseFirmware(this.assets['firmware-t1'], 1);
         parseFirmware(this.assets['firmware-t2'], 2);
+        parseFirmware(this.assets['firmware-mini'], 'mini');
         parseBLEFirmware(this.assets['ble']);
     }
 
