@@ -15,7 +15,7 @@ import { getBLEFirmwareStatus, getBLERelease } from '../data/BLEFirmwareInfo';
 import { parseCapabilities, getUnavailableCapabilities } from '../utils/deviceFeaturesUtils';
 import { versionCompare } from '../utils/versionUtils';
 import Log, { init as initLog } from '../utils/debug';
-
+import { getDeviceType } from '../utils/deviceFeaturesUtils';
 // custom log
 const _log: Log = initLog('Device');
 
@@ -626,7 +626,8 @@ export default class Device extends EventEmitter {
                 label: 'Unacquired device',
             };
         } else {
-            const defaultLabel: string = 'OneKey';
+            const deviceType = getDeviceType(this.features);
+            const defaultLabel: string = deviceType === 'mini' ? 'My OneKey Mini' : 'My OneKey';
             const label = this.features.label === '' || !this.features.label ? defaultLabel : this.features.label;
             return {
                 type: 'acquired',
