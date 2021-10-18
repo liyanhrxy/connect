@@ -1,3 +1,3 @@
-[submodule "submodules/onekey-firmware"]
-	path = submodules/onekey-firmware
-	url = https://github.com/OneKeyHQ/onekey-firmware
+[submodule "submodules/firmware"]
+	path = submodules/firmware
+	url = https://github.com/OneKeyHQ/firmware.git
