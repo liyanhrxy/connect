@@ -9875,6 +9875,206 @@
             "oneofs": {}
         },
         {
+            "name": "StarcoinGetAddress",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "address_n",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bool",
+                    "name": "show_display",
+                    "id": 2
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "StarcoinAddress",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "string",
+                    "name": "address",
+                    "id": 1
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "StarcoinGetPublicKey",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "address_n",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bool",
+                    "name": "show_display",
+                    "id": 2
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "StarcoinPublicKey",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "public_key",
+                    "id": 1
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "StarcoinSignTx",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "address_n",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "raw_tx",
+                    "id": 2
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "StarcoinSignedTx",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "public_key",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "signature",
+                    "id": 2
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "StarcoinSignMessage",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "options": {},
+                    "type": "uint32",
+                    "name": "address_n",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "message",
+                    "id": 2
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "StarcoinMessageSignature",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "public_key",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "signature",
+                    "id": 2
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
+            "name": "StarcoinVerifyMessage",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "public_key",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "signature",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "options": {},
+                    "type": "bytes",
+                    "name": "message",
+                    "id": 3
+                }
+            ],
+            "enums": [],
+            "messages": [],
+            "options": {},
+            "oneofs": {}
+        },
+        {
             "name": "StellarAssetType",
             "fields": [
                 {
@@ -12395,6 +12595,42 @@
                 {
                     "name": "MessageType_SolanaSignedTx",
                     "id": 10103
+                },
+                {
+                    "name": "MessageType_StarcoinGetAddress",
+                    "id": 10200
+                },
+                {
+                    "name": "MessageType_StarcoinAddress",
+                    "id": 10201
+                },
+                {
+                    "name": "MessageType_StarcoinGetPublicKey",
+                    "id": 10202
+                },
+                {
+                    "name": "MessageType_StarcoinPublicKey",
+                    "id": 10203
+                },
+                {
+                    "name": "MessageType_StarcoinSignTx",
+                    "id": 10204
+                },
+                {
+                    "name": "MessageType_StarcoinSignedTx",
+                    "id": 10205
+                },
+                {
+                    "name": "MessageType_StarcoinSignMessage",
+                    "id": 10206
+                },
+                {
+                    "name": "MessageType_StarcoinMessageSignature",
+                    "id": 10207
+                },
+                {
+                    "name": "MessageType_StarcoinVerifyMessage",
+                    "id": 10208
                 },
                 {
                     "name": "MessageType_WebAuthnListResidentCredentials",
