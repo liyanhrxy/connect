@@ -1651,6 +1651,7 @@ export type BixinBackupDeviceAck = {
 };
 
 
+
 // DeviceInfoSettings
 export type DeviceInfoSettings = {
     serial_no?: string;
@@ -1906,6 +1907,28 @@ export type RippleSignTx = {
 export type RippleSignedTx = {
     signature?: string;
     serialized_tx?: string;
+};
+
+// SolanaGetAddress
+export type SolanaGetAddress = {
+    address_n: number[];
+    show_display?: boolean;
+};
+
+// SolanaAddress
+export type SolanaAddress = {
+    address?: string;
+};
+
+// SolanaSignTx
+export type SolanaSignTx = {
+    address_n: number[];
+    raw_tx?: string;
+};
+
+// SolanaSignedTx
+export type SolanaSignedTx = {
+    signature?: string;
 };
 
 // StellarAssetType
