@@ -158,6 +158,7 @@ export default class PopupManager extends EventEmitter {
             this._window = window.open(url, 'modal');
         } else {
             this._window = window.open('', '_blank');
+            // this._window = window.open('', 'onekey-hardware-connect-popup');
             if (this._window) {
                 this._window.location.href = url; // otherwise android/chrome loose window.opener reference
             }
