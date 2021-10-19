@@ -23,5 +23,6 @@ esproposal.class_static_fields=enable
 esproposal.class_instance_fields=enable
 esproposal.export_star_as=enable
 esproposal.decorators=ignore
+esproposal.optional_chaining=enable
 module.name_mapper='.*\(.less\)' -> 'CSSModule'
 module.system=haste
