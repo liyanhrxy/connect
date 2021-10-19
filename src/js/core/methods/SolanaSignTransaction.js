@@ -1,5 +1,7 @@
 /* @flow */
 
+import { base58_to_binary, binary_to_base58 } from 'base58-js';
+
 import AbstractMethod from './AbstractMethod';
 import { validateParams } from './helpers/paramsValidator';
 import { validatePath } from '../../utils/pathUtils';
@@ -24,15 +26,20 @@ export default class SolanaSignTransaction extends AbstractMethod {
         ]);
 
         const path = validatePath(payload.path, 3);
+
         this.params = {
             address_n: path,
-            raw_tx: payload.rawTx,
+            raw_tx: base58_to_binary(payload.rawTx),
         };
     }
 
     async run() {
         const cmd = this.device.getCommands();
-        const response = await cmd.typedCall('SolanaSignTx', 'SolanaSignedTx', this.params);
-        return response.message;
+        const { message } = await cmd.typedCall('SolanaSignTx', 'SolanaSignedTx', this.params);
+        const signature = binary_to_base58(Buffer.from(message.signature, 'hex'));
+        return {
+            ...message,
+            signature,
+        };
     }
 }

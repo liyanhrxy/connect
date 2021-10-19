@@ -32,7 +32,7 @@ export const ResponseMessage = (
     id: number,
     success: boolean,
     payload: any = null,
-    { message, method }: { message?: any, method?: any } = {},
+    { message, method }: { message?: any; method?: any } = {},
 ): CoreMessage => {
     const device = {};
     const includingFeatures = Boolean(message?.payload?.includingFeatures);
