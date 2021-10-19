@@ -553,7 +553,10 @@ export const onCall = async (message: CoreMessage) => {
                     await _deviceList.reconfigure(customMessages, true);
                 }
                 const response: Object = await method.run();
-                messageResponse = ResponseMessage(method.responseID, true, response);
+                messageResponse = ResponseMessage(method.responseID, true, response, {
+                    message,
+                    method,
+                });
             } catch (error) {
                 return Promise.reject(error);
             }

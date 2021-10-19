@@ -8,6 +8,7 @@ export const parseMessage = (messageData: any): CoreMessage => {
         event: messageData.event,
         type: messageData.type,
         payload: messageData.payload,
+        device: messageData.device,
     };
 
     if (typeof messageData.id === 'number') {

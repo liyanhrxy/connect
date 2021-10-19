@@ -80,7 +80,8 @@ const handleMessage = (messageEvent: $T.PostMessageEvent): void => {
                 iframe.messagePromises[id].resolve({
                     id,
                     success: message.success,
-                    payload,
+                    payload: message.payload,
+                    device: message.device,
                 });
                 delete iframe.messagePromises[id];
             } else {
