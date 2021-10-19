@@ -1932,6 +1932,81 @@ export type RippleSignedTx = {
     serialized_tx?: string;
 };
 
+// SolanaGetAddress
+export type SolanaGetAddress = {
+    address_n: number[];
+    show_display?: boolean;
+};
+
+// SolanaAddress
+export type SolanaAddress = {
+    address?: string;
+};
+
+// SolanaSignTx
+export type SolanaSignTx = {
+    address_n: number[];
+    raw_tx?: string;
+};
+
+// SolanaSignedTx
+export type SolanaSignedTx = {
+    signature?: string;
+};
+
+// StarcoinGetAddress
+export type StarcoinGetAddress = {
+    address_n: number[];
+    show_display?: boolean;
+};
+
+// StarcoinAddress
+export type StarcoinAddress = {
+    address?: string;
+};
+
+// StarcoinGetPublicKey
+export type StarcoinGetPublicKey = {
+    address_n: number[];
+    show_display?: boolean;
+};
+
+// StarcoinPublicKey
+export type StarcoinPublicKey = {
+    public_key?: string;
+};
+
+// StarcoinSignTx
+export type StarcoinSignTx = {
+    address_n: number[];
+    raw_tx?: string;
+};
+
+// StarcoinSignedTx
+export type StarcoinSignedTx = {
+    public_key?: string;
+    signature?: string;
+};
+
+// StarcoinSignMessage
+export type StarcoinSignMessage = {
+    address_n: number[];
+    message?: string;
+};
+
+// StarcoinMessageSignature
+export type StarcoinMessageSignature = {
+    public_key?: string;
+    signature?: string;
+};
+
+// StarcoinVerifyMessage
+export type StarcoinVerifyMessage = {
+    public_key?: string;
+    signature?: string;
+    message?: string;
+};
+
 // StellarAssetType
 export type StellarAssetType = {
     type?: 0 | 1 | 2;
@@ -2420,7 +2495,6 @@ export type MessageType = {
     SEMessageSignature: $Exact<SEMessageSignature>;
     NFTWriteInfo: $Exact<NFTWriteInfo>;
     NFTWriteData: $Exact<NFTWriteData>;
-
     NEMGetAddress: NEMGetAddress;
     NEMAddress: $Exact<NEMAddress>;
     NEMTransactionCommon: NEMTransactionCommon;
@@ -2442,6 +2516,19 @@ export type MessageType = {
     RipplePayment: RipplePayment;
     RippleSignTx: RippleSignTx;
     RippleSignedTx: RippleSignedTx;
+    SolanaGetAddress: SolanaGetAddress;
+    SolanaAddress: SolanaAddress;
+    SolanaSignTx: SolanaSignTx;
+    SolanaSignedTx: SolanaSignedTx;
+    StarcoinGetAddress: StarcoinGetAddress;
+    StarcoinAddress: StarcoinAddress;
+    StarcoinGetPublicKey: StarcoinGetPublicKey;
+    StarcoinPublicKey: StarcoinPublicKey;
+    StarcoinSignTx: StarcoinSignTx;
+    StarcoinSignedTx: StarcoinSignedTx;
+    StarcoinSignMessage: StarcoinSignMessage;
+    StarcoinMessageSignature: StarcoinMessageSignature;
+    StarcoinVerifyMessage: StarcoinVerifyMessage;
     StellarAssetType: StellarAssetType;
     StellarGetAddress: StellarGetAddress;
     StellarAddress: StellarAddress;
