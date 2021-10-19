@@ -71,6 +71,13 @@ import FirmwareUpdate from './FirmwareUpdate';
 import RecoveryDevice from './RecoveryDevice';
 import GetCoinInfo from './GetCoinInfo';
 import BixinReboot from './BixinReboot';
+import StarcoinGetAddress from './StarcoinGetAddress';
+import StarcoinGetPublicKey from './StarcoinGetPublicKey';
+import StarcoinSignTransaction from './StarcoinSignTransaction';
+import SolanaGetAddress from './SolanaGetAddress';
+import SolanaSignTransaction from './SolanaSignTransaction';
+import StarcoinSignMessage from './StarcoinSignMessage';
+import StarcoinVerifyMessage from './StarcoinVerifyMessage';
 
 const classes: { [k: string]: any } = {
     'blockchainDisconnect': BlockchainDisconnect,
@@ -139,6 +146,13 @@ const classes: { [k: string]: any } = {
     'recoveryDevice': RecoveryDevice,
     'getCoinInfo': GetCoinInfo,
     'bixinReboot': BixinReboot,
+    'starcoinGetAddress': StarcoinGetAddress,
+    'starcoinGetPublicKey': StarcoinGetPublicKey,
+    'starcoinSignMessage': StarcoinSignMessage,
+    'starcoinVerifyMessage': StarcoinVerifyMessage,
+    'starcoinSignTransaction': StarcoinSignTransaction,
+    'solanaGetAddress': SolanaGetAddress,
+    'solanaSignTransaction': SolanaSignTransaction,
 };
 
 export const find = (message: CoreMessage): AbstractMethod => {

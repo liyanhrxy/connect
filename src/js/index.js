@@ -118,6 +118,36 @@ const OneKeyConnect: API = {
         return call({ method: 'debugLinkGetState', ...params });
     },
 
+    solanaGetAddress: params => {
+        const useEventListener = eventEmitter.listenerCount(UI.ADDRESS_VALIDATION) > 0;
+        return call({ method: 'solanaGetAddress', ...params, useEventListener });
+    },
+
+    solanaSignTransaction: params => {
+        return call({ method: 'solanaSignTransaction', ...params });
+    },
+
+    starcoinGetAddress: params => {
+        const useEventListener = eventEmitter.listenerCount(UI.ADDRESS_VALIDATION) > 0;
+        return call({ method: 'starcoinGetAddress', ...params, useEventListener });
+    },
+
+    starcoinSignTransaction: params => {
+        return call({ method: 'starcoinSignTransaction', ...params });
+    },
+
+    starcoinGetPublicKey: params => {
+        return call({ method: 'starcoinGetPublicKey', ...params });
+    },
+
+    starcoinSignMessage: params => {
+        return call({ method: 'starcoinSignMessage', ...params });
+    },
+
+    starcoinVerifyMessage: params => {
+        return call({ method: 'starcoinVerifyMessage', ...params });
+    },
+
     ethereumGetAddress: params => {
         const useEventListener = eventEmitter.listenerCount(UI.ADDRESS_VALIDATION) > 0;
         return call({ method: 'ethereumGetAddress', ...params, useEventListener });

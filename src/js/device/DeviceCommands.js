@@ -260,6 +260,51 @@ export default class DeviceCommands {
         };
     }
 
+    async solanaGetAddress({
+        address_n,
+        show_display,
+    }: PROTO.SolanaGetAddress) {
+        const response = await this.typedCall('SolanaGetAddress', 'SolanaAddress', {
+            address_n,
+            show_display,
+        });
+        return {
+            path: address_n,
+            serializedPath: getSerializedPath(address_n),
+            address: response.message.address,
+        };
+    }
+
+    async starcoinGetAddress({
+        address_n,
+        show_display,
+    }: PROTO.StarcoinGetAddress) {
+        const response = await this.typedCall('StarcoinGetAddress', 'StarcoinAddress', {
+            address_n,
+            show_display,
+        });
+        return {
+            path: address_n,
+            serializedPath: getSerializedPath(address_n),
+            address: response.message.address,
+        };
+    }
+
+    async starcoinGetPublicKey({
+        address_n,
+        show_display,
+    }: PROTO.StarcoinGetPublicKey) {
+        const { message } = await this.typedCall('StarcoinGetPublicKey', 'StarcoinPublicKey', {
+            address_n,
+            show_display,
+        });
+        return {
+            path: address_n,
+            serializedPath: getSerializedPath(address_n),
+            publicKey: message.public_key,
+        };
+    }
+
     async ethereumGetAddress(
         {
             address_n,
