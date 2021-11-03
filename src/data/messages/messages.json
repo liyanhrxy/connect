@@ -12598,39 +12598,39 @@
                 },
                 {
                     "name": "MessageType_StarcoinGetAddress",
-                    "id": 10200
+                    "id": 10300
                 },
                 {
                     "name": "MessageType_StarcoinAddress",
-                    "id": 10201
+                    "id": 10301
                 },
                 {
                     "name": "MessageType_StarcoinGetPublicKey",
-                    "id": 10202
+                    "id": 10302
                 },
                 {
                     "name": "MessageType_StarcoinPublicKey",
-                    "id": 10203
+                    "id": 10303
                 },
                 {
                     "name": "MessageType_StarcoinSignTx",
-                    "id": 10204
+                    "id": 10304
                 },
                 {
                     "name": "MessageType_StarcoinSignedTx",
-                    "id": 10205
+                    "id": 10305
                 },
                 {
                     "name": "MessageType_StarcoinSignMessage",
-                    "id": 10206
+                    "id": 10306
                 },
                 {
                     "name": "MessageType_StarcoinMessageSignature",
-                    "id": 10207
+                    "id": 10307
                 },
                 {
                     "name": "MessageType_StarcoinVerifyMessage",
-                    "id": 10208
+                    "id": 10308
                 },
                 {
                     "name": "MessageType_WebAuthnListResidentCredentials",
