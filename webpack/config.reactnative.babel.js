@@ -27,19 +27,17 @@ module.exports = {
         'whatwg-fetch': 'commonjs whatwg-fetch',
     },
     module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                use: ['babel-loader'],
-            },
-        ],
+        rules: [{
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            use: ['babel-loader'],
+        }],
     },
     resolve: {
-        modules: [ SRC, 'node_modules' ],
+        modules: [SRC, 'node_modules'],
     },
     resolveLoader: {
-        modules: [ 'node_modules' ],
+        modules: ['node_modules'],
         alias: {
             'react-native-worker': `${__dirname}/js/react-native-worker.js`,
         },
@@ -49,8 +47,8 @@ module.exports = {
     },
     plugins: [
         new webpack.NormalModuleReplacementPlugin(/.blake2b$/, './blake2b.js'),
-        new webpack.NormalModuleReplacementPlugin(/env\/browser$/, './env/react-native'),
-        new webpack.NormalModuleReplacementPlugin(/env\/browser\/workers$/, '../env/react-native/workers'),
+        new webpack.NormalModuleReplacementPlugin(/env\/node$/, './env/react-native'),
+        new webpack.NormalModuleReplacementPlugin(/env\/node\/workers$/, '../env/react-native/workers'),
         new webpack.NormalModuleReplacementPlugin(/env\/node\/networkUtils$/, '../env/react-native/networkUtils'),
 
         new webpack.optimize.OccurrenceOrderPlugin(),
@@ -100,5 +98,6 @@ module.exports = {
         path: 'empty',
         net: 'empty',
         tls: 'empty',
+        child_process: 'empty',
     },
 };
