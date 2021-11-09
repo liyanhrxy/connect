@@ -5,13 +5,18 @@ import BlockbookWorkerWrapper from '@onekeyhq/blockchain-link/build/module/block
 // $FlowIssue
 import RippleWorkerWrapper from '@onekeyhq/blockchain-link/build/module/ripple-worker.js';
 import TrezorLink from '@onekeyhq/link';
-import RNUsbPlugin from './RNUsbPlugin';
+// import RNUsbPlugin from './RNUsbPlugin';
+import { ReactNativePluginBle, RNBridge } from './RNBlePlugin';
 
 export const WebUsbPlugin = undefined;
 
-export const ReactNativeUsbPlugin = () => {
-    return new TrezorLink.Lowlevel(new RNUsbPlugin());
+export const ReactNativeBlePlugin = (handle: RNBridge) => {
+    return new TrezorLink.Lowlevel(new ReactNativePluginBle(handle));
 };
+
+// export const ReactNativeUsbPlugin = () => {
+//     return new TrezorLink.Lowlevel(new RNUsbPlugin());
+// };
 
 export const BlockbookWorker = () => {
     return new BlockbookWorkerWrapper();

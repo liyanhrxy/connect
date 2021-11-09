@@ -37,6 +37,7 @@ const initialSettings: ConnectSettings = {
     lazyLoad: false,
     timestamp: new Date().getTime(),
     interactionTimeout: 600, // 5 minutes
+    ble: null,
 };
 
 let currentSettings: ConnectSettings = initialSettings;
@@ -93,7 +94,8 @@ export const parse = (input: $Shape<ConnectSettings> = {}) => {
     if (Object.prototype.hasOwnProperty.call(input, 'debug')) {
         if (Array.isArray(input)) {
             // enable log with prefix
-        } if (typeof input.debug === 'boolean') {
+        }
+        if (typeof input.debug === 'boolean') {
             settings.debug = input.debug;
         } else if (typeof input.debug === 'string') {
             settings.debug = input.debug === 'true';
@@ -172,7 +174,9 @@ export const parse = (input: $Shape<ConnectSettings> = {}) => {
     if (typeof input.manifest === 'object') {
         settings.manifest = parseManifest(input.manifest);
     }
-
+    if (input.ble) {
+        settings.ble = input.ble;
+    }
     currentSettings = settings;
     return currentSettings;
 };

@@ -13,7 +13,7 @@ import { getBridgeInfo } from '../data/TransportInfo';
 import Log, { init as initLog } from '../utils/debug';
 import { resolveAfter } from '../utils/promiseUtils';
 
-import { WebUsbPlugin, ReactNativeUsbPlugin } from '../env/node/workers';
+import { WebUsbPlugin, ReactNativeBlePlugin } from '../env/node/workers';
 const { BridgeV2, Fallback } = TrezorLink;
 
 // custom log
@@ -44,13 +44,13 @@ export default class DeviceList extends EventEmitter {
     constructor() {
         super();
 
-        const { debug, env, webusb } = DataManager.settings;
+        const { debug, env, webusb, ble } = DataManager.settings;
         _log.enabled = !!debug;
 
         const transports: Transport[] = [];
 
-        if (env === 'react-native' && typeof ReactNativeUsbPlugin !== 'undefined') {
-            transports.push(ReactNativeUsbPlugin());
+        if (env === 'react-native' && typeof ReactNativeBlePlugin !== 'undefined') {
+            transports.push(ReactNativeBlePlugin(ble));
         } else {
             const bridgeLatestVersion = getBridgeInfo().version.join('.');
             const bridge = new BridgeV2(null, null);
