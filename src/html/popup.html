@@ -40,7 +40,7 @@
                 </div>
             </div>
         </aside>
-        <section id="container">
+        <section id="container" class="loading-connect">
             <div class="loader">
                 <p>加载中...</p>
                 <svg class="circular" viewBox="25 25 50 50" preserveAspectRatio="xMidYMid">
@@ -48,14 +48,40 @@
                     <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10" />
                 </svg>
             </div>
-            <div class="warning-container">
-                <h3 class="warning-text">为保证硬件正常通信，请勿直接刷新此页面</h3>
-                <p class="">如果长时间加载没有结果，请按照以下方式排查</p>
-                <ul>
-                    <li>确认是否存在多个 https://connect.onekey.so/popup.html 页面，请关闭其他多余的标签页后，关闭当前页面重新在 OneKey 插件中发起操作！</li>
-                    <li>点击清除缓存，清除后关闭页面返回 OneKey 插件重新操作！<button id="clear-localstorage">清除缓存并关闭页面</button></li>
-                </ul>
+            <div class="loading-connect__container">
+                <div class="info-container warning">
+                    为确保与硬件的通信正常，请勿直接刷新此页面
+                </div>
+                <div class="info-container">
+                    <p class="info-title">如果长时间处于「加载中」状态，请按照以下顺序进行问题排查：</p>
+                    <ul class="info-list">
+                        <li class="info-list__item">
+                            <p class="info-list__item_title">请先<b>退出 OneKey Desktop </b>等其他 OneKey 相关软件</p>
+                            <div>请先退出 OneKey Desktop 和其他浏览器中诸如 firmware.onekey.so, desktop.onekey.so, app.onekey.so 等 onekey 相关的软件和所有 onekey.so 域名结尾的浏览器标签页。</div>
+                            <div>MAC 系统用户在退出 OneKey Desktop 桌面客户端时，需要在 Dock 栏图标上右击完全退出。</div>
+                        </li>
+                        <li class="info-list__item">
+                            <p class="info-list__item_title">确认是否<b>安装且正确启动</b> OneKey Bridge</p>
+                            <div>请点击访问 <a target="_blank" href="http://127.0.0.1:21320/status/">http://127.0.0.1:21320/status/</a> 确认 OneKey Bridge 的启动状态。</div>
+                            <div>Windows 系统用户需注意 360 安全卫士 / 360 管家等杀毒软件，可能会禁止及删除 OneKey Bridge 相关进程，需手动将进程添加至白名单或手动启动 OneKey Bridge 达到通信的目的。<a target="_blank" href="https://help.onekey.so/hc/zh-cn/articles/360004279036-%E9%87%8D%E5%A4%8D%E6%8F%90%E7%A4%BA%E5%AE%89%E8%A3%85-Bridge-%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95">了解更多</a></div>
+                        </li>
+                        <li class="info-list__item">
+                            <p class="info-list__item_title">关闭其他的 connect.onekey.so 的浏览器标签页</p>
+                            请确保同一时间，仅有当前一个 connect.onekey.so 页面正在尝试与硬件通过 USB 进行通信，请关闭其他 connect.onekey.so 相关标签页。
+                        </li>
+                        <li class="info-list__item">
+                            <p class="info-list__item_title">先解锁 PIN 码后重试操作</p>
+                            如果您的 OneKey 硬件设备有设置 PIN 码保护，可以尝试先手动在硬件上输入 PIN 码解锁后，关闭当前页面，重新发起之前的操作进行重试。
+                        </li>
+                        <li class="info-list__item">
+                            <p class="info-list__item_title">清除缓存 & 重新拔插 OneKey 硬件后重试</p>
+                            点击后方清除缓存按钮，同时重新拔插连接 USB 上的 OneKey 硬件设备后，重试当前操作。<button class="inline-btn" id="clear-localstorage">清除缓存并关闭页面</button>
+                        </li>
+                    </ul>
+                    <p class="info-title">如果以上所有方式均已尝试但仍无法解决您的问题，请点击前往<a target="_blank" href="https://discord.gg/BuEzRtRw"> OneKey 的 discord 群组</a>，向我们描述您的具体情况。</p>
+                </div>
             </div>
+
         </section>
     </main>
 
