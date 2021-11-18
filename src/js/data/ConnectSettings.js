@@ -10,7 +10,7 @@ import type {
  * It could be changed by passing values into OneKeyConnect.init(...) method
  */
 
-const VERSION = '8.6.1';
+const VERSION = '8.7.0';
 // const versionN = VERSION.split('.').map(s => parseInt(s));
 // const DIRECTORY = `${ versionN[0] }${ (versionN[1] > 0 ? `.${versionN[1]}` : '') }/`;
 // const DIRECTORY = `${versionN[0]}/`;
