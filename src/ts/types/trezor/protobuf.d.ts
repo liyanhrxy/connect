@@ -520,6 +520,25 @@ export type AuthorizeCoinJoin = {
     script_type?: InputScriptType;
 };
 
+export type BIP32Address = {
+    address_n: number[];
+};
+
+// GetPublicKeyMultiple
+export type GetPublicKeyMultiple = {
+    addresses: BIP32Address[];
+    ecdsa_curve_name?: string;
+    show_display?: boolean;
+    coin_name?: string;
+    script_type?: InputScriptType;
+    ignore_xpub_magic?: boolean;
+};
+
+// PublicKeyMultiple
+export type PublicKeyMultiple = {
+    xpubs: string[];
+};
+
 // FirmwareErase
 export type FirmwareErase = {
     length?: number;
@@ -765,6 +784,65 @@ export type Deprecated_PassphraseStateAck = {};
 
 // BixinPinInputOnDevice
 export type BixinPinInputOnDevice = {};
+
+// ConfluxGetAddress
+export type ConfluxGetAddress = {
+    address_n: number[];
+    show_display?: boolean;
+    chain_id?: number;
+};
+
+// ConfluxAddress
+export type ConfluxAddress = {
+    address?: string;
+};
+
+// ConfluxSignTx
+export type ConfluxSignTx = {
+    address_n: number[];
+    nonce?: string;
+    gas_price?: string;
+    gas_limit?: string;
+    to?: string;
+    value?: string;
+    epoch_height?: string;
+    storage_limit?: string;
+    data_initial_chunk?: string;
+    data_length?: number;
+    chain_id?: number;
+};
+
+// ConfluxTxRequest
+export type ConfluxTxRequest = {
+    data_length?: number;
+    signature_v?: number;
+    signature_r?: string;
+    signature_s?: string;
+};
+
+// ConfluxTxAck
+export type ConfluxTxAck = {
+    data_chunk?: string;
+};
+
+// ConfluxSignMessage
+export type ConfluxSignMessage = {
+    address_n: number[];
+    message?: string;
+};
+
+// ConfluxMessageSignature
+export type ConfluxMessageSignature = {
+    signature?: string;
+    address?: string;
+};
+
+// ConfluxSignMessageCIP23
+export type ConfluxSignMessageCIP23 = {
+    address_n: number[];
+    domain_hash?: string;
+    message_hash?: string;
+};
 
 // CipherKeyValue
 export type CipherKeyValue = {

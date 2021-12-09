@@ -9,6 +9,7 @@ import * as Account from './account';
 import * as Bitcoin from './networks/bitcoin';
 import * as Binance from './networks/binance';
 import * as Cardano from './networks/cardano';
+import * as Conflux from './networks/conflux';
 import * as CoinInfo from './networks/coinInfo';
 import * as EOS from './networks/eos';
 import * as Ethereum from './networks/ethereum';
@@ -176,6 +177,13 @@ export type API = {
     cardanoGetAddress: Bundled<Cardano.CardanoGetAddress, Cardano.CardanoAddress>;
     cardanoGetPublicKey: Bundled<Cardano.CardanoGetPublicKey, Cardano.CardanoPublicKey>;
     cardanoSignTransaction: Method<Cardano.CardanoSignTransaction, Cardano.CardanoSignedTx>;
+
+    // Conflux
+    confluxGetAddress: Bundled<Conflux.ConfluxGetAddress, Ethereum.EthereumAddress>;
+    confluxGetPublicKey: Bundled<Ethereum.EthereumGetPublicKey, Bitcoin.HDNodeResponse>;
+    confluxSignTransaction: Bundled<Conflux.ConfluxSignTransaction, Ethereum.EthereumSignedTx>;
+    confluxSignMessage: Method<Ethereum.EthereumSignMessage, Protobuf.ConfluxMessageSignature>;
+    confluxSignMessageCIP23: Method<Ethereum.EthereumSignMessageEIP712, Protobuf.ConfluxMessageSignature>;
 
     // EOS
     eosGetPublicKey: Bundled<EOS.EosGetPublicKey, EOS.EosPublicKey>;

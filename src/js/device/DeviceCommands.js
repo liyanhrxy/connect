@@ -354,6 +354,30 @@ export default class DeviceCommands {
             depth: publicKey.node.depth,
         };
     }
+    async confluxGetAddress(
+        {
+            address_n,
+            show_display,
+            chain_id,
+        }: PROTO.ConfluxGetAddress,
+    ) {
+        const response = await this.typedCall('ConfluxGetAddress', 'ConfluxAddress', {
+            address_n,
+            show_display,
+            chain_id,
+        });
+        return {
+            path: address_n,
+            serializedPath: getSerializedPath(address_n),
+            address: response.message.address,
+        };
+    }
+    async confluxGetPublicKey({
+        address_n,
+        show_display,
+    }: PROTO.EthereumGetPublicKey) {
+        return await this.ethereumGetPublicKey({ address_n, show_display });
+    }
 
     async getDeviceState(networkType: ?string) {
         return this._getAddressForNetworkType(networkType);

@@ -109,7 +109,25 @@ const OneKeyConnect: API = {
     composeTransaction: params => {
         return call({ method: 'composeTransaction', ...params });
     },
+    confluxGetAddress: params => {
+        const useEventListener = eventEmitter.listenerCount(UI.ADDRESS_VALIDATION) > 0;
+        return call({ method: 'confluxGetAddress', ...params, useEventListener });
+    },
 
+    confluxGetPublicKey: params => {
+        return call({ method: 'ethereumGetPublicKey', ...params });
+    },
+
+    confluxSignMessage: params => {
+        return call({ method: 'confluxSignMessage', ...params });
+    },
+
+    confluxSignTransaction: params => {
+        return call({ method: 'confluxSignTransaction', ...params });
+    },
+    confluxSignMessageCIP23: params => {
+        return call({ method: 'confluxSignMessageCIP23', ...params });
+    },
     debugLinkDecision: params => {
         return call({ method: 'debugLinkDecision', ...params });
     },

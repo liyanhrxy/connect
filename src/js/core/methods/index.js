@@ -78,6 +78,10 @@ import SolanaGetAddress from './SolanaGetAddress';
 import SolanaSignTransaction from './SolanaSignTransaction';
 import StarcoinSignMessage from './StarcoinSignMessage';
 import StarcoinVerifyMessage from './StarcoinVerifyMessage';
+import ConfluxGetAddress from './ConfluxGetAddress';
+import ConfluxSignTransaction from './ConfluxSignTransaction';
+import ConfluxSignMessage from './ConfluxSignMessage';
+import ConfluxSignMessageCIP23 from './ConfluxSignMessageCIP23';
 
 const classes: { [k: string]: any } = {
     'blockchainDisconnect': BlockchainDisconnect,
@@ -153,6 +157,11 @@ const classes: { [k: string]: any } = {
     'starcoinSignTransaction': StarcoinSignTransaction,
     'solanaGetAddress': SolanaGetAddress,
     'solanaSignTransaction': SolanaSignTransaction,
+    'confluxGetAddress': ConfluxGetAddress,
+    'confluxGetPublicKey': EthereumGetPublicKey,
+    'confluxSignTransaction': ConfluxSignTransaction,
+    'confluxSignMessage': ConfluxSignMessage,
+    'confluxSignMessageCIP23': ConfluxSignMessageCIP23,
 };
 
 export const find = (message: CoreMessage): AbstractMethod => {

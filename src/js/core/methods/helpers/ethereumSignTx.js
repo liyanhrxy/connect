@@ -2,7 +2,7 @@
 
 import { ERRORS } from '../../../constants';
 import type { EthereumSignedTx } from '../../../types/networks/ethereum';
-import type { TypedCall, EthereumTxRequest } from '../../../types/trezor/protobuf';
+import type { TypedCall, EthereumTxRequest, ConfluxTxRequest } from '../../../types/trezor/protobuf';
 
 const splitString = (str: ?string, len: number): [string, string] => {
     if (str == null) {
@@ -112,5 +112,80 @@ export const ethereumSignTx = async (
         response.message,
         rest,
         chain_id
+    );
+};
+const confluxProcessTxRequest = async (
+    typedCall: TypedCall,
+    request: ConfluxTxRequest,
+    data: ?string,
+): Promise<EthereumSignedTx> => {
+    if (!request.data_length) {
+        const v: ?number = request.signature_v;
+        const r = request.signature_r;
+        const s = request.signature_s;
+        if (v == null || r == null || s == null) {
+            throw ERRORS.TypedError('Runtime', 'processTxRequest: Unexpected request');
+        }
+
+        return Promise.resolve({
+            v: '0x' + v.toString(16),
+            r: '0x' + r,
+            s: '0x' + s,
+        });
+    }
+
+    const [first, rest] = splitString(data, request.data_length * 2);
+    const response = await typedCall('ConfluxTxAck', 'ConfluxTxRequest', { data_chunk: first });
+
+    return confluxProcessTxRequest(
+        typedCall,
+        response.message,
+        rest,
+    );
+};
+
+export const confluxSignTx = async (
+    typedCall: TypedCall,
+    address_n: number[],
+    to: string,
+    value: string,
+    gas_limit: string,
+    gas_price: string,
+    nonce: string,
+    epoch_height: string,
+    storage_limit: string,
+    chain_id?: number,
+    data?: string,
+) => {
+    const length = data == null ? 0 : data.length / 2;
+
+    const [first, rest] = splitString(data, 1024 * 2);
+
+    let message = {
+        address_n,
+        nonce: stripLeadingZeroes(nonce),
+        gas_price: stripLeadingZeroes(gas_price),
+        gas_limit: stripLeadingZeroes(gas_limit),
+        to,
+        epoch_height: stripLeadingZeroes(epoch_height),
+        storage_limit: stripLeadingZeroes(storage_limit),
+        chain_id,
+        value: stripLeadingZeroes(value),
+    };
+
+    if (length !== 0) {
+        message = {
+            ...message,
+            data_length: length,
+            data_initial_chunk: first,
+        };
+    }
+
+    const response = await typedCall('ConfluxSignTx', 'ConfluxTxRequest', message);
+
+    return confluxProcessTxRequest(
+        typedCall,
+        response.message,
+        rest,
     );
 };
