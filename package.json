@@ -9,9 +9,6 @@
         "type": "git",
         "url": "git://github.com/onekeyhq/connect.git"
     },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
-    },
     "bugs": {
         "url": "https://github.com/onekeyhq/connect/issues"
     },
