@@ -1249,10 +1249,10 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@onekeyhq/blockchain-link@1.0.19":
+"@onekeyfe/blockchain-link@1.0.19":
   version "1.0.19"
-  resolved "https://registry.yarnpkg.com/@onekeyhq/blockchain-link/-/blockchain-link-1.0.19.tgz#a251c608bd1740865d4f45c8f48948dd9458699d"
-  integrity sha512-KGYhPKd3PX/tnw5uVgWKQRDDWfKGh15A0TYTX7Z52nuWMhZ0AxgWmPGVtSQR7mTS7XIo4fmK9TNF1CNDkDD+ng==
+  resolved "https://registry.yarnpkg.com/@onekeyfe/blockchain-link/-/blockchain-link-1.0.19.tgz#6732e11e17b3ff7083d627a25b352278bec59049"
+  integrity sha512-hoZ3ELzqmy1idoSxeLtGpYot6PyJmYm5Bwr4R4FLTOtLR7avI5+HIZDv7xLlPAM+6mEPksbHpp1gwxsDt0DbXg==
   dependencies:
     bignumber.js "^9.0.1"
     es6-promise "^4.2.8"
@@ -1261,10 +1261,10 @@
     tiny-worker "^2.3.0"
     ws "^7.4.0"
 
-"@onekeyhq/link@1.7.5":
+"@onekeyfe/link@1.7.5":
   version "1.7.5"
-  resolved "https://registry.yarnpkg.com/@onekeyhq/link/-/link-1.7.5.tgz#e54edbdeafb93c1f72fb2f3ffceb2d9327bc8e1f"
-  integrity sha512-KpjAt5Ex4WYyYJYfkIU+3NKdUMoYdnMreLbjtUg+o4l/VIteVSAlFoi5N/KPxmA8hR+AZPmqjHO2h6mbF4c6HQ==
+  resolved "https://registry.yarnpkg.com/@onekeyfe/link/-/link-1.7.5.tgz#64ab57fc65652e6e753ec72d9a2defe3980d38f7"
+  integrity sha512-7SnF8+EUdsRghGS0EaD3mWwg/eN5AAlGu0V4CONvj2daKjytIaG7LLkYsQXSC3VRakjgGpjhUeBR0h7GBoha8Q==
   dependencies:
     bigi "^1.4.1"
     ecurve "^1.0.3"
@@ -1275,10 +1275,10 @@
     semver-compare "^1.0.0"
     whatwg-fetch "^3.5.0"
 
-"@onekeyhq/rollout@1.0.6":
+"@onekeyfe/rollout@1.0.6":
   version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@onekeyhq/rollout/-/rollout-1.0.6.tgz#963febab33f015294d4f2002b972ae5d2c328ed3"
-  integrity sha512-wsR27EMOArkKDVy/F8NyRCuT2PsfDOOR7hMGTUXxfnlbzfz/K4rxROR6mtBicu0PwgFeDXch8fKUnndON2Moeg==
+  resolved "https://registry.yarnpkg.com/@onekeyfe/rollout/-/rollout-1.0.6.tgz#3d2f1121be525a48cb97543434fe599e592208a1"
+  integrity sha512-zPJO0BOkzE2nbtEM8KGUgWGuzhNLjyLr7MnnL6Il4RnS/VQ7gsN84c76cmz0VksM7nL09Zk9K7HmxPdIkC1gyQ==
   dependencies:
     cross-fetch "^3.0.6"
     runtypes "^5.0.1"

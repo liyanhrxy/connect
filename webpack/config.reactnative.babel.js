@@ -55,7 +55,7 @@ module.exports = {
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.NamedModulesPlugin(),
 
-        // ignore Node.js lib from @onekeyhq/link
+        // ignore Node.js lib from @onekeyfe/link
         new webpack.IgnorePlugin(/\/iconv-loader$/),
         new webpack.IgnorePlugin(/\/shared-connection-worker$/),
         new Dotenv(),

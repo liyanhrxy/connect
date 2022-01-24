@@ -1,7 +1,7 @@
 /* @flow */
 /* istanbul ignore next */
 import TinyWorker from 'tiny-worker';
-import type { Transport } from '@onekeyhq/link';
+import type { Transport } from '@onekeyfe/link';
 
 type TransportWrapper = (handle?: RNBridge) => Transport;
 
@@ -12,13 +12,13 @@ export const ReactNativeBlePlugin: TransportWrapper | typeof undefined = undefin
 export const BlockbookWorker = () => {
     return new TinyWorker(() => {
         // $FlowIssue
-        require('@onekeyhq/blockchain-link/build/node/blockbook-worker');
+        require('@onekeyfe/blockchain-link/build/node/blockbook-worker');
     });
 };
 
 export const RippleWorker = () => {
     return new TinyWorker(() => {
         // $FlowIssue
-        require('@onekeyhq/blockchain-link/build/node/ripple-worker');
+        require('@onekeyfe/blockchain-link/build/node/ripple-worker');
     });
 };

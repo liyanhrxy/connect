@@ -1,5 +1,5 @@
 /* @flow */
-import { getBinary } from '@onekeyhq/rollout';
+import { getBinary } from '@onekeyfe/rollout';
 import AbstractMethod from './AbstractMethod';
 import { UI, ERRORS } from '../../constants';
 import { uploadFirmware } from './helpers/uploadFirmware';
@@ -80,7 +80,7 @@ export default class FirmwareUpdate extends AbstractMethod {
                 binary = this.params.binary;
             } else {
                 const firmware = await getBinary({
-                    // features and releases are used for sanity checking inside @onekeyhq/rollout
+                    // features and releases are used for sanity checking inside @onekeyfe/rollout
                     features: device.features,
                     releases: getReleases(device.features.major_version, device.features),
                     // version argument is used to find and fetch concrete release from releases list

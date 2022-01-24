@@ -13,7 +13,7 @@ export const USED_ELSEWHERE: 'device-used_elsewhere' = 'device-used_elsewhere';
 
 export const LOADING: 'device-loading' = 'device-loading';
 
-// @onekeyhq/link events in protobuf format
+// @onekeyfe/link events in protobuf format
 export const BUTTON: 'button' = 'button';
 export const PIN: 'pin' = 'pin';
 export const PASSPHRASE: 'passphrase' = 'passphrase';

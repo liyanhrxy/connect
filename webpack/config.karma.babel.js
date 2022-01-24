@@ -73,7 +73,7 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[id].css',
         }),
-        // ignore Node.js lib from @onekeyhq/link
+        // ignore Node.js lib from @onekeyfe/link
         new webpack.IgnorePlugin(/\/iconv-loader$/),
         new Dotenv(),
         new webpack.EnvironmentPlugin({

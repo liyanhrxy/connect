@@ -1,4 +1,4 @@
-import { getInfo } from '@onekeyhq/rollout';
+import { getInfo } from '@onekeyfe/rollout';
 import { DEVICE } from '../constants';
 import { Features } from './protobuf';
 

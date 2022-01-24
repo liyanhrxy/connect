@@ -9,7 +9,7 @@ import * as DEVICE from '../constants/device';
 import Log, { init as initLog } from '../utils/debug';
 import DataManager from '../data/DataManager';
 import { resolveAfter } from '../utils/promiseUtils';
-import type { Transport, TrezorDeviceInfoWithSession as DeviceDescriptor } from '@onekeyhq/link';
+import type { Transport, TrezorDeviceInfoWithSession as DeviceDescriptor } from '@onekeyfe/link';
 
 export type DeviceDescriptorDiff = {
     didUpdate: boolean;
@@ -25,7 +25,7 @@ export type DeviceDescriptorDiff = {
 const logger: Log = initLog('DescriptorStream');
 
 export default class DescriptorStream extends EventEmitter {
-    // actual low-level transport, from @onekeyhq/link
+    // actual low-level transport, from @onekeyfe/link
     transport: Transport;
 
     // if the transport works

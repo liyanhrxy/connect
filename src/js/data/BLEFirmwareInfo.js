@@ -1,6 +1,6 @@
 /* @flow */
 
-import {isNewer} from '@onekeyhq/rollout/lib/utils/version';
+import {isNewer} from '@onekeyfe/rollout/lib/utils/version';
 import type {DeviceFirmwareStatus, Features, FirmwareRelease} from '../types';
 import {findDefectiveBatchDevice} from '../utils/findDefectiveBatchDevice';
 

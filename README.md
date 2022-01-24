@@ -24,5 +24,5 @@ yarn build
 ## install
 
 ```
-yarn add @onekeyhq/connect
+yarn add @onekeyfe/connect
 ```

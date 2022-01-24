@@ -6,8 +6,8 @@ import DescriptorStream from './DescriptorStream';
 import type { DeviceDescriptorDiff } from './DescriptorStream';
 import Device from './Device';
 import type { Device as DeviceTyped } from '../types';
-import TrezorLink from '@onekeyhq/link';
-import type { Transport, TrezorDeviceInfoWithSession as DeviceDescriptor } from '@onekeyhq/link';
+import TrezorLink from '@onekeyfe/link';
+import type { Transport, TrezorDeviceInfoWithSession as DeviceDescriptor } from '@onekeyfe/link';
 import DataManager from '../data/DataManager';
 import { getBridgeInfo } from '../data/TransportInfo';
 import Log, { init as initLog } from '../utils/debug';
@@ -19,7 +19,7 @@ const { BridgeV2, Fallback } = TrezorLink;
 // custom log
 const _log: Log = initLog('DeviceList');
 
-// TODO: plugins are not typed in '@onekeyhq/link'
+// TODO: plugins are not typed in '@onekeyfe/link'
 type LowLevelPlugin = {
     name: 'WebUsbPlugin' | 'ReactNativePlugin';
     unreadableHidDeviceChange: {
@@ -81,7 +81,7 @@ export default class DeviceList extends EventEmitter {
 
             const { activeName } = transport;
             if (activeName === 'LowlevelTransportWithSharedConnections') {
-                // $FlowIssue "activeTransport" is not typed in @onekeyhq/link
+                // $FlowIssue "activeTransport" is not typed in @onekeyfe/link
                 this.transportPlugin = transport.activeTransport.plugin;
             }
 

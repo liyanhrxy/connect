@@ -11,13 +11,9 @@ jobs:
       PUBLIC_URL: 'https://onekey-asset.com/fe/${{ github.event.repository.name }}/${{ github.sha }}/'
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          registry-url: 'https://npm.pkg.github.com'
-          always-auth: true
-          scope: '@onekeyhq'
-          node-version: '14.x'
+          node-version: '16.x'
       - name: Install Dependiences
         run: |
           npm install -g yarn

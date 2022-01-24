@@ -85,7 +85,7 @@ Basic implementation is same for both Google Chrome & Firefox. However, few addi
 
     If you're using a package manager you will probably want to import Trezor Connect into your code using an `import` statement
     ```javascript
-    import OneKeyConnect from '@onekeyhq/connect'; // Import Trezor Connect
+    import OneKeyConnect from '@onekeyfe/connect'; // Import Trezor Connect
 
     function onClick() {
         OneKeyConnect.getAddress({

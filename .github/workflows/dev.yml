@@ -17,13 +17,9 @@ jobs:
       TEST_ENDPOINT: connect.test.onekey.so
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Environment
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          registry-url: 'https://npm.pkg.github.com'
-          always-auth: true
-          scope: '@onekeyhq'
-          node-version: '14.x'
+          node-version: '16.x'
       - name: Install Dependiences
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -10,7 +10,7 @@ export const ERROR_CODES = {
     'Popup_ConnectionMissing': 'Unable to establish connection with iframe', // thrown by popup
 
     'Transport_Missing': 'Transport is missing', // no transport available
-    'Transport_InvalidProtobuf': '', // generic error from transport layer (@onekeyhq/link)
+    'Transport_InvalidProtobuf': '', // generic error from transport layer (@onekeyfe/link)
 
     'Method_InvalidPackage': 'This version of trezor-connect is not suitable to work without browser. Use trezor-connect@extended package instead', // thrown by node and react-native env while using regular 'web' package
     'Method_InvalidParameter': '', // replaced by generic text
@@ -66,4 +66,3 @@ export const WRONG_PREVIOUS_SESSION_ERROR_MESSAGE: string = 'wrong previous sess
 export const DEVICE_DISCONNECTED_DURING_ACTION: string = 'device disconnected during action';
 export const INVALID_PIN_ERROR_MESSAGE: string = 'PIN invalid';
 export const WEBUSB_ERROR_MESSAGE: string = 'NetworkError: Unable to claim interface.';
-

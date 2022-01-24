@@ -4,7 +4,7 @@ import EventEmitter from 'events';
 import DeviceCommands from './DeviceCommands';
 
 import type { Device as DeviceTyped, DeviceFirmwareStatus, Features, Deferred, FirmwareRelease, UnavailableCapability } from '../types';
-import type { Transport, TrezorDeviceInfoWithSession as DeviceDescriptor } from '@onekeyhq/link';
+import type { Transport, TrezorDeviceInfoWithSession as DeviceDescriptor } from '@onekeyfe/link';
 
 import { UI, DEVICE, ERRORS, NETWORK } from '../constants';
 import { create as createDeferred } from '../utils/deferred';
@@ -32,7 +32,7 @@ export type RunOptions = {
     onlyOneActivity?: boolean;
 
     // cancel popup request when we are sure that there is no need to authenticate
-    // Method gets called after run() fetch new Features but before @onekeyhq/link dispatch "acquire" event
+    // Method gets called after run() fetch new Features but before @onekeyfe/link dispatch "acquire" event
     cancelPopupRequest?: Function;
 
     keepSession?: boolean;
@@ -118,7 +118,7 @@ export default class Device extends EventEmitter {
     }
 
     async acquire(): Promise<void> {
-        // will be resolved after @onekeyhq/link acquire event
+        // will be resolved after @onekeyfe/link acquire event
         this.deferredActions[ DEVICE.ACQUIRE ] = createDeferred();
         this.deferredActions[ DEVICE.ACQUIRED ] = createDeferred();
         try {
@@ -136,7 +136,7 @@ export default class Device extends EventEmitter {
             }
             this.commands = new DeviceCommands(this, this.transport, sessionID);
 
-            // future defer for @onekeyhq/link release event
+            // future defer for @onekeyfe/link release event
             this.deferredActions[ DEVICE.RELEASE ] = createDeferred();
         } catch (error) {
             this.deferredActions[ DEVICE.ACQUIRED ].resolve();
@@ -265,7 +265,7 @@ export default class Device extends EventEmitter {
             this.keepSession = true;
         }
 
-        // wait for event from @onekeyhq/link
+        // wait for event from @onekeyfe/link
         await this.deferredActions[ DEVICE.ACQUIRE ].promise;
 
         // call inner function

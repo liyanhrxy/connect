@@ -1,6 +1,6 @@
 [include]
 .*/node_modules/hd-wallet/lib
-.*/node_modules/@onekeyhq/link
+.*/node_modules/@onekeyfe/link
 .*/node_modules/bchaddrjs/
 
 [ignore]
@@ -14,8 +14,8 @@
 .*/src/__tests__/.*
 
 [libs]
-./node_modules/@onekeyhq/link/flowtype/chrome.js
-./node_modules/@onekeyhq/link/flowtype/webusb.js
+./node_modules/@onekeyfe/link/flowtype/chrome.js
+./node_modules/@onekeyfe/link/flowtype/webusb.js
 ./src/flowtype/
 
 [options]

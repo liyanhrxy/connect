@@ -83,7 +83,7 @@ type TransactionTarget = {
     n: number;
 }
 
-// Transaction from @onekeyhq/blockchain-link
+// Transaction from @onekeyfe/blockchain-link
 export type AccountTransaction = {
     type: 'sent' | 'recv' | 'self' | 'failed' | 'unknown';
 
@@ -109,7 +109,7 @@ export type AccountTransaction = {
     };
 }
 
-// getAccountInfo response from @onekeyhq/blockchain-link
+// getAccountInfo response from @onekeyfe/blockchain-link
 export type AccountInfo = {
     empty: boolean;
     path: string;
