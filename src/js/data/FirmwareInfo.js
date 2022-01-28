@@ -23,6 +23,8 @@ const cleanUrl = (url: ?string) => {
 
 export const parseFirmware = (json: JSON, model: number | string): void => {
     const obj: Object = json;
+
+    if (!json) return;
     Object.keys(obj).forEach(key => {
         const release = obj[key];
         releases[model].push({

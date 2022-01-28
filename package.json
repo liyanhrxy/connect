@@ -1,6 +1,6 @@
 {
     "name": "@onekeyfe/connect",
-    "version": "8.7.2",
+    "version": "8.7.5",
     "author": "OneKey <hi@onekey.so>",
     "homepage": "https://github.com/onekeyhq/connect",
     "description": "High-level javascript interface for OneKey hardware wallet.",
