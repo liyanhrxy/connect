@@ -27,6 +27,9 @@ export * from './networks/nem';
 export * from './networks/ripple';
 export * from './networks/stellar';
 export * from './networks/tezos';
+export * from './networks/conflux';
+export * from './networks/starcoin';
+export * from './networks/solana';
 
 export * from './backend/blockchain';
 export * from './backend/transactions';

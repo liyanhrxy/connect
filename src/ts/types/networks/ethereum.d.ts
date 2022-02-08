@@ -54,6 +54,12 @@ export interface EthereumSignMessage {
     hex?: boolean;
 }
 
+export interface EthereumSignMessageEIP712 {
+    path: string | number[];
+    domainHash: string;
+    messageHash: string;
+}
+
 // verify message
 
 export interface EthereumVerifyMessage {

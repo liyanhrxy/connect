@@ -18,6 +18,8 @@ import * as NEM from './networks/nem';
 import * as Ripple from './networks/ripple';
 import * as Stellar from './networks/stellar';
 import * as Tezos from './networks/tezos';
+import * as Solana from './networks/solana';
+import * as Starcoin from './networks/starcoin';
 import * as Misc from './misc';
 
 import * as Events from './events';
@@ -195,6 +197,7 @@ export type API = {
     ethereumSignTransaction: Bundled<Ethereum.EthereumSignTransaction, Ethereum.EthereumSignedTx>;
     ethereumSignMessage: Method<Ethereum.EthereumSignMessage, Protobuf.EthereumMessageSignature>;
     ethereumVerifyMessage: Method<Ethereum.EthereumVerifyMessage, P.DefaultMessage>;
+    ethereumSignMessageEIP712: Method<Ethereum.EthereumSignMessageEIP712, Protobuf.EthereumMessageSignature>;
 
     // Lisk
     liskGetAddress: Bundled<Lisk.LiskGetAddress, Lisk.LiskAddress>;
@@ -215,10 +218,21 @@ export type API = {
     stellarGetAddress: Bundled<Stellar.StellarGetAddress, Stellar.StellarAddress>;
     stellarSignTransaction: Bundled<Stellar.StellarSignTransaction, Stellar.StellarSignedTx>;
 
-    // // Tezos
+    // Tezos
     tezosGetAddress: Bundled<Tezos.TezosGetAddress, Tezos.TezosAddress>;
     tezosGetPublicKey: Bundled<Tezos.TezosGetPublicKey, Tezos.TezosPublicKey>;
     tezosSignTransaction: Method<Tezos.TezosSignTransaction, Protobuf.TezosSignedTx>;
+
+    // Solana
+    solanaGetAddress: Bundled<Solana.SolanaGetAddress, Solana.SolanaAddress>;
+    solanaSignTransaction: Bundled<Solana.SolanaSignTx, Protobuf.SolanaSignedTx>;
+
+    // Starcoin
+    starcoinGetAddress: Bundled<Starcoin.StarcoinGetAddress, Starcoin.StarcoinAddress>;
+    starcoinGetPublicKey: Bundled<Starcoin.StarcoinGetPublicKey, Starcoin.StarcoinPublicKey>;
+    starcoinSignTransaction: Bundled<Starcoin.StarcoinSignTx, Protobuf.StarcoinSignedTx>;
+    starcoinSignMessage: Method<Starcoin.StarcoinSignMessage, Starcoin.StarcoinMessageSignature>;
+    starcoinVerifyMessage: Method<Starcoin.StarcoinVerifyMessage, P.DefaultMessage>;
 
     /**
      * Challenge-response authentication via Trezor.

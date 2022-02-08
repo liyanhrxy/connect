@@ -46,6 +46,7 @@ export interface ConnectSettings {
     extension?: string;
     env: 'node' | 'web' | 'webextension' | 'electron' | 'react-native';
     timestamp: number;
+    ble?: any;
 }
 
 export interface CommonParams {

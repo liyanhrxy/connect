@@ -16,6 +16,9 @@ import * as NEM from './networks/nem';
 import * as Ripple from './networks/ripple';
 import * as Stellar from './networks/stellar';
 import * as Tezos from './networks/tezos';
+import * as Conflux from './networks/conflux';
+import * as Starcoin from './networks/starcoin';
+import * as Solana from './networks/solana';
 import * as Misc from './misc';
 
 import * as Events from './events';
@@ -234,6 +237,7 @@ export namespace OneKeyConnect {
     function ethereumSignMessage(
         params: P.CommonParams & Ethereum.EthereumSignMessage,
     ): P.Response<Protobuf.MessageSignature>;
+    function ethereumSignMessageEIP712(params: P.CommonParams & Ethereum.EthereumSignMessageEIP712): P.Response<Protobuf.MessageSignature>;
     function ethereumVerifyMessage(
         params: P.CommonParams & Ethereum.EthereumVerifyMessage,
     ): P.Response<P.DefaultMessage>;
@@ -286,6 +290,47 @@ export namespace OneKeyConnect {
     function tezosSignTransaction(
         params: P.CommonParams & Tezos.TezosSignTransaction,
     ): P.Response<Protobuf.TezosSignedTx>;
+
+    // Conflux
+    function confluxGetAddress(params: P.CommonParams & Conflux.ConfluxGetAddress): P.Response<Ethereum.EthereumAddress>;
+    function confluxGetAddress(params: P.CommonParams & P.Bundle<Conflux.ConfluxGetAddress>): P.BundledResponse<
+    Ethereum.EthereumAddress
+    >;
+    function confluxGetPublicKey(params: P.CommonParams & Ethereum.EthereumGetPublicKey): P.Response<
+    Bitcoin.HDNodeResponse
+    >;
+    function confluxGetPublicKey(
+        params: P.CommonParams & P.Bundle<Ethereum.EthereumGetPublicKey>,
+    ): P.BundledResponse<Bitcoin.HDNodeResponse>;
+    function confluxSignTransaction(
+        params: P.CommonParams & Conflux.ConfluxSignTransaction,
+    ): P.Response<Ethereum.EthereumSignedTx>;
+    function confluxSignTransaction(
+        params: P.CommonParams & P.Bundle<Conflux.ConfluxSignTransaction>,
+    ): P.BundledResponse<Ethereum.EthereumSignedTx>;
+    function confluxSignMessage(
+        params: P.CommonParams & Ethereum.EthereumSignMessage,
+    ): P.Response<Protobuf.ConfluxMessageSignature>;
+    function ConfluxSignMessageCIP23(params: P.CommonParams & Ethereum.EthereumSignMessageEIP712): P.Response<Protobuf.ConfluxMessageSignature>;
+    function confluxVerifyMessage(
+        params: P.CommonParams & Ethereum.EthereumVerifyMessage,
+    ): P.Response<P.DefaultMessage>;
+
+    // Solana
+    function solanaGetAddress(params: P.CommonParams & Solana.SolanaGetAddress): P.Response<Solana.SolanaAddress>;
+    function solanaGetAddress(params: P.CommonParams & P.Bundle<Solana.SolanaGetAddress>): P.BundledResponse<Solana.SolanaAddress>;
+    function solanaSignTransaction(params: P.CommonParams & Solana.SolanaSignTx): P.Response<Solana.SolanaSignedTx>;
+    function solanaSignTransaction(params: P.CommonParams & P.Bundle<Solana.SolanaSignTx>): P.BundledResponse<Solana.SolanaSignedTx>;
+
+    // Starcoin
+    function starcoinGetAddress(params: P.CommonParams & Starcoin.StarcoinGetAddress): P.Response<Starcoin.StarcoinAddress>;
+    function starcoinGetAddress(params: P.CommonParams & P.Bundle<Starcoin.StarcoinGetAddress>): P.BundledResponse<Starcoin.StarcoinAddress>;
+    function starcoinGetPublicKey(params: P.CommonParams & Starcoin.StarcoinGetPublicKey): P.Response<Starcoin.StarcoinPublicKey>;
+    function starcoinGetPublicKey(params: P.CommonParams & P.Bundle<Starcoin.StarcoinGetPublicKey>): P.BundledResponse<Starcoin.StarcoinPublicKey>;
+    function starcoinSignTransaction(params: P.CommonParams & Starcoin.StarcoinSignTx): P.Response<Starcoin.StarcoinSignedTx>;
+    function starcoinSignTransaction(params: P.CommonParams & P.Bundle<Starcoin.StarcoinSignTx>): P.BundledResponse<Starcoin.StarcoinSignedTx>;
+    function starcoinSignMessage(params: P.CommonParams & Starcoin.StarcoinSignMessage): P.Response<Starcoin.StarcoinMessageSignature>;
+    function starcoinVerifyMessage(params: P.CommonParams & Starcoin.StarcoinVerifyMessage): P.Response<P.DefaultMessage>;
 
     /**
      * Challenge-response authentication via Trezor.
